@@ -1,11 +1,11 @@
 {
   "android": {
-    "latest_version": "1.0.8",
+    "latest_version": "1.0.7",
     "min_version": "1.0.3",
     "store_url": "https://play.google.com/store/apps/details?id=com.logicgategames.Differencia"
   },
   "windows": {
-    "latest_version": "1.0.8",
+    "latest_version": "1.0.7",
     "min_version": "1.0.3",
     "store_url": "https://play.google.com/store/apps/details?id=com.logicgategames.Differencia"
   }
