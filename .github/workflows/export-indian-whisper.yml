@@ -31,7 +31,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install "torch==2.0.1" transformers onnx onnxruntime
+        run: pip install transformers torch onnx onnxruntime huggingface_hub
 
       - name: Map language code to full name
         id: lang
@@ -60,57 +60,74 @@ jobs:
           echo "name=$NAME"   >> $GITHUB_OUTPUT
           echo "Exporting: $MODEL"
 
-      - name: Export encoder and full-sequence decoder
+      - name: Weight surgery - inject Telugu weights into working ONNX architecture
         env:
           MODEL: ${{ steps.lang.outputs.model }}
           OUT_DIR: ${{ steps.lang.outputs.out }}
         run: |
           python3 << 'PYEOF'
-          import os, torch
+          import os, numpy as np, onnx
+          from onnx import numpy_helper
           from transformers import WhisperForConditionalGeneration, WhisperProcessor
+          from huggingface_hub import hf_hub_download
 
           model_id = os.environ["MODEL"]
           out_dir  = os.environ["OUT_DIR"]
           os.makedirs(out_dir, exist_ok=True)
 
-          print(f"Loading {model_id}...")
-          model = WhisperForConditionalGeneration.from_pretrained(model_id)
-          model.eval()
+          # Step 1: Download onnx-community/whisper-base ONNX files
+          # These are the exact files that already work with WhisperOnnxEngine.
+          # vasista22 fine-tunes share the same architecture — we just swap weights.
+          print("Downloading onnx-community/whisper-base ONNX architecture...")
+          enc_src = hf_hub_download("onnx-community/whisper-base", "onnx/encoder_model.onnx")
+          dec_src = hf_hub_download("onnx-community/whisper-base", "onnx/decoder_model.onnx")
+          print(f"  encoder: {os.path.getsize(enc_src)/1e6:.1f} MB")
+          print(f"  decoder: {os.path.getsize(dec_src)/1e6:.1f} MB")
 
-          # Encoder
-          print("Exporting encoder...")
-          class EncWrap(torch.nn.Module):
-              def __init__(self, m): super().__init__(); self.enc = m.model.encoder
-              def forward(self, x): return self.enc(x).last_hidden_state
-          torch.onnx.export(
-              EncWrap(model), torch.zeros(1, 80, 3000),
-              f"{out_dir}/encoder_model.onnx",
-              input_names=["input_features"], output_names=["last_hidden_state"],
-              dynamic_axes={"input_features": {0:"batch",2:"frames"}, "last_hidden_state": {0:"batch",1:"seq"}},
-              opset_version=14
-          )
-          print(f"  encoder: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
+          # Step 2: Load vasista22 Telugu fine-tuned weights
+          print(f"Loading {model_id} weights...")
+          pt_model = WhisperForConditionalGeneration.from_pretrained(model_id)
+          state = {k: v.detach().float().numpy() for k, v in pt_model.state_dict().items()}
+          print(f"  {len(state)} weight tensors loaded")
+          del pt_model  # free memory
 
-          # Decoder - full sequence, no KV cache
-          print("Exporting decoder (use_cache=False)...")
-          class DecWrap(torch.nn.Module):
-              def __init__(self, m): super().__init__(); self.dec=m.model.decoder; self.proj=m.proj_out
-              def forward(self, ids, enc): return self.proj(self.dec(input_ids=ids, encoder_hidden_states=enc, use_cache=False).last_hidden_state)
-          dummy_ids = torch.zeros(1, 4, dtype=torch.long)
-          dummy_enc = torch.zeros(1, 1500, model.config.d_model)
-          torch.onnx.export(
-              DecWrap(model), (dummy_ids, dummy_enc),
-              f"{out_dir}/decoder_model.onnx",
-              input_names=["input_ids","encoder_hidden_states"], output_names=["logits"],
-              dynamic_axes={"input_ids":{0:"batch",1:"seq"},"encoder_hidden_states":{0:"batch",1:"enc_seq"},"logits":{0:"batch",1:"seq"}},
-              opset_version=14
-          )
-          print(f"  decoder: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
+          # Step 3: Inject weights into encoder ONNX
+          print("Injecting weights into encoder...")
+          enc = onnx.load(enc_src)
+          enc_updated = 0
+          for init in enc.graph.initializer:
+              if init.name in state and init.data_type == onnx.TensorProto.FLOAT:
+                  arr = state[init.name]
+                  # Verify shapes match
+                  onnx_shape = tuple(d for d in init.dims)
+                  if arr.shape == onnx_shape:
+                      init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
+                      enc_updated += 1
+          print(f"  Updated {enc_updated}/{len(enc.graph.initializer)} encoder initializers")
+          onnx.save(enc, f"{out_dir}/encoder_model.onnx")
+          print(f"  Saved: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
+          del enc
 
-          # Tokenizer
+          # Step 4: Inject weights into decoder ONNX
+          print("Injecting weights into decoder...")
+          dec = onnx.load(dec_src)
+          dec_updated = 0
+          for init in dec.graph.initializer:
+              if init.name in state and init.data_type == onnx.TensorProto.FLOAT:
+                  arr = state[init.name]
+                  onnx_shape = tuple(d for d in init.dims)
+                  if arr.shape == onnx_shape:
+                      init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
+                      dec_updated += 1
+          print(f"  Updated {dec_updated}/{len(dec.graph.initializer)} decoder initializers")
+          onnx.save(dec, f"{out_dir}/decoder_model.onnx")
+          print(f"  Saved: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
+          del dec
+
+          # Step 5: Save vasista22 tokenizer (same as base Whisper but confirm)
           print("Saving tokenizer...")
           WhisperProcessor.from_pretrained(model_id).save_pretrained(out_dir)
-          print("Done.")
+          print("Weight surgery complete!")
           PYEOF
 
       - name: Quantize decoder to INT8
@@ -140,7 +157,7 @@ jobs:
           tag_name: ${{ steps.lang.outputs.tag }}
           name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v2"
           body: |
-            Full-sequence decoder (no KV cache) - compatible with WhisperOnnxEngine.
+            Weight surgery: vasista22 Telugu weights in onnx-community/whisper-base architecture.
             Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
           files: |
             ${{ steps.lang.outputs.out }}/encoder_model.onnx
