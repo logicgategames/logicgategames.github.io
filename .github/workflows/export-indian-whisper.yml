@@ -1,5 +1,6 @@
 name: Export Indian Whisper ONNX
 
+
 on:
   workflow_dispatch:
     inputs:
@@ -12,12 +13,15 @@ on:
         required: true
         default: 'base'
 
+
 permissions:
   contents: write
+
 
 jobs:
   export:
     runs-on: ubuntu-latest
+
 
     steps:
       - name: Free disk space
@@ -25,156 +29,15 @@ jobs:
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
           df -h
 
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
+
       - name: Install dependencies
-        run: pip install transformers torch onnx onnxruntime
+        run: pip install transformers torch onnx onnxruntime onnxscript
+
 
       - name: Map language code to full name
-        id: lang
-        run: |
-          CODE="${{ inputs.language }}"
-          SIZE="${{ inputs.model_size }}"
-          case "$CODE" in
-            te) NAME="telugu"    ;;
-            hi) NAME="hindi"     ;;
-            ta) NAME="tamil"     ;;
-            kn) NAME="kannada"   ;;
-            ml) NAME="malayalam" ;;
-            bn) NAME="bengali"   ;;
-            mr) NAME="marathi"   ;;
-            gu) NAME="gujarati"  ;;
-            pa) NAME="punjabi"   ;;
-            ur) NAME="urdu"      ;;
-            *)  NAME="$CODE"     ;;
-          esac
-          MODEL="vasista22/whisper-${NAME}-${SIZE}"
-          TAG="whisper-${CODE}-${SIZE}-v2"
-          OUT="./out"
-          echo "model=$MODEL" >> $GITHUB_OUTPUT
-          echo "tag=$TAG"     >> $GITHUB_OUTPUT
-          echo "out=$OUT"     >> $GITHUB_OUTPUT
-          echo "name=$NAME"   >> $GITHUB_OUTPUT
-          echo "Exporting: $MODEL"
-
-      - name: Export encoder + full-sequence decoder to ONNX
-        run: |
-          python3 - <<'PYEOF'
-          import os, torch
-          from transformers import WhisperForConditionalGeneration, WhisperProcessor
-
-          model_id = os.environ["MODEL"]
-          out_dir  = os.environ["OUT_DIR"]
-          os.makedirs(out_dir, exist_ok=True)
-
-          print(f"Loading {model_id}...")
-          model = WhisperForConditionalGeneration.from_pretrained(model_id)
-          model.eval()
-
-          # ── Encoder ──────────────────────────────────────────────────────────
-          print("Exporting encoder...")
-          class EncoderWrapper(torch.nn.Module):
-              def __init__(self, m): super().__init__(); self.enc = m.model.encoder
-              def forward(self, input_features):
-                  return self.enc(input_features).last_hidden_state
-
-          enc_wrapper = EncoderWrapper(model)
-          dummy_mel   = torch.zeros(1, 80, 3000)
-          torch.onnx.export(
-              enc_wrapper, dummy_mel,
-              f"{out_dir}/encoder_model.onnx",
-              input_names  = ["input_features"],
-              output_names = ["last_hidden_state"],
-              dynamic_axes = {
-                  "input_features":    {0: "batch", 2: "frames"},
-                  "last_hidden_state": {0: "batch", 1: "seq"}
-              },
-              opset_version = 14
-          )
-          enc_size = os.path.getsize(f"{out_dir}/encoder_model.onnx") / 1e6
-          print(f"  encoder_model.onnx: {enc_size:.1f} MB")
-
-          # ── Decoder (full-sequence, no KV cache) ─────────────────────────────
-          # Matches onnx-community/whisper-base format:
-          #   input_ids + encoder_hidden_states -> logits (full sequence)
-          print("Exporting decoder (use_cache=False)...")
-          class DecoderWrapper(torch.nn.Module):
-              def __init__(self, m):
-                  super().__init__()
-                  self.dec     = m.model.decoder
-                  self.proj    = m.proj_out
-              def forward(self, input_ids, encoder_hidden_states):
-                  out = self.dec(
-                      input_ids             = input_ids,
-                      encoder_hidden_states = encoder_hidden_states,
-                      use_cache             = False
-                  )
-                  return self.proj(out.last_hidden_state)
-
-          dec_wrapper   = DecoderWrapper(model)
-          dummy_ids     = torch.zeros(1, 4, dtype=torch.long)
-          dummy_enc_out = torch.zeros(1, 1500, model.config.d_model)
-
-          torch.onnx.export(
-              dec_wrapper,
-              (dummy_ids, dummy_enc_out),
-              f"{out_dir}/decoder_model.onnx",
-              input_names  = ["input_ids", "encoder_hidden_states"],
-              output_names = ["logits"],
-              dynamic_axes = {
-                  "input_ids":             {0: "batch", 1: "seq"},
-                  "encoder_hidden_states": {0: "batch", 1: "enc_seq"},
-                  "logits":                {0: "batch", 1: "seq"}
-              },
-              opset_version = 14
-          )
-          dec_size = os.path.getsize(f"{out_dir}/decoder_model.onnx") / 1e6
-          print(f"  decoder_model.onnx: {dec_size:.1f} MB")
-
-          # ── Tokenizer files ───────────────────────────────────────────────────
-          print("Saving tokenizer...")
-          proc = WhisperProcessor.from_pretrained(model_id)
-          proc.save_pretrained(out_dir)
-          print("Done.")
-          PYEOF
-        env:
-          MODEL:   ${{ steps.lang.outputs.model }}
-          OUT_DIR: ${{ steps.lang.outputs.out }}
-
-      - name: Quantize decoder to INT8
-        run: |
-          python3 - <<'PYEOF'
-          import os
-          from onnxruntime.quantization import quantize_dynamic, QuantType
-          out = os.environ["OUT_DIR"]
-          src = f"{out}/decoder_model.onnx"
-          dst = f"{out}/decoder_model_int8.onnx"
-          if os.path.exists(src):
-              print(f"Quantizing {src}...")
-              quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
-              a = os.path.getsize(src)/1e6
-              b = os.path.getsize(dst)/1e6
-              print(f"  {a:.0f} MB -> {b:.0f} MB (int8)")
-          PYEOF
-        env:
-          OUT_DIR: ${{ steps.lang.outputs.out }}
-
-      - name: List final files
-        run: ls -lh "${{ steps.lang.outputs.out }}"
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ steps.lang.outputs.tag }}
-          name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v2"
-          body: |
-            Full-sequence decoder (no KV cache) — compatible with WhisperOnnxEngine.
-            Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
-          files: |
-            ${{ steps.lang.outputs.out }}/encoder_model.onnx
-            ${{ steps.lang.outputs.out }}/decoder_model_int8.onnx
-            ${{ steps.lang.outputs.out }}/vocab.json
-            ${{ steps.lang.outputs.out }}/added_tokens.json
