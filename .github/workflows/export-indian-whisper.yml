@@ -1,0 +1,111 @@
+name: Export Indian Whisper ONNX
+
+on:
+  workflow_dispatch:
+    inputs:
+      language:
+        description: 'Language code — te (Telugu) | hi (Hindi) | ta (Tamil) | kn (Kannada) | ml (Malayalam) | bn (Bengali) | mr (Marathi) | pa (Punjabi) | gu (Gujarati)'
+        required: true
+        default: 'te'
+      model_size:
+        description: 'Model size — tiny | base | small | medium | large-v2'
+        required: true
+        default: 'base'
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    # Larger runner needed — optimum + torch + onnx can be 10 GB+
+    steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install "optimum[exporters]>=1.18" transformers torch onnxruntime onnx
+
+      - name: Set model name
+        id: model
+        run: |
+          LANG="${{ inputs.language }}"
+          SIZE="${{ inputs.model_size }}"
+          MODEL="vasista22/whisper-${LANG}-${SIZE}"
+          TAG="whisper-${LANG}-${SIZE}-v1"
+          OUT="./whisper-indic-${LANG}-${SIZE}"
+          echo "model=$MODEL" >> $GITHUB_OUTPUT
+          echo "tag=$TAG"     >> $GITHUB_OUTPUT
+          echo "out=$OUT"     >> $GITHUB_OUTPUT
+          echo "Exporting: $MODEL → $OUT (release: $TAG)"
+
+      - name: Export to ONNX
+        run: |
+          MODEL="${{ steps.model.outputs.model }}"
+          OUT="${{ steps.model.outputs.out }}"
+
+          optimum-cli export onnx \
+            --model "$MODEL" \
+            --task automatic-speech-recognition \
+            --opset 14 \
+            "$OUT"
+
+          echo "--- Exported files ---"
+          ls -lh "$OUT"
+
+      - name: Quantize decoder to INT8 (reduces size ~4x)
+        run: |
+          OUT="${{ steps.model.outputs.out }}"
+
+          python3 << 'EOF'
+          import onnxruntime
+          from onnxruntime.quantization import quantize_dynamic, QuantType
+          import os
+
+          out = os.environ.get("OUT_DIR", "")
+          decoder_fp32 = f"{out}/decoder_model.onnx"
+          decoder_int8 = f"{out}/decoder_model_int8.onnx"
+
+          if os.path.exists(decoder_fp32):
+              print(f"Quantizing {decoder_fp32}...")
+              quantize_dynamic(decoder_fp32, decoder_int8, weight_type=QuantType.QInt8)
+              orig_mb = os.path.getsize(decoder_fp32) / 1_048_576
+              new_mb  = os.path.getsize(decoder_int8)  / 1_048_576
+              print(f"Decoder: {orig_mb:.0f} MB → {new_mb:.0f} MB (int8)")
+          else:
+              print("decoder_model.onnx not found — skipping quantization")
+          EOF
+        env:
+          OUT_DIR: ${{ steps.model.outputs.out }}
+
+      - name: Show final sizes
+        run: |
+          OUT="${{ steps.model.outputs.out }}"
+          ls -lh "$OUT"
+          echo "Total encoder: $(du -sh $OUT/encoder_model.onnx | cut -f1)"
+          echo "Total decoder (int8): $(du -sh $OUT/decoder_model_int8.onnx 2>/dev/null || echo 'n/a')"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.model.outputs.tag }}
+          name: "Indian Whisper — ${{ inputs.language }} (${{ inputs.model_size }})"
+          body: |
+            Whisper fine-tune for ${{ inputs.language }} exported to ONNX.
+            Source: vasista22/whisper-${{ inputs.language }}-${{ inputs.model_size }}
+            Encoder: encoder_model.onnx
+            Decoder: decoder_model_int8.onnx (INT8 quantized)
+            Compatible with Scrivox WhisperOnnxEngine.
+          files: |
+            ${{ steps.model.outputs.out }}/encoder_model.onnx
+            ${{ steps.model.outputs.out }}/decoder_model_int8.onnx
+            ${{ steps.model.outputs.out }}/vocab.json
+            ${{ steps.model.outputs.out }}/added_tokens.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
