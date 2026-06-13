@@ -2,75 +2,69 @@ name: Download IndicConformer CTC Model
 
 on:
   workflow_dispatch:
-      inputs:
-            hf_token:
-                    description: 'HuggingFace Read Token (hf_...)'
-                            required: true
-                                    type: string
+    inputs:
+      hf_token:
+        description: 'HuggingFace Read Token (hf_...)'
+        required: true
+        type: string
 
-                                    jobs:
-                                      download-and-release:
-                                          runs-on: ubuntu-latest
-                                              permissions:
-                                                    contents: write
+jobs:
+  download-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-                                                        steps:
-                                                              - name: Set up Python
-                                                                      uses: actions/setup-python@v5
-                                                                              with:
-                                                                                        python-version: '3.11'
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-                                                                                              - name: Install huggingface_hub
-                                                                                                      run: pip install huggingface_hub
-                                                                                                      
-                                                                                                            - name: Download CTC model files from HuggingFace
-                                                                                                                    run: |
-                                                                                                                              python - <<'EOF'
-                                                                                                                                        from huggingface_hub import hf_hub_download
-                                                                                                                                                  import os, sys
-                                                                                                                                                  
-                                                                                                                                                            token = os.environ['HF_TOKEN']
-                                                                                                                                                                      repo  = 'ai4bharat/indic-conformer-600m-multilingual'
-                                                                                                                                                                                out   = 'indic_ctc'
-                                                                                                                                                                                          os.makedirs(out, exist_ok=True)
-                                                                                                                                                                                          
-                                                                                                                                                                                                    # Core CTC files (~68 MB total)
-                                                                                                                                                                                                              core = [
-                                                                                                                                                                                                                          'assets/encoder.onnx',
-                                                                                                                                                                                                                                      'assets/Constant_1970_attr__value',
-                                                                                                                                                                                                                                                  'assets/ctc_decoder.onnx',
-                                                                                                                                                                                                                                                              'assets/language_masks.json',
-                                                                                                                                                                                                                                                                        ]
-                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                  # External encoder weight files (layers.*)
-                                                                                                                                                                                                                                                                                            from huggingface_hub import list_repo_files
-                                                                                                                                                                                                                                                                                                      all_files = list(list_repo_files(repo, token=token))
-                                                                                                                                                                                                                                                                                                                layer_files = [f for f in all_files if f.startswith('assets/layers.')]
-                                                                                                                                                                                                                                                                                                                          print(f'Found {len(layer_files)} layer weight files')
-                                                                                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                                                                                                    to_download = core + layer_files
-                                                                                                                                                                                                                                                                                                                                              for f in to_download:
-                                                                                                                                                                                                                                                                                                                                                          name = f.split('/')[-1]
-                                                                                                                                                                                                                                                                                                                                                                      dest = os.path.join(out, name)
-                                                                                                                                                                                                                                                                                                                                                                                  print(f'Downloading {name}...')
-                                                                                                                                                                                                                                                                                                                                                                                              hf_hub_download(repo, f, token=token, local_dir=out, local_dir_use_symlinks=False)
-                                                                                                                                                                                                                                                                                                                                                                                                          size = os.path.getsize(dest)
-                                                                                                                                                                                                                                                                                                                                                                                                                      print(f'  -> {size/1024/1024:.1f} MB')
-                                                                                                                                                                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                                                                                                                                total = sum(os.path.getsize(os.path.join(out,f)) for f in os.listdir(out))
-                                                                                                                                                                                                                                                                                                                                                                                                                                          print(f'Total downloaded: {total/1024/1024:.1f} MB across {len(os.listdir(out))} files')
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    EOF
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            env:
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                      HF_TOKEN: ${{ github.event.inputs.hf_token }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - name: Create GitHub Release and upload files
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    uses: softprops/action-gh-release@v2
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            with:
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      tag_name: indic-ctc-v1
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                name: IndicConformer CTC Model v1
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          body: |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      IndicConformer 600M multilingual CTC model files for Scrivox.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Covers all 22 Indian languages. MIT License (AI4Bharat).
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Download size: ~119 MB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        files: indic_ctc/*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install huggingface_hub
+        run: pip install huggingface_hub
+
+      - name: Download CTC model files from HuggingFace
+        env:
+          HF_TOKEN: ${{ github.event.inputs.hf_token }}
+        run: |
+          python3 << 'PYEOF'
+          from huggingface_hub import hf_hub_download, list_repo_files
+          import os
+
+          token = os.environ['HF_TOKEN']
+          repo  = 'ai4bharat/indic-conformer-600m-multilingual'
+          out   = 'indic_ctc'
+          os.makedirs(out, exist_ok=True)
+
+          core = [
+              'assets/encoder.onnx',
+              'assets/Constant_1970_attr__value',
+              'assets/ctc_decoder.onnx',
+              'assets/language_masks.json',
+          ]
+          all_files   = list(list_repo_files(repo, token=token))
+          layer_files = [f for f in all_files if f.startswith('assets/layers.')]
+          print(f'Found {len(layer_files)} layer weight files')
+
+          for f in core + layer_files:
+              name = f.split('/')[-1]
+              print(f'Downloading {name}...')
+              hf_hub_download(repo, f, token=token,
+                              local_dir=out, local_dir_use_symlinks=False)
+              size = os.path.getsize(os.path.join(out, name))
+              print(f'  {size/1024/1024:.1f} MB')
+
+          total = sum(os.path.getsize(os.path.join(out, f)) for f in os.listdir(out))
+          print(f'Total: {total/1024/1024:.1f} MB in {len(os.listdir(out))} files')
+          PYEOF
+
+      - name: Create GitHub Release and upload files
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: indic-ctc-v1
+          name: IndicConformer CTC Model v1
+          body: |
+            IndicConformer 600M multilingual CTC model files for Scrivox.
+            Covers all 22 Indian languages. MIT License (AI4Bharat).
+          files: indic_ctc/*
+          token: ${{ secrets.GITHUB_TOKEN }}
