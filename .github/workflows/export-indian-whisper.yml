@@ -94,6 +94,11 @@ jobs:
           # Step 3: Inject weights into encoder ONNX
           print("Injecting weights into encoder...")
           enc = onnx.load(enc_src)
+          # Diagnostic: show name format comparison
+          onnx_names = [i.name for i in enc.graph.initializer[:5]]
+          pt_names   = list(state.keys())[:5]
+          print(f"  ONNX initializer names (first 5): {onnx_names}")
+          print(f"  PyTorch state dict keys  (first 5): {pt_names}")
           enc_updated = 0
           for init in enc.graph.initializer:
               if init.name in state and init.data_type == onnx.TensorProto.FLOAT:
