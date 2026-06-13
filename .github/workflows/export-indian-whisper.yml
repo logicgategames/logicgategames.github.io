@@ -12,7 +12,6 @@ on:
         required: true
         default: 'base'
 
-# Required to create releases
 permissions:
   contents: write
 
@@ -41,7 +40,6 @@ jobs:
         run: |
           CODE="${{ inputs.language }}"
           SIZE="${{ inputs.model_size }}"
-
           case "$CODE" in
             te) NAME="telugu"    ;;
             hi) NAME="hindi"     ;;
@@ -55,53 +53,43 @@ jobs:
             ur) NAME="urdu"      ;;
             *)  NAME="$CODE"     ;;
           esac
-
           MODEL="vasista22/whisper-${NAME}-${SIZE}"
           TAG="whisper-${CODE}-${SIZE}-v1"
           OUT="./out"
-
           echo "model=$MODEL" >> $GITHUB_OUTPUT
           echo "tag=$TAG"     >> $GITHUB_OUTPUT
           echo "out=$OUT"     >> $GITHUB_OUTPUT
           echo "name=$NAME"   >> $GITHUB_OUTPUT
-          echo "Exporting: $MODEL -> $OUT  (tag: $TAG)"
+          echo "Exporting: $MODEL"
 
-      - name: Export encoder + decoder to ONNX
+      - name: Export to ONNX
         run: |
           MODEL="${{ steps.lang.outputs.model }}"
           OUT="${{ steps.lang.outputs.out }}"
-
-          optimum-cli export onnx \
+          python -m optimum.exporters.onnx \
             --model "$MODEL" \
             --task automatic-speech-recognition \
-            --opset 14 \
             "$OUT"
-
-          echo "--- Files exported ---"
+          echo "--- Exported files ---"
           ls -lh "$OUT"
 
       - name: Quantize decoder to INT8
         run: |
-          OUT="${{ steps.lang.outputs.out }}"
           python3 - <<'PYEOF'
-          import os, onnxruntime
+          import os, sys
           from onnxruntime.quantization import quantize_dynamic, QuantType
-
-          out = os.environ["OUT_DIR"]
+          out = "${{ steps.lang.outputs.out }}"
           src = f"{out}/decoder_model.onnx"
           dst = f"{out}/decoder_model_int8.onnx"
-
           if os.path.exists(src):
-              print(f"Quantizing {src} ...")
+              print(f"Quantizing {src}...")
               quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
-              a = os.path.getsize(src) / 1e6
-              b = os.path.getsize(dst) / 1e6
-              print(f"  {a:.0f} MB -> {b:.0f} MB (int8)")
+              a = os.path.getsize(src)/1e6
+              b = os.path.getsize(dst)/1e6
+              print(f"  {a:.0f} MB -> {b:.0f} MB")
           else:
-              print("decoder_model.onnx not found, skipping quantization")
+              print("No decoder_model.onnx found, skipping")
           PYEOF
-        env:
-          OUT_DIR: ${{ steps.lang.outputs.out }}
 
       - name: Show final sizes
         run: ls -lh "${{ steps.lang.outputs.out }}"
@@ -112,9 +100,7 @@ jobs:
           tag_name: ${{ steps.lang.outputs.tag }}
           name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }})"
           body: |
-            Whisper fine-tune exported to ONNX for Scrivox.
             Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
-            Files: encoder_model.onnx + decoder_model_int8.onnx + vocab.json + added_tokens.json
           files: |
             ${{ steps.lang.outputs.out }}/encoder_model.onnx
             ${{ steps.lang.outputs.out }}/decoder_model_int8.onnx
