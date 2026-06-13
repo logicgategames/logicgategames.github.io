@@ -4,51 +4,72 @@ on:
   workflow_dispatch:
     inputs:
       language:
-        description: 'Language code — te (Telugu) | hi (Hindi) | ta (Tamil) | kn (Kannada) | ml (Malayalam) | bn (Bengali) | mr (Marathi) | pa (Punjabi) | gu (Gujarati)'
+        description: 'Language code: te | hi | ta | kn | ml | bn | mr | gu'
         required: true
         default: 'te'
       model_size:
-        description: 'Model size — tiny | base | small | medium | large-v2'
+        description: 'Model size: tiny | base | small | medium | large-v2'
         required: true
         default: 'base'
+
+# Required to create releases
+permissions:
+  contents: write
 
 jobs:
   export:
     runs-on: ubuntu-latest
-    # Larger runner needed — optimum + torch + onnx can be 10 GB+
+
     steps:
       - name: Free disk space
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
           df -h
 
-      - name: Setup Python 3.11
-        uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install "optimum[exporters]>=1.18" transformers torch onnxruntime onnx
+          pip install "optimum[exporters]" transformers torch onnxruntime onnx
 
-      - name: Set model name
-        id: model
+      - name: Map language code to full name
+        id: lang
         run: |
-          LANG="${{ inputs.language }}"
+          CODE="${{ inputs.language }}"
           SIZE="${{ inputs.model_size }}"
-          MODEL="vasista22/whisper-${LANG}-${SIZE}"
-          TAG="whisper-${LANG}-${SIZE}-v1"
-          OUT="./whisper-indic-${LANG}-${SIZE}"
+
+          case "$CODE" in
+            te) NAME="telugu"    ;;
+            hi) NAME="hindi"     ;;
+            ta) NAME="tamil"     ;;
+            kn) NAME="kannada"   ;;
+            ml) NAME="malayalam" ;;
+            bn) NAME="bengali"   ;;
+            mr) NAME="marathi"   ;;
+            gu) NAME="gujarati"  ;;
+            pa) NAME="punjabi"   ;;
+            ur) NAME="urdu"      ;;
+            *)  NAME="$CODE"     ;;
+          esac
+
+          MODEL="vasista22/whisper-${NAME}-${SIZE}"
+          TAG="whisper-${CODE}-${SIZE}-v1"
+          OUT="./out"
+
           echo "model=$MODEL" >> $GITHUB_OUTPUT
           echo "tag=$TAG"     >> $GITHUB_OUTPUT
           echo "out=$OUT"     >> $GITHUB_OUTPUT
-          echo "Exporting: $MODEL → $OUT (release: $TAG)"
+          echo "name=$NAME"   >> $GITHUB_OUTPUT
+          echo "Exporting: $MODEL -> $OUT  (tag: $TAG)"
 
-      - name: Export to ONNX
+      - name: Export encoder + decoder to ONNX
         run: |
-          MODEL="${{ steps.model.outputs.model }}"
-          OUT="${{ steps.model.outputs.out }}"
+          MODEL="${{ steps.lang.outputs.model }}"
+          OUT="${{ steps.lang.outputs.out }}"
 
           optimum-cli export onnx \
             --model "$MODEL" \
@@ -56,56 +77,46 @@ jobs:
             --opset 14 \
             "$OUT"
 
-          echo "--- Exported files ---"
+          echo "--- Files exported ---"
           ls -lh "$OUT"
 
-      - name: Quantize decoder to INT8 (reduces size ~4x)
+      - name: Quantize decoder to INT8
         run: |
-          OUT="${{ steps.model.outputs.out }}"
-
-          python3 << 'EOF'
-          import onnxruntime
+          OUT="${{ steps.lang.outputs.out }}"
+          python3 - <<'PYEOF'
+          import os, onnxruntime
           from onnxruntime.quantization import quantize_dynamic, QuantType
-          import os
 
-          out = os.environ.get("OUT_DIR", "")
-          decoder_fp32 = f"{out}/decoder_model.onnx"
-          decoder_int8 = f"{out}/decoder_model_int8.onnx"
+          out = os.environ["OUT_DIR"]
+          src = f"{out}/decoder_model.onnx"
+          dst = f"{out}/decoder_model_int8.onnx"
 
-          if os.path.exists(decoder_fp32):
-              print(f"Quantizing {decoder_fp32}...")
-              quantize_dynamic(decoder_fp32, decoder_int8, weight_type=QuantType.QInt8)
-              orig_mb = os.path.getsize(decoder_fp32) / 1_048_576
-              new_mb  = os.path.getsize(decoder_int8)  / 1_048_576
-              print(f"Decoder: {orig_mb:.0f} MB → {new_mb:.0f} MB (int8)")
+          if os.path.exists(src):
+              print(f"Quantizing {src} ...")
+              quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
+              a = os.path.getsize(src) / 1e6
+              b = os.path.getsize(dst) / 1e6
+              print(f"  {a:.0f} MB -> {b:.0f} MB (int8)")
           else:
-              print("decoder_model.onnx not found — skipping quantization")
-          EOF
+              print("decoder_model.onnx not found, skipping quantization")
+          PYEOF
         env:
-          OUT_DIR: ${{ steps.model.outputs.out }}
+          OUT_DIR: ${{ steps.lang.outputs.out }}
 
       - name: Show final sizes
-        run: |
-          OUT="${{ steps.model.outputs.out }}"
-          ls -lh "$OUT"
-          echo "Total encoder: $(du -sh $OUT/encoder_model.onnx | cut -f1)"
-          echo "Total decoder (int8): $(du -sh $OUT/decoder_model_int8.onnx 2>/dev/null || echo 'n/a')"
+        run: ls -lh "${{ steps.lang.outputs.out }}"
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.model.outputs.tag }}
-          name: "Indian Whisper — ${{ inputs.language }} (${{ inputs.model_size }})"
+          tag_name: ${{ steps.lang.outputs.tag }}
+          name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }})"
           body: |
-            Whisper fine-tune for ${{ inputs.language }} exported to ONNX.
-            Source: vasista22/whisper-${{ inputs.language }}-${{ inputs.model_size }}
-            Encoder: encoder_model.onnx
-            Decoder: decoder_model_int8.onnx (INT8 quantized)
-            Compatible with Scrivox WhisperOnnxEngine.
+            Whisper fine-tune exported to ONNX for Scrivox.
+            Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
+            Files: encoder_model.onnx + decoder_model_int8.onnx + vocab.json + added_tokens.json
           files: |
-            ${{ steps.model.outputs.out }}/encoder_model.onnx
-            ${{ steps.model.outputs.out }}/decoder_model_int8.onnx
-            ${{ steps.model.outputs.out }}/vocab.json
-            ${{ steps.model.outputs.out }}/added_tokens.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ${{ steps.lang.outputs.out }}/encoder_model.onnx
+            ${{ steps.lang.outputs.out }}/decoder_model_int8.onnx
+            ${{ steps.lang.outputs.out }}/vocab.json
+            ${{ steps.lang.outputs.out }}/added_tokens.json
