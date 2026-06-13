@@ -31,7 +31,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install transformers torch onnx onnxruntime onnxscript
+        run: pip install "torch==2.0.1" transformers onnx onnxruntime
 
       - name: Map language code to full name
         id: lang
@@ -87,7 +87,7 @@ jobs:
               f"{out_dir}/encoder_model.onnx",
               input_names=["input_features"], output_names=["last_hidden_state"],
               dynamic_axes={"input_features": {0:"batch",2:"frames"}, "last_hidden_state": {0:"batch",1:"seq"}},
-              opset_version=14, dynamo=False
+              opset_version=14
           )
           print(f"  encoder: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
 
@@ -103,7 +103,7 @@ jobs:
               f"{out_dir}/decoder_model.onnx",
               input_names=["input_ids","encoder_hidden_states"], output_names=["logits"],
               dynamic_axes={"input_ids":{0:"batch",1:"seq"},"encoder_hidden_states":{0:"batch",1:"enc_seq"},"logits":{0:"batch",1:"seq"}},
-              opset_version=14, dynamo=False
+              opset_version=14
           )
           print(f"  decoder: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
 
