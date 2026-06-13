@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install "optimum[exporters]" transformers torch onnxruntime onnx
+          pip install "optimum[onnxruntime]" transformers torch onnx
 
       - name: Map language code to full name
         id: lang
@@ -62,36 +62,59 @@ jobs:
           echo "name=$NAME"   >> $GITHUB_OUTPUT
           echo "Exporting: $MODEL"
 
-      - name: Export to ONNX
+      - name: Export to ONNX via Python API
         run: |
-          MODEL="${{ steps.lang.outputs.model }}"
+          python3 - <<'PYEOF'
+          import os
+          from optimum.onnxruntime import ORTModelForSpeechSeq2Seq
+
+          model_id = os.environ["MODEL"]
+          out_dir  = os.environ["OUT_DIR"]
+          os.makedirs(out_dir, exist_ok=True)
+
+          print(f"Exporting {model_id} to ONNX...")
+          model = ORTModelForSpeechSeq2Seq.from_pretrained(model_id, export=True)
+          model.save_pretrained(out_dir)
+          print("Done. Files:")
+          for f in sorted(os.listdir(out_dir)):
+              size = os.path.getsize(f"{out_dir}/{f}") / 1e6
+              print(f"  {f}: {size:.1f} MB")
+          PYEOF
+        env:
+          MODEL:   ${{ steps.lang.outputs.model }}
+          OUT_DIR: ${{ steps.lang.outputs.out }}
+
+      - name: Copy tokenizer files
+        run: |
           OUT="${{ steps.lang.outputs.out }}"
-          python -m optimum.exporters.onnx \
-            --model "$MODEL" \
-            --task automatic-speech-recognition \
-            "$OUT"
-          echo "--- Exported files ---"
-          ls -lh "$OUT"
+          MODEL="${{ steps.lang.outputs.model }}"
+          python3 -c "
+          from transformers import WhisperTokenizer
+          tok = WhisperTokenizer.from_pretrained('$MODEL')
+          tok.save_pretrained('$OUT')
+          print('Tokenizer saved')
+          "
 
       - name: Quantize decoder to INT8
         run: |
           python3 - <<'PYEOF'
-          import os, sys
+          import os
           from onnxruntime.quantization import quantize_dynamic, QuantType
-          out = "${{ steps.lang.outputs.out }}"
-          src = f"{out}/decoder_model.onnx"
-          dst = f"{out}/decoder_model_int8.onnx"
-          if os.path.exists(src):
-              print(f"Quantizing {src}...")
-              quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
-              a = os.path.getsize(src)/1e6
-              b = os.path.getsize(dst)/1e6
-              print(f"  {a:.0f} MB -> {b:.0f} MB")
-          else:
-              print("No decoder_model.onnx found, skipping")
+          out = os.environ["OUT_DIR"]
+          for name in ["decoder_model.onnx", "decoder_with_past_model.onnx"]:
+              src = f"{out}/{name}"
+              dst = src.replace(".onnx", "_int8.onnx")
+              if os.path.exists(src):
+                  print(f"Quantizing {name}...")
+                  quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
+                  a = os.path.getsize(src)/1e6
+                  b = os.path.getsize(dst)/1e6
+                  print(f"  {a:.0f} MB -> {b:.0f} MB (int8)")
           PYEOF
+        env:
+          OUT_DIR: ${{ steps.lang.outputs.out }}
 
-      - name: Show final sizes
+      - name: List final files
         run: ls -lh "${{ steps.lang.outputs.out }}"
 
       - name: Create GitHub Release
