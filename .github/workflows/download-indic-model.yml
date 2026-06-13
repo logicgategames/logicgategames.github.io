@@ -29,7 +29,7 @@ jobs:
         run: |
           python3 << 'PYEOF'
           from huggingface_hub import hf_hub_download, list_repo_files
-          import os
+          import os, shutil
 
           token = os.environ['HF_TOKEN']
           repo  = 'ai4bharat/indic-conformer-600m-multilingual'
@@ -49,14 +49,25 @@ jobs:
           for f in core + layer_files:
               name = f.split('/')[-1]
               print(f'Downloading {name}...')
-              hf_hub_download(repo, f, token=token,
-                              local_dir=out, local_dir_use_symlinks=False)
-              size = os.path.getsize(os.path.join(out, name))
-              print(f'  {size/1024/1024:.1f} MB')
+              # hf_hub_download returns the actual local path
+              local_path = hf_hub_download(
+                  repo, f, token=token,
+                  local_dir='/tmp/hf_cache',
+                  local_dir_use_symlinks=False
+              )
+              # Copy to flat output dir
+              dst = os.path.join(out, name)
+              shutil.copy2(local_path, dst)
+              size = os.path.getsize(dst)
+              print(f'  -> {size/1024/1024:.1f} MB saved as {name}')
 
-          total = sum(os.path.getsize(os.path.join(out, f)) for f in os.listdir(out))
-          print(f'Total: {total/1024/1024:.1f} MB in {len(os.listdir(out))} files')
+          files = os.listdir(out)
+          total = sum(os.path.getsize(os.path.join(out, f)) for f in files)
+          print(f'Done: {total/1024/1024:.0f} MB in {len(files)} files')
           PYEOF
+
+      - name: List downloaded files
+        run: ls -lh indic_ctc/
 
       - name: Create GitHub Release and upload files
         uses: softprops/action-gh-release@v2
