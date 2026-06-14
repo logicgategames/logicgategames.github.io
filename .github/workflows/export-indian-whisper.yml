@@ -31,7 +31,8 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install transformers torch onnx onnxruntime huggingface_hub
+        run: |
+          pip install "optimum[exporters]" transformers torch onnx onnxruntime
 
       - name: Map language code to full name
         id: lang
@@ -52,7 +53,7 @@ jobs:
             *)  NAME="$CODE"     ;;
           esac
           MODEL="vasista22/whisper-${NAME}-${SIZE}"
-          TAG="whisper-${CODE}-${SIZE}-v3"
+          TAG="whisper-${CODE}-${SIZE}-v4"
           OUT="./out"
           echo "model=$MODEL" >> $GITHUB_OUTPUT
           echo "tag=$TAG"     >> $GITHUB_OUTPUT
@@ -60,105 +61,54 @@ jobs:
           echo "name=$NAME"   >> $GITHUB_OUTPUT
           echo "Exporting: $MODEL -> $TAG"
 
-      - name: Weight surgery
+      - name: Export to ONNX with optimum (produces decoder + decoder_with_past)
         env:
           MODEL: ${{ steps.lang.outputs.model }}
           OUT_DIR: ${{ steps.lang.outputs.out }}
         run: |
           python3 << 'PYEOF'
-          import os, numpy as np, onnx
-          from onnx import numpy_helper
-          from transformers import WhisperForConditionalGeneration, WhisperProcessor
-          from huggingface_hub import hf_hub_download
+          import os
+          from optimum.exporters.onnx import main_export
 
           model_id = os.environ["MODEL"]
           out_dir  = os.environ["OUT_DIR"]
           os.makedirs(out_dir, exist_ok=True)
 
-          # Download onnx-community/whisper-base (proven working with our engine)
-          print("Downloading onnx-community/whisper-base ONNX...")
-          enc_src = hf_hub_download("onnx-community/whisper-base", "onnx/encoder_model.onnx")
-          dec_src = hf_hub_download("onnx-community/whisper-base", "onnx/decoder_model.onnx")
-          print(f"  encoder: {os.path.getsize(enc_src)/1e6:.1f} MB")
-          print(f"  decoder: {os.path.getsize(dec_src)/1e6:.1f} MB")
+          print(f"Exporting {model_id} to ONNX with KV-cache decoder...")
+          main_export(
+              model_name_or_path=model_id,
+              output=out_dir,
+              task="automatic-speech-recognition-with-past",
+              opset=14,
+              no_post_process=False,
+          )
 
-          # Load vasista22 weights into a flat dict keyed by full PyTorch name
-          print(f"Loading {model_id} weights...")
-          pt_model = WhisperForConditionalGeneration.from_pretrained(model_id)
-          state = {}
-          for k, v in pt_model.state_dict().items():
-              state[k] = v.detach().float().numpy()
-          print(f"  {len(state)} tensors. Sample keys: {list(state.keys())[:3]}")
-          del pt_model
-
-          def inject(onnx_model, label, pt_prefix):
-              """
-              pt_prefix: PyTorch module prefix for this component
-                encoder -> 'model.encoder.'
-                decoder -> 'model.decoder.'
-              ONNX bare name 'conv1.weight' + prefix -> 'model.encoder.conv1.weight'
-              """
-              onnx_names = [i.name for i in onnx_model.graph.initializer[:5]]
-              print(f"  ONNX {label} names (first 5): {onnx_names}")
-              print(f"  Using PyTorch prefix: '{pt_prefix}'")
-              updated = 0
-              for init in onnx_model.graph.initializer:
-                  if init.data_type != onnx.TensorProto.FLOAT:
-                      continue
-                  pt_key = pt_prefix + init.name
-                  if pt_key not in state:
-                      continue
-                  arr = state[pt_key]
-                  # Compare shapes as plain Python tuples (safe with numpy)
-                  expected = tuple(int(d) for d in init.dims)
-                  actual   = tuple(int(d) for d in arr.shape)
-                  if actual != expected:
-                      print(f"    Shape mismatch {pt_key}: {actual} vs {expected}")
-                      continue
-                  init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
-                  updated += 1
-              total = len(onnx_model.graph.initializer)
-              print(f"  Updated {updated}/{total} {label} initializers")
-              return updated
-
-          # Inject encoder weights
-          print("Injecting into encoder...")
-          enc = onnx.load(enc_src)
-          inject(enc, "encoder", pt_prefix="model.encoder.")
-          onnx.save(enc, f"{out_dir}/encoder_model.onnx")
-          print(f"  Saved encoder: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
-          del enc
-
-          # Inject decoder weights
-          print("Injecting into decoder...")
-          dec = onnx.load(dec_src)
-          inject(dec, "decoder", pt_prefix="model.decoder.")
-          onnx.save(dec, f"{out_dir}/decoder_model.onnx")
-          print(f"  Saved decoder: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
-          del dec
-
-          # Save tokenizer
-          print("Saving tokenizer...")
-          WhisperProcessor.from_pretrained(model_id).save_pretrained(out_dir)
-          print("Done!")
+          # List what was produced
+          for f in sorted(os.listdir(out_dir)):
+              size = os.path.getsize(f"{out_dir}/{f}") / 1e6
+              print(f"  {f}: {size:.1f} MB")
           PYEOF
 
-      - name: Quantize decoder to INT8
+      - name: Quantize decoders to INT8
         env:
           OUT_DIR: ${{ steps.lang.outputs.out }}
         run: |
           python3 << 'PYEOF'
           import os
           from onnxruntime.quantization import quantize_dynamic, QuantType
+
           out = os.environ["OUT_DIR"]
-          src = f"{out}/decoder_model.onnx"
-          dst = f"{out}/decoder_model_int8.onnx"
-          if os.path.exists(src):
-              print(f"Quantizing {src}...")
-              quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
-              a = os.path.getsize(src)/1e6
-              b = os.path.getsize(dst)/1e6
-              print(f"  {a:.0f} MB -> {b:.0f} MB (int8)")
+          for name in ["decoder_model", "decoder_with_past_model"]:
+              src = f"{out}/{name}.onnx"
+              dst = f"{out}/{name}_int8.onnx"
+              if os.path.exists(src):
+                  print(f"Quantizing {src}...")
+                  quantize_dynamic(src, dst, weight_type=QuantType.QInt8)
+                  a = os.path.getsize(src) / 1e6
+                  b = os.path.getsize(dst) / 1e6
+                  print(f"  {a:.0f} MB -> {b:.0f} MB (int8)")
+              else:
+                  print(f"  SKIP: {src} not found")
           PYEOF
 
       - name: List final files
@@ -168,12 +118,13 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.lang.outputs.tag }}
-          name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v3"
+          name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v4"
           body: |
-            Weight surgery v3: correct model.encoder./model.decoder. prefix mapping.
-            Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
+            Direct optimum export from vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}.
+            Includes decoder_with_past_model for KV-cache inference.
           files: |
             ${{ steps.lang.outputs.out }}/encoder_model.onnx
             ${{ steps.lang.outputs.out }}/decoder_model_int8.onnx
+            ${{ steps.lang.outputs.out }}/decoder_with_past_model_int8.onnx
             ${{ steps.lang.outputs.out }}/vocab.json
             ${{ steps.lang.outputs.out }}/added_tokens.json
