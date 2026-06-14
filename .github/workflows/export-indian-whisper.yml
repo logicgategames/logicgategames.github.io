@@ -104,9 +104,11 @@ jobs:
                   if init.data_type != onnx.TensorProto.FLOAT:
                       continue
                   # Try full name first, then without 'model.' prefix, then with it
-                  arr = (state_full.get(init.name)
-                      or state_noprefix.get(init.name)
-                      or state_full.get('model.' + init.name))
+                  arr = state_full.get(init.name)
+                  if arr is None:
+                      arr = state_noprefix.get(init.name)
+                  if arr is None:
+                      arr = state_full.get('model.' + init.name)
                   if arr is None:
                       continue
                   if arr.shape == tuple(init.dims):
