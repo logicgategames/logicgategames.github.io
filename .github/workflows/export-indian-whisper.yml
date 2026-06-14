@@ -91,7 +91,7 @@ jobs:
           state_noprefix = {}
           for k, v in state_full.items():
               short = k[len('model.'):] if k.startswith('model.') else k
-              state_noprefix[short] = v.detach().float().numpy()
+              state_noprefix[short] = v  # already numpy
           print(f"  {len(state_full)} weight tensors loaded")
           print(f"  PyTorch keys (first 5 full):      {list(state_full.keys())[:5]}")
           print(f"  PyTorch keys (first 5 no-prefix): {list(state_noprefix.keys())[:5]}")
