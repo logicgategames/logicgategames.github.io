@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install "optimum[exporters]" transformers torch onnx onnxruntime
+          pip install "optimum[exporters-onnx]" onnxruntime transformers torch
 
       - name: Map language code to full name
         id: lang
