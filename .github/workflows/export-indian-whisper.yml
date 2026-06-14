@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install "optimum[exporters]" onnxruntime transformers
+          pip install "optimum[onnxruntime]" transformers
 
       - name: Map language code to full name
         id: lang
@@ -61,18 +61,25 @@ jobs:
           echo "name=$NAME"   >> $GITHUB_OUTPUT
           echo "Exporting: $MODEL -> $TAG"
 
-      - name: Export to ONNX with optimum CLI (produces decoder + decoder_with_past)
+      - name: Export to ONNX (produces encoder + decoder + decoder_with_past)
         env:
           MODEL: ${{ steps.lang.outputs.model }}
           OUT_DIR: ${{ steps.lang.outputs.out }}
         run: |
-          optimum-cli export onnx \
-            --model "$MODEL" \
-            --task automatic-speech-recognition-with-past \
-            --opset 14 \
-            "$OUT_DIR"
-          echo "Files produced:"
-          ls -lh "$OUT_DIR"
+          python3 << 'PYEOF'
+          import os, glob
+          from optimum.onnxruntime import ORTModelForSpeechSeq2Seq
+          model_id = os.environ["MODEL"]
+          out_dir  = os.environ["OUT_DIR"]
+          os.makedirs(out_dir, exist_ok=True)
+          print(f"Exporting {model_id}...")
+          model = ORTModelForSpeechSeq2Seq.from_pretrained(
+              model_id, export=True, use_cache=True
+          )
+          model.save_pretrained(out_dir)
+          for f in sorted(glob.glob(f"{out_dir}/*.onnx")):
+              print(f"  {os.path.basename(f)}: {os.path.getsize(f)/1e6:.1f} MB")
+          PYEOF
 
       - name: Quantize decoders to INT8
         env:
