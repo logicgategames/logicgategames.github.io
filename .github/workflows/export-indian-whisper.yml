@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install "optimum[exporters-onnx]" onnxruntime transformers torch
+          pip install "optimum[exporters]" onnxruntime transformers
 
       - name: Map language code to full name
         id: lang
@@ -61,33 +61,18 @@ jobs:
           echo "name=$NAME"   >> $GITHUB_OUTPUT
           echo "Exporting: $MODEL -> $TAG"
 
-      - name: Export to ONNX with optimum (produces decoder + decoder_with_past)
+      - name: Export to ONNX with optimum CLI (produces decoder + decoder_with_past)
         env:
           MODEL: ${{ steps.lang.outputs.model }}
           OUT_DIR: ${{ steps.lang.outputs.out }}
         run: |
-          python3 << 'PYEOF'
-          import os
-          from optimum.exporters.onnx import main_export
-
-          model_id = os.environ["MODEL"]
-          out_dir  = os.environ["OUT_DIR"]
-          os.makedirs(out_dir, exist_ok=True)
-
-          print(f"Exporting {model_id} to ONNX with KV-cache decoder...")
-          main_export(
-              model_name_or_path=model_id,
-              output=out_dir,
-              task="automatic-speech-recognition-with-past",
-              opset=14,
-              no_post_process=False,
-          )
-
-          # List what was produced
-          for f in sorted(os.listdir(out_dir)):
-              size = os.path.getsize(f"{out_dir}/{f}") / 1e6
-              print(f"  {f}: {size:.1f} MB")
-          PYEOF
+          optimum-cli export onnx \
+            --model "$MODEL" \
+            --task automatic-speech-recognition-with-past \
+            --opset 14 \
+            "$OUT_DIR"
+          echo "Files produced:"
+          ls -lh "$OUT_DIR"
 
       - name: Quantize decoders to INT8
         env:
