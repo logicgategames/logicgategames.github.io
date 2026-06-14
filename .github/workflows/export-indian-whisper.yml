@@ -60,7 +60,7 @@ jobs:
           echo "name=$NAME"   >> $GITHUB_OUTPUT
           echo "Exporting: $MODEL -> $TAG"
 
-      - name: Weight surgery - inject Telugu weights into working ONNX architecture
+      - name: Weight surgery
         env:
           MODEL: ${{ steps.lang.outputs.model }}
           OUT_DIR: ${{ steps.lang.outputs.out }}
@@ -75,68 +75,72 @@ jobs:
           out_dir  = os.environ["OUT_DIR"]
           os.makedirs(out_dir, exist_ok=True)
 
-          # Step 1: Download onnx-community/whisper-base ONNX (proven working with our engine)
-          print("Downloading onnx-community/whisper-base ONNX architecture...")
+          # Download onnx-community/whisper-base (proven working with our engine)
+          print("Downloading onnx-community/whisper-base ONNX...")
           enc_src = hf_hub_download("onnx-community/whisper-base", "onnx/encoder_model.onnx")
           dec_src = hf_hub_download("onnx-community/whisper-base", "onnx/decoder_model.onnx")
           print(f"  encoder: {os.path.getsize(enc_src)/1e6:.1f} MB")
           print(f"  decoder: {os.path.getsize(dec_src)/1e6:.1f} MB")
 
-          # Step 2: Load vasista22 Telugu fine-tuned weights
+          # Load vasista22 weights into a flat dict keyed by full PyTorch name
           print(f"Loading {model_id} weights...")
           pt_model = WhisperForConditionalGeneration.from_pretrained(model_id)
-          # Build TWO lookup maps: with and without 'model.' prefix
-          # onnx-community may use either 'encoder.layers...' or 'model.encoder.layers...'
-          state_full   = {k: v.detach().float().numpy() for k, v in pt_model.state_dict().items()}
-          state_noprefix = {}
-          for k, v in state_full.items():
-              short = k[len('model.'):] if k.startswith('model.') else k
-              state_noprefix[short] = v  # already numpy
-          print(f"  {len(state_full)} weight tensors loaded")
-          print(f"  PyTorch keys (first 5 full):      {list(state_full.keys())[:5]}")
-          print(f"  PyTorch keys (first 5 no-prefix): {list(state_noprefix.keys())[:5]}")
+          state = {}
+          for k, v in pt_model.state_dict().items():
+              state[k] = v.detach().float().numpy()
+          print(f"  {len(state)} tensors. Sample keys: {list(state.keys())[:3]}")
           del pt_model
 
-          def inject(onnx_model, label):
-              print(f"  ONNX {label} initializer names (first 5): {[i.name for i in onnx_model.graph.initializer[:5]]}")
+          def inject(onnx_model, label, pt_prefix):
+              """
+              pt_prefix: PyTorch module prefix for this component
+                encoder -> 'model.encoder.'
+                decoder -> 'model.decoder.'
+              ONNX bare name 'conv1.weight' + prefix -> 'model.encoder.conv1.weight'
+              """
+              onnx_names = [i.name for i in onnx_model.graph.initializer[:5]]
+              print(f"  ONNX {label} names (first 5): {onnx_names}")
+              print(f"  Using PyTorch prefix: '{pt_prefix}'")
               updated = 0
               for init in onnx_model.graph.initializer:
                   if init.data_type != onnx.TensorProto.FLOAT:
                       continue
-                  # Try full name first, then without 'model.' prefix, then with it
-                  arr = state_full.get(init.name)
-                  if arr is None:
-                      arr = state_noprefix.get(init.name)
-                  if arr is None:
-                      arr = state_full.get('model.' + init.name)
-                  if arr is None:
+                  pt_key = pt_prefix + init.name
+                  if pt_key not in state:
                       continue
-                  if arr.shape == tuple(init.dims):
-                      init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
-                      updated += 1
-              print(f"  Updated {updated}/{len(onnx_model.graph.initializer)} {label} initializers")
+                  arr = state[pt_key]
+                  # Compare shapes as plain Python tuples (safe with numpy)
+                  expected = tuple(int(d) for d in init.dims)
+                  actual   = tuple(int(d) for d in arr.shape)
+                  if actual != expected:
+                      print(f"    Shape mismatch {pt_key}: {actual} vs {expected}")
+                      continue
+                  init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
+                  updated += 1
+              total = len(onnx_model.graph.initializer)
+              print(f"  Updated {updated}/{total} {label} initializers")
               return updated
 
-          # Step 3: Inject encoder weights
-          print("Injecting weights into encoder...")
+          # Inject encoder weights
+          print("Injecting into encoder...")
           enc = onnx.load(enc_src)
-          inject(enc, "encoder")
+          inject(enc, "encoder", pt_prefix="model.encoder.")
           onnx.save(enc, f"{out_dir}/encoder_model.onnx")
-          print(f"  Saved: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
+          print(f"  Saved encoder: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
           del enc
 
-          # Step 4: Inject decoder weights
-          print("Injecting weights into decoder...")
+          # Inject decoder weights
+          print("Injecting into decoder...")
           dec = onnx.load(dec_src)
-          inject(dec, "decoder")
+          inject(dec, "decoder", pt_prefix="model.decoder.")
           onnx.save(dec, f"{out_dir}/decoder_model.onnx")
-          print(f"  Saved: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
+          print(f"  Saved decoder: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
           del dec
 
-          # Step 5: Save tokenizer
+          # Save tokenizer
           print("Saving tokenizer...")
           WhisperProcessor.from_pretrained(model_id).save_pretrained(out_dir)
-          print("Weight surgery complete!")
+          print("Done!")
           PYEOF
 
       - name: Quantize decoder to INT8
@@ -166,7 +170,7 @@ jobs:
           tag_name: ${{ steps.lang.outputs.tag }}
           name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v3"
           body: |
-            Weight surgery v3: fixed prefix mapping (model. prefix fallback).
+            Weight surgery v3: correct model.encoder./model.decoder. prefix mapping.
             Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
           files: |
             ${{ steps.lang.outputs.out }}/encoder_model.onnx
