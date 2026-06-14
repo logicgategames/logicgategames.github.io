@@ -52,13 +52,13 @@ jobs:
             *)  NAME="$CODE"     ;;
           esac
           MODEL="vasista22/whisper-${NAME}-${SIZE}"
-          TAG="whisper-${CODE}-${SIZE}-v2"
+          TAG="whisper-${CODE}-${SIZE}-v3"
           OUT="./out"
           echo "model=$MODEL" >> $GITHUB_OUTPUT
           echo "tag=$TAG"     >> $GITHUB_OUTPUT
           echo "out=$OUT"     >> $GITHUB_OUTPUT
           echo "name=$NAME"   >> $GITHUB_OUTPUT
-          echo "Exporting: $MODEL"
+          echo "Exporting: $MODEL -> $TAG"
 
       - name: Weight surgery - inject Telugu weights into working ONNX architecture
         env:
@@ -75,9 +75,7 @@ jobs:
           out_dir  = os.environ["OUT_DIR"]
           os.makedirs(out_dir, exist_ok=True)
 
-          # Step 1: Download onnx-community/whisper-base ONNX files
-          # These are the exact files that already work with WhisperOnnxEngine.
-          # vasista22 fine-tunes share the same architecture — we just swap weights.
+          # Step 1: Download onnx-community/whisper-base ONNX (proven working with our engine)
           print("Downloading onnx-community/whisper-base ONNX architecture...")
           enc_src = hf_hub_download("onnx-community/whisper-base", "onnx/encoder_model.onnx")
           dec_src = hf_hub_download("onnx-community/whisper-base", "onnx/decoder_model.onnx")
@@ -87,49 +85,53 @@ jobs:
           # Step 2: Load vasista22 Telugu fine-tuned weights
           print(f"Loading {model_id} weights...")
           pt_model = WhisperForConditionalGeneration.from_pretrained(model_id)
-          state = {k: v.detach().float().numpy() for k, v in pt_model.state_dict().items()}
-          print(f"  {len(state)} weight tensors loaded")
-          del pt_model  # free memory
+          # Build TWO lookup maps: with and without 'model.' prefix
+          # onnx-community may use either 'encoder.layers...' or 'model.encoder.layers...'
+          state_full   = {k: v.detach().float().numpy() for k, v in pt_model.state_dict().items()}
+          state_noprefix = {}
+          for k, v in state_full.items():
+              short = k[len('model.'):] if k.startswith('model.') else k
+              state_noprefix[short] = v.detach().float().numpy()
+          print(f"  {len(state_full)} weight tensors loaded")
+          print(f"  PyTorch keys (first 5 full):      {list(state_full.keys())[:5]}")
+          print(f"  PyTorch keys (first 5 no-prefix): {list(state_noprefix.keys())[:5]}")
+          del pt_model
 
-          # Step 3: Inject weights into encoder ONNX
+          def inject(onnx_model, label):
+              print(f"  ONNX {label} initializer names (first 5): {[i.name for i in onnx_model.graph.initializer[:5]]}")
+              updated = 0
+              for init in onnx_model.graph.initializer:
+                  if init.data_type != onnx.TensorProto.FLOAT:
+                      continue
+                  # Try full name first, then without 'model.' prefix, then with it
+                  arr = (state_full.get(init.name)
+                      or state_noprefix.get(init.name)
+                      or state_full.get('model.' + init.name))
+                  if arr is None:
+                      continue
+                  if arr.shape == tuple(init.dims):
+                      init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
+                      updated += 1
+              print(f"  Updated {updated}/{len(onnx_model.graph.initializer)} {label} initializers")
+              return updated
+
+          # Step 3: Inject encoder weights
           print("Injecting weights into encoder...")
           enc = onnx.load(enc_src)
-          # Diagnostic: show name format comparison
-          onnx_names = [i.name for i in enc.graph.initializer[:5]]
-          pt_names   = list(state.keys())[:5]
-          print(f"  ONNX initializer names (first 5): {onnx_names}")
-          print(f"  PyTorch state dict keys  (first 5): {pt_names}")
-          enc_updated = 0
-          for init in enc.graph.initializer:
-              if init.name in state and init.data_type == onnx.TensorProto.FLOAT:
-                  arr = state[init.name]
-                  # Verify shapes match
-                  onnx_shape = tuple(d for d in init.dims)
-                  if arr.shape == onnx_shape:
-                      init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
-                      enc_updated += 1
-          print(f"  Updated {enc_updated}/{len(enc.graph.initializer)} encoder initializers")
+          inject(enc, "encoder")
           onnx.save(enc, f"{out_dir}/encoder_model.onnx")
           print(f"  Saved: {os.path.getsize(out_dir+'/encoder_model.onnx')/1e6:.1f} MB")
           del enc
 
-          # Step 4: Inject weights into decoder ONNX
+          # Step 4: Inject decoder weights
           print("Injecting weights into decoder...")
           dec = onnx.load(dec_src)
-          dec_updated = 0
-          for init in dec.graph.initializer:
-              if init.name in state and init.data_type == onnx.TensorProto.FLOAT:
-                  arr = state[init.name]
-                  onnx_shape = tuple(d for d in init.dims)
-                  if arr.shape == onnx_shape:
-                      init.CopyFrom(numpy_helper.from_array(arr, name=init.name))
-                      dec_updated += 1
-          print(f"  Updated {dec_updated}/{len(dec.graph.initializer)} decoder initializers")
+          inject(dec, "decoder")
           onnx.save(dec, f"{out_dir}/decoder_model.onnx")
           print(f"  Saved: {os.path.getsize(out_dir+'/decoder_model.onnx')/1e6:.1f} MB")
           del dec
 
-          # Step 5: Save vasista22 tokenizer (same as base Whisper but confirm)
+          # Step 5: Save tokenizer
           print("Saving tokenizer...")
           WhisperProcessor.from_pretrained(model_id).save_pretrained(out_dir)
           print("Weight surgery complete!")
@@ -160,9 +162,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.lang.outputs.tag }}
-          name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v2"
+          name: "Indian Whisper - ${{ steps.lang.outputs.name }} (${{ inputs.model_size }}) v3"
           body: |
-            Weight surgery: vasista22 Telugu weights in onnx-community/whisper-base architecture.
+            Weight surgery v3: fixed prefix mapping (model. prefix fallback).
             Source: vasista22/whisper-${{ steps.lang.outputs.name }}-${{ inputs.model_size }}
           files: |
             ${{ steps.lang.outputs.out }}/encoder_model.onnx
