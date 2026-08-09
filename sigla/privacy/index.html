@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Sigla</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: #1B1030; line-height: 1.6; }
+  h1 { color: #6C3CE0; } h2 { color: #6C3CE0; margin-top: 32px; }
+  .highlight { background: #F1ECFC; border-left: 4px solid #6C3CE0; padding: 14px 18px; border-radius: 6px; margin: 20px 0; }
+  .updated { color: #667; font-size: 0.9em; }
+  code { background: #f2f4f5; padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
+  a { color: #6C3CE0; }
+</style>
+</head>
+<body>
+<h1>Privacy Policy — Sigla</h1>
+<p class="updated">Last updated: August 2026 · LogicGateGames LLC</p>
+
+<div class="highlight">
+<strong>In short:</strong> Sigla keeps everything on your device. There are no accounts, no cloud, no ads, and no analytics. Sigla uses an Android accessibility service, and we want to be exact about what that does and does not allow — see section 4.
+</div>
+
+<h2>1. Data We Do NOT Collect</h2>
+<ul>
+<li><strong>Your gestures and shortcuts</strong> — stored only on your device; never uploaded to us or anyone else.</li>
+<li><strong>Personal information</strong> — no account, no name, no email address, no phone number.</li>
+<li><strong>Usage analytics</strong> — we do not track how you use the app. There is no analytics SDK.</li>
+<li><strong>Advertising data</strong> — Sigla shows no ads and contains no advertising SDK. It does not collect or share an advertising ID.</li>
+<li><strong>Location, contacts, microphone or camera</strong> — Sigla requests none of these permissions. The camera button opens your own camera app; Sigla never accesses the camera itself.</li>
+</ul>
+
+<h2>2. Data Stored On Your Device Only</h2>
+<ul>
+<li><strong>Your marks</strong> — each saved gesture is a list of coordinates, together with the name and action you chose for it.</li>
+<li><strong>Your deck</strong> — the buttons that fan out from the floating button, and their order.</li>
+<li><strong>Snippets</strong> — any text you save to paste later.</li>
+<li><strong>Settings</strong> — button size, colour, ink, and which apps the floating button stays out of.</li>
+</ul>
+<p>All of the above lives in the app's private storage. Sigla has no code that uploads any of it.</p>
+
+<h2>3. Permissions</h2>
+<ul>
+<li><strong>Display over other apps</strong> (<code>SYSTEM_ALERT_WINDOW</code>) — draws the floating button. Without it the app is only reachable from your home screen.</li>
+<li><strong>Foreground service &amp; notification</strong> — Android requires a visible notification while an overlay runs. It is set to the quietest level allowed. This is what stops the system killing the button.</li>
+<li><strong>Start at boot</strong> — brings the floating button back after a restart, if you had it switched on.</li>
+<li><strong>Modify system settings</strong> (<code>WRITE_SETTINGS</code>) — <em>only</em> if you add a brightness or rotation-lock button. Requested the first time you use one, not during setup.</li>
+<li><strong>Set alarm</strong> — for the timer and alarm actions. It sets them in your clock app; it does not read your existing alarms.</li>
+<li><strong>Billing</strong> — for the optional one-time purchase.</li>
+<li><strong>Tasker</strong> — only used if you have Tasker installed and choose a Tasker action.</li>
+</ul>
+<p>Sigla deliberately does <strong>not</strong> request <code>QUERY_ALL_PACKAGES</code>. To list your apps it uses a standard <code>&lt;queries&gt;</code> filter for launchable apps, which returns exactly what a launcher needs and nothing more.</p>
+
+<h2>4. The Accessibility Service</h2>
+<p>Accessibility is the most powerful switch Android asks anyone to flip, so here is precisely what Sigla's service is configured to do. <strong>Everything in Sigla works without it</strong> except the four features listed below.</p>
+<p>It is used for:</p>
+<ul>
+<li><strong>Screenshots</strong> — the screenshot action.</li>
+<li><strong>Navigation actions</strong> — back, home, recents, notification shade, Quick Settings, power menu, lock screen.</li>
+<li><strong>The lock-screen button</strong> — only an accessibility overlay may appear above the lock screen.</li>
+<li><strong>Knowing which app is in front</strong> — so the floating button can stay out of apps you exclude, and lift above the keyboard.</li>
+</ul>
+<p>What it is <strong>not</strong> able to do, by configuration rather than by promise:</p>
+<ul>
+<li><strong>It cannot read the content of your screen.</strong> The service declares <code>canRetrieveWindowContent="false"</code>. It never receives the text of your messages, passwords, web pages or any other on-screen content.</li>
+<li><strong>It cannot perform gestures</strong> on your behalf (<code>canPerformGestures="false"</code>).</li>
+<li>It receives only one kind of event — <code>typeWindowStateChanged</code> — from which it reads the package name of the app that came to the front. Nothing else.</li>
+</ul>
+<p>Screenshots you take are handed straight to Android's share sheet or saved by you. Sigla does not keep a copy and does not transmit them. The foreground package name is used in memory to decide whether to show the button, and is not stored or sent anywhere.</p>
+
+<h2>5. Clipboard and Selected Text</h2>
+<p>Two features touch text you have chosen:</p>
+<ul>
+<li><strong>Clipboard actions</strong> (search, open as link, dial, map, share) read the clipboard <em>at the moment you tap that button</em>, and pass the text to the app you chose. Sigla does not monitor the clipboard in the background and does not keep a history.</li>
+<li><strong>Selected text</strong> — if you pick Sigla from Android's text-selection menu, that selection is passed to Sigla for the action you then choose. It is not stored.</li>
+</ul>
+
+<h2>6. Purchases</h2>
+<p>Sigla offers an optional one-time in-app purchase. Payments are processed entirely by <strong>Google Play</strong>. We never receive your card or payment details. Google's handling of the transaction is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
+
+<h2>7. Third-Party Services</h2>
+<p>Sigla includes the Google Play Billing library, for the purchase above. It contains no analytics, advertising, crash-reporting or tracking SDK of any kind.</p>
+
+<h2>8. Children</h2>
+<p>Sigla is not directed at children under 13 and collects no personal information from anyone.</p>
+
+<h2>9. Changes</h2>
+<p>If this policy changes, the date at the top of this page changes with it, and the updated policy is published here.</p>
+
+<h2>10. Contact</h2>
+<p>Questions about this policy: <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a></p>
+
+<p><a href="../terms/">Terms of Service</a></p>
+</body>
+</html>
