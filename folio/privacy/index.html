@@ -29,7 +29,10 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <ul>
 <li><strong>Google AdMob</strong> - Displays ads to free users. Collects the Advertising ID (a resettable device identifier), ad interaction data, device model, OS version, and approximate location derived from your IP address. You can reset this ID in your device settings, or remove ads entirely by purchasing Premium.</li>
 <li><strong>Firebase Analytics</strong> - Measures how the App is used. Collects app usage events (screens opened, tools used, purchases made), an app-instance ID, the Advertising ID, device type, OS version, app version, and approximate country derived from your IP address. It never includes the content of your documents.</li>
+<li><strong>Google User Messaging Platform</strong> - Shows the consent form used in the EEA, the UK and other regions that require one, and records the choice you make there. That choice is what determines whether the ads you see are personalised.</li>
 <li><strong>Google Play Billing</strong> - Handles in-app purchases. Payment data is managed by Google.</li>
+<li><strong>Google Play Core</strong> - Provides the in-app rating prompt and app updates. It does not receive anything about your documents.</li>
+<li><strong>Google Fonts (via Google Play services)</strong> - The App's interface typeface is requested from the font provider built into Google Play services rather than shipped inside the App. No information about you or your documents is part of that request.</li>
 <li><strong>Firebase Crashlytics</strong> - Collects crash logs, diagnostic device information, and a Crashlytics installation identifier to help fix bugs. No personal data included.</li>
 <li><strong>ML Kit</strong> - On-device document scanning, text recognition, and AI features. No images or document text sent to our servers. AI features use an on-device model supplied by Google Play services. On devices that support it, the model is downloaded once over your internet connection, which may use mobile data. Nothing from your documents is sent anywhere as part of that download.</li>
 </ul>
@@ -38,20 +41,22 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <p>All PDF files you use with Folio are processed entirely on your device. We do not upload or access your files.</p>
 <h2>3. Permissions</h2>
 <ul>
-<li><strong>Storage</strong> - Required to open and save PDF files.</li>
+<li><strong>All files access</strong> - Folio requests the All files access permission so it can find, open and save PDFs anywhere on your device rather than only in a folder it owns. It is used solely to read and write documents you choose. Files are never uploaded, and nothing is read in the background.</li>
 <li><strong>Camera</strong> - Used only for document scanning. Photos never uploaded.</li>
 <li><strong>Internet</strong> - Required for ads and in-app purchases.</li>
 <li><strong>Ad ID</strong> - Used by AdMob for relevant ads. Can be opted out in device settings.</li>
 </ul>
-<h2>4. In-App Purchases</h2>
+<h2>4. App Lock</h2>
+<p>If you turn on App Lock, the PIN you set is stored on your device only. It is never transmitted, never backed up to our servers, and we cannot recover it for you. Fingerprint or face unlock, where you enable it, is handled entirely by Android; the App never receives your biometric data.</p>
+<h2>5. In-App Purchases</h2>
 <p>Premium subscriptions and Remove Ads purchase are handled entirely by Google Play. We do not receive payment details. When a purchase completes, the App records the product purchased, its price, and its currency in Firebase Analytics so we can measure conversions. No payment method or card details are ever recorded.</p>
-<h2>5. Advertising</h2>
+<h2>6. Advertising</h2>
 <p>Free users see ads via Google AdMob. You can opt out of personalised ads in device Settings under Google - Ads. You can also purchase Remove Ads in the app.</p>
-<h2>6. Children</h2>
+<h2>7. Children</h2>
 <p>Folio is not directed at children under 13. We do not knowingly collect data from children.</p>
-<h2>7. Changes</h2>
+<h2>8. Changes</h2>
 <p>We may update this policy from time to time. Continued use of the App after changes constitutes acceptance.</p>
-<h2>8. Contact</h2>
+<h2>9. Contact</h2>
 <p>Questions? Email <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a></p>
 </main>
 <footer>2026 LogicGateGames. All rights reserved.</footer>
