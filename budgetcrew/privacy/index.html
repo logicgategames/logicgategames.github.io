@@ -71,7 +71,7 @@
   <header>
     <div class="eyebrow">BudgetCrew</div>
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: July 2026</div>
+    <div class="updated">Last updated: September 2026</div>
   </header>
 
   <p>This Privacy Policy explains how BudgetCrew ("the app," "we," "us") handles information. BudgetCrew is developed and published by <strong>LogicGateGames LLC</strong> ("LogicGateGames," "we," "us"), a Michigan, USA limited liability company.</p>
@@ -108,14 +108,15 @@
     <li><strong>Google Play Billing</strong> — processes optional in-app purchases and subscriptions. Payment details are handled by Google Play; BudgetCrew never sees or stores your payment information.</li>
     <li><strong>Google ML Kit</strong> — powers the optional receipt scanner. Text recognition runs on your device; a scanned receipt image is not uploaded to Google or to us for this purpose.</li>
     <li><strong>Google Play Services (Nearby Connections)</strong> — the on-device component that enables the device-to-device sync feature described above.</li>
+    <li><strong>Firebase Crashlytics</strong> — if the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your expenses, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</li>
   </ul>
-  <p>We do not use any analytics, crash-reporting, or advertising service beyond AdMob, and we do not sell your information to anyone.</p>
+  <p>We do not use any analytics or advertising service beyond AdMob, we use Firebase Crashlytics only for crash reports, and we do not sell your information to anyone.</p>
   <p>If you are in the European Economic Area, the UK, or Switzerland, BudgetCrew shows Google&rsquo;s consent form the first time you open it, using Google&rsquo;s User Messaging Platform. Your answer determines whether ads may be requested at all and whether they are personalised. You can reopen that form and change your answer at any time from Settings; withdrawing consent takes effect immediately, without restarting the app.</p>
 
   <h2>Permissions the app requests</h2>
   <p>Android requires apps to declare why they need certain capabilities. Here's what each permission BudgetCrew may request is actually for:</p>
   <ul>
-    <li><strong>Internet / network state</strong> — needed to show ads and to download the on-device text-recognition model the first time it's used.</li>
+    <li><strong>Internet / network state</strong> — needed to show ads, to download the on-device text-recognition model the first time it's used, and to send a crash report if the app crashes.</li>
     <li><strong>Notifications</strong> — needed to show reminders and budget alerts you've enabled.</li>
     <li><strong>Nearby devices / Bluetooth / Wi-Fi state</strong> — needed only for the optional device-to-device sync feature described above, to find and connect to another device. These permissions are explicitly flagged to Android as not used to determine your location, and BudgetCrew does not use them for that purpose.</li>
     <li><strong>Location (older Android versions only)</strong> — on Android 12 and earlier, the operating system requires this permission to be present for Bluetooth device discovery to function at all. BudgetCrew does not read or store your location; this permission exists solely because of that OS-level requirement, and is not requested at all on newer Android versions.</li>

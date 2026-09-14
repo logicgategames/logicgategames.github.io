@@ -27,16 +27,17 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 
 <h2>1. Your Notes Stay On Your Device</h2>
 <p>QuiNotes keeps your notes in a private database on your phone. There is no account, no sign-in, and no sync. We operate no servers for your content, so there is nowhere for your notes to be sent.</p>
-<p>The App does use the internet, and we will not pretend otherwise: it is required to fetch advertisements and to talk to Google Play about purchases. Your notes are not part of either exchange.</p>
+<p>The App does use the internet, and we will not pretend otherwise: it is required to fetch advertisements, to talk to Google Play about purchases, and to send a crash report if the App crashes. Your notes are not part of any of these.</p>
 
 <h2>2. Information We Collect</h2>
-<p><strong>We collect nothing ourselves.</strong> We have no analytics, no crash reporting, and no account system. We never see your notes, their titles, your photographs, or your voice recordings.</p>
-<p>The advertising service we use does collect data inside the App, and we list it here because "we have no server" is not an exemption:</p>
+<p><strong>The only thing we receive is a crash report.</strong> We have no analytics and no account system. If the App crashes, a crash report is sent (see Firebase Crashlytics below). We never see your notes, their titles, your photographs, or your voice recordings.</p>
+<p>The services we use do collect data inside the App, and we list them here because "we have no server" is not an exemption:</p>
 <ul>
 <li><strong>Google AdMob</strong> - Displays ads. Collects the Advertising ID (a resettable device identifier), ad interaction data, device model, OS version, and approximate location derived from your IP address. You can reset this ID in your device settings.</li>
 <li><strong>Google Play Billing</strong> - Handles purchases. Google tells the App which items you own. We never see your card details, and no payment information reaches us.</li>
+<li><strong>Firebase Crashlytics</strong> - If the App crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your notes, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</li>
 </ul>
-<p>Nothing from a note - not its text, its title, its photographs, its recordings, nor whether it is locked - is included in any ad request or purchase check.</p>
+<p>Nothing from a note - not its text, its title, its photographs, its recordings, nor whether it is locked - is included in any ad request, purchase check, or crash report.</p>
 
 <h2>3. What Is Stored On Your Device</h2>
 <ul>
@@ -69,7 +70,7 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 
 <h2>8. Permissions</h2>
 <ul>
-<li><strong>Internet and network state</strong> - Used to fetch advertisements and to reach Google Play for purchases. Never used to send your notes.</li>
+<li><strong>Internet and network state</strong> - Used to fetch advertisements, to reach Google Play for purchases, and to send a crash report if the App crashes. Never used to send your notes.</li>
 <li><strong>Notifications</strong> - Used to show the reminders you set. If you decline, the App works normally and simply does not notify you.</li>
 <li><strong>Alarms and reminders</strong> - Lets a reminder arrive at the time you asked for rather than whenever the system next chooses to wake the App. Optional; without it reminders still arrive, just less precisely.</li>
 <li><strong>Run at startup</strong> - Used solely to restore your existing reminders after the device restarts, because Android clears scheduled alarms on reboot.</li>
@@ -83,10 +84,10 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <p>Ads can be removed permanently with a single one-time purchase. There is no subscription.</p>
 
 <h2>10. Children</h2>
-<p>QuiNotes is not directed at children. The App is not marked as child-directed for advertising purposes, and we collect no information from anyone ourselves.</p>
+<p>QuiNotes is not directed at children. The App is not marked as child-directed for advertising purposes, and we collect no personal information from anyone ourselves.</p>
 
 <h2>11. Your Rights</h2>
-<p>Since we hold no data about you, there is nothing for us to give you a copy of, correct, or erase. Everything is on your device: you can export or back it up at any time from within the App, and uninstalling removes all of it. To reset the advertising identifier, use your device's own Google settings.</p>
+<p>We hold no personal data about you, so there is nothing for us to give you a copy of, correct, or erase. The only thing that reaches us is a crash report if the App crashes; it contains no name, email or advertising ID and is deleted automatically after 90 days. Everything else is on your device: you can export or back it up at any time from within the App, and uninstalling removes all of it. To reset the advertising identifier, use your device's own Google settings.</p>
 
 <h2>12. Changes To This Policy</h2>
 <p>We may revise this policy. The date above reflects the latest version, and any material change will be reflected in the App before it takes effect.</p>

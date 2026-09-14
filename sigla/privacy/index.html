@@ -15,10 +15,10 @@
 </head>
 <body>
 <h1>Privacy Policy — Sigla</h1>
-<p class="updated">Last updated: August 2026 · LogicGateGames LLC</p>
+<p class="updated">Last updated: September 2026 · LogicGateGames LLC</p>
 
 <div class="highlight">
-<strong>In short:</strong> Sigla keeps everything on your device. There are no accounts, no cloud, no ads, and no analytics. Sigla uses an Android accessibility service, and we want to be exact about what that does and does not allow — see section 4.
+<strong>In short:</strong> Sigla keeps your gestures, shortcuts and settings on your device. There are no accounts, no cloud, no ads, and no analytics. If the app crashes, a technical crash report is sent so we can fix it; it never contains your gestures or anything on your screen. Sigla uses an Android accessibility service, and we want to be exact about what that does and does not allow — see section 4.
 </div>
 
 <h2>1. Data We Do NOT Collect</h2>
@@ -46,6 +46,7 @@
 <li><strong>Modify system settings</strong> (<code>WRITE_SETTINGS</code>) — <em>only</em> if you add a brightness or rotation-lock button. Requested the first time you use one, not during setup.</li>
 <li><strong>Set alarm</strong> — for the timer and alarm actions. It sets them in your clock app; it does not read your existing alarms.</li>
 <li><strong>Billing</strong> — for the optional one-time purchase.</li>
+<li><strong>Internet</strong> — used only to send a crash report if the app crashes. Nothing you have saved is sent.</li>
 <li><strong>Tasker</strong> — only used if you have Tasker installed and choose a Tasker action.</li>
 </ul>
 <p>Sigla deliberately does <strong>not</strong> request <code>QUERY_ALL_PACKAGES</code>. To list your apps it uses a standard <code>&lt;queries&gt;</code> filter for launchable apps, which returns exactly what a launcher needs and nothing more.</p>
@@ -78,7 +79,10 @@
 <p>Sigla offers an optional one-time in-app purchase. Payments are processed entirely by <strong>Google Play</strong>. We never receive your card or payment details. Google's handling of the transaction is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
 <h2>7. Third-Party Services</h2>
-<p>Sigla includes the Google Play Billing library, for the purchase above. It contains no analytics, advertising, crash-reporting or tracking SDK of any kind.</p>
+<p>Sigla includes the Google Play Billing library, for the purchase above. It contains no analytics, advertising or tracking SDK. It does include Firebase Crashlytics, which sends a crash report if the app crashes; see below.</p>
+<ul>
+<li><strong>Firebase Crashlytics</strong> — If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your gestures, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</li>
+</ul>
 
 <h2>8. Children</h2>
 <p>Sigla is not directed at children under 13 and collects no personal information from anyone.</p>
