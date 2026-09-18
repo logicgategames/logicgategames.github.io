@@ -3,69 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LogicGateGames</title>
-<meta name="description" content="LogicGateGames LLC - Android apps. Privacy policies and terms of use.">
+<title>LogicGateGames &mdash; Android apps and games</title>
+<meta name="description" content="17 Android apps and games by LogicGateGames LLC. They work on your device and none of them need an account. Privacy policy and terms for every app.">
+<meta name="theme-color" content="#2E6B52">
+<meta property="og:title" content="LogicGateGames">
+<meta property="og:description" content="17 Android apps and games, built by one person.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io">
+<link rel="icon" href="/icons/folio.png">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-       background: #f9f9f9; color: #222; line-height: 1.7; }
-header { background: #2E6B52; color: #fff; padding: 40px 24px; }
-header h1 { font-size: 1.7rem; font-weight: 700; }
-header p { font-size: 0.95rem; opacity: 0.88; margin-top: 6px; }
-main { max-width: 780px; margin: 0 auto; padding: 32px 24px 64px; }
-h2 { font-size: 1.05rem; font-weight: 700; color: #2E6B52; margin: 30px 0 10px; }
-p { font-size: 0.95rem; color: #444; }
-ul { list-style: none; margin-top: 12px; }
-li { padding: 12px 0; border-bottom: 1px solid #e6e6e6; display: flex;
-     flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
-li:last-child { border-bottom: none; }
-.name { font-weight: 600; color: #222; min-width: 190px; }
-.links a { color: #2E6B52; font-size: 0.9rem; margin-right: 12px; }
-a { color: #2E6B52; }
-footer { text-align: center; padding: 28px 24px 40px; font-size: 0.82rem; color: #999; }
-@media (max-width: 520px) { .name { min-width: 100%; } }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
+<header><div class="wrap">
   <h1>LogicGateGames</h1>
-  <p>Android apps, built by one person.</p>
-</header>
+  <p>Android apps and games, built by one person.</p>
+  <a class="badge" href="https://play.google.com/store/apps/developer?id=LogicGateGames+LLC"><img src="/assets/google-play-badge.png"
+     alt="Get it on Google Play" width="180" height="70"></a>
+</div></header>
 <main>
-  <p>We build small, focused Android apps. They do their work on your device, they do not
-     require an account, and where an app is paid it is a one-time purchase rather than a
-     subscription.</p>
+  <p class="intro">Small, focused apps that do their work on your device. None of them ask you
+     to make an account. Most paid features unlock with a single purchase rather than a
+     subscription, and every app has its privacy policy and terms linked below.</p>
 
-  <h2>Apps</h2>
-  <ul>
-    <li><span class="name">QuiNotes</span>
-        <span class="links"><a href="/quinotes/privacy/">Privacy</a><a href="/quinotes/terms/">Terms</a></span></li>
-    <li><span class="name">Cerno</span>
-        <span class="links"><a href="/cerno/privacy/">Privacy</a><a href="/cerno/terms/">Terms</a></span></li>
-    <li><span class="name">Save Links &amp; Text</span>
-        <span class="links"><a href="/savelinks/privacy/">Privacy</a><a href="/savelinks/terms/">Terms</a></span></li>
-    <li><span class="name">Folio</span>
-        <span class="links"><a href="/folio/privacy/">Privacy</a><a href="/folio/terms/">Terms</a></span></li>
-    <li><span class="name">Halto</span>
-        <span class="links"><a href="/halto/privacy/">Privacy</a><a href="/halto/terms/">Terms</a></span></li>
-    <li><span class="name">BudgetCrew</span>
-        <span class="links"><a href="/budgetcrew/privacy/">Privacy</a><a href="/budgetcrew/terms/">Terms</a></span></li>
-    <li><span class="name">WAKEM</span>
-        <span class="links"><a href="/wakem/privacy/">Privacy</a><a href="/wakem/terms/">Terms</a></span></li>
-    <li><span class="name">Sigla</span>
-        <span class="links"><a href="/sigla/privacy/">Privacy</a><a href="/sigla/terms/">Terms</a></span></li>
-    <li><span class="name">PixPort</span>
-        <span class="links"><a href="/pixport/privacy/">Privacy</a><a href="/pixport/terms/">Terms</a></span></li>
-    <li><span class="name">Scrivox</span>
-        <span class="links"><a href="/scrivox/privacy.html">Privacy</a><a href="/scrivox/terms.html">Terms</a></span></li>
-    <li><span class="name">Fotolok</span>
-        <span class="links"><a href="/fotolok/privacy/">Privacy</a><a href="/fotolok/terms/">Terms</a></span></li>
-  </ul>
+  <h2>Apps &middot; 12</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="/icons/folio.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Folio PDF Editor, Reader, Scan</h3>
+        <p>Read, annotate and edit PDFs and ebooks. Scanning and redaction included.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.folio">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/folio/privacy/">Privacy</a> &middot; <a href="/folio/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/wakem.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>WAKEM: Alarm You Can&#x27;t Skip</h3>
+        <p>An alarm that stays on until you finish the task you set it.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.wakem">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/wakem/privacy/">Privacy</a> &middot; <a href="/wakem/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/fotolok.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Fotolok: Photo Vault Lock</h3>
+        <p>A photo vault that opens from behind a working calculator.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.fotolok">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/fotolok/privacy/">Privacy</a> &middot; <a href="/fotolok/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/halto.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Halto - App Blocker &amp; Focus</h3>
+        <p>Block the apps that eat your day, on a schedule you set.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.halto">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/halto/privacy/">Privacy</a> &middot; <a href="/halto/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/budgetcrew.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>BudgetCrew - Family Budget</h3>
+        <p>Track and split shared expenses. Syncs phone to phone, with no server in between.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.budgetcrew">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/budgetcrew/privacy/">Privacy</a> &middot; <a href="/budgetcrew/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/savelinks.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Save Links &amp; Text - Auto Sort</h3>
+        <p>Save a link or a note from any app and it files itself.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.savelinks">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/savelinks/privacy/">Privacy</a> &middot; <a href="/savelinks/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/diurna.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Diurna: Planner &amp; Journal</h3>
+        <p>A planner and journal you can restyle to suit how you think.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.diurna">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/diurna/privacy/">Privacy</a> &middot; <a href="/diurna/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/quinotes.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>QuiNotes: Notes &amp; Checklists</h3>
+        <p>Notes and checklists, with search that reads the text inside your images.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.quinotes">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/quinotes/privacy/">Privacy</a> &middot; <a href="/quinotes/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/cerno.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Cerno: Gallery Cleanup</h3>
+        <p>Find and clear the photos quietly filling up your gallery.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.cerno">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/cerno/privacy/">Privacy</a> &middot; <a href="/cerno/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/pixport.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>PixPort: Passport &amp; Visa Photo</h3>
+        <p>Passport and visa photos, sized to the country&#x27;s rules, taken on your phone.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.pixport">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/pixport/privacy/">Privacy</a> &middot; <a href="/pixport/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/sigla.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Sigla: Gesture Shortcuts</h3>
+        <p>Draw a shape anywhere on screen to launch an app.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.sigla">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/sigla/privacy/">Privacy</a> &middot; <a href="/sigla/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/scrivox.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Scrivox - Voice to Text</h3>
+        <p>Speech turned into text on the device itself.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.scrivox">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/scrivox/privacy.html">Privacy</a> &middot; <a href="/scrivox/terms.html">Terms</a></div>
+      </div>
+    </div>
+  </div>
 
-  <h2>Contact</h2>
-  <p>Email <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a>. It is read
-     by the person who wrote the apps.</p>
+  <h2>Games &middot; 5</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="/icons/differencia.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Differencia</h3>
+        <p>Spot what changed between two pictures.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.Differencia">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/differencia/privacy/">Privacy</a> &middot; <a href="/differencia/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/neon-crosser.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>NeonCrosser</h3>
+        <p>Cross the neon traffic without getting hit.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.NeonCrosser">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/neon-crosser/privacy/">Privacy</a> &middot; <a href="/neon-crosser/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/number-tail.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Number Tail</h3>
+        <p>Chain the numbers together in the right order.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.numbertail">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/number-tail/privacy/">Privacy</a> &middot; <a href="/number-tail/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/opmatch.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>OpMatch</h3>
+        <p>Match each equation to the answer it makes.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.OpMatch">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/opmatch/privacy/">Privacy</a> &middot; <a href="/opmatch/terms/">Terms</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="/icons/puzzle-vault.png" alt="" width="56" height="56" loading="lazy">
+      <div class="body">
+        <h3>Logic Puzzles Vault</h3>
+        <p>Twenty-four logic puzzle games in one app.</p>
+        <a class="get" href="https://play.google.com/store/apps/details?id=com.logicgategames.puzzlevault">Get it on Google Play &rarr;</a>
+        <div class="legal"><a href="/puzzle-vault/privacy/">Privacy</a> &middot; <a href="/puzzle-vault/terms/">Terms</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <p>All of them on <a href="https://play.google.com/store/apps/developer?id=LogicGateGames+LLC">Google Play</a>. Questions, bugs and feature requests go to
+       <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is read by the person who wrote the apps.</p>
+  </div>
 </main>
-<footer>2026 LogicGateGames LLC</footer>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
 </body>
 </html>
