@@ -37,6 +37,8 @@
 <li><strong>Settings</strong> — button size, colour, ink, and which apps the floating button stays out of.</li>
 </ul>
 <p>All of the above lives in the app's private storage. Sigla has no code that uploads any of it.</p>
+<p><strong>Backups.</strong> Settings lets you save a backup file of your gestures, decks and button settings, and restore it later. You choose where the file is saved through Android's file picker; it is not encrypted, and Sigla never sends it anywhere. It does not include your Premium status or your answer to the accessibility disclosure.</p>
+<p><strong>Moving to a new phone.</strong> Sigla is excluded from Android's cloud backup entirely. On Android 12 and later, if you set up a new phone with Android's phone-to-phone transfer (cable or Wi-Fi), Android copies your gestures, decks and settings directly to the new phone. It does not copy your answer to the accessibility disclosure, so the new phone asks again, or your Premium status, which the new phone checks with Google Play itself.</p>
 
 <h2>3. Permissions</h2>
 <ul>
@@ -57,16 +59,17 @@
 <ul>
 <li><strong>Screenshots</strong> — the screenshot action.</li>
 <li><strong>Navigation actions</strong> — back, home, recents, notification shade, Quick Settings, power menu, lock screen.</li>
-<li><strong>The lock-screen button</strong> — only an accessibility overlay may appear above the lock screen.</li>
-<li><strong>Knowing which app is in front</strong> — so the floating button can stay out of apps you exclude, and lift above the keyboard.</li>
+<li><strong>The lock-screen button</strong> — only an accessibility overlay may appear above the lock screen. While the screen is on, it reads the proximity sensor so it can ignore touches when the phone is in a pocket; the readings are not stored.</li>
+<li><strong>Knowing which app is in front</strong> — so the floating button can stay out of apps you exclude, open the deck you set up for that app, and lift above the keyboard.</li>
 </ul>
 <p>What it is <strong>not</strong> able to do, by configuration rather than by promise:</p>
 <ul>
 <li><strong>It cannot read the content of your screen.</strong> The service declares <code>canRetrieveWindowContent="false"</code>. It never receives the text of your messages, passwords, web pages or any other on-screen content.</li>
 <li><strong>It cannot perform gestures</strong> on your behalf (<code>canPerformGestures="false"</code>).</li>
-<li>It receives only one kind of event — <code>typeWindowStateChanged</code> — from which it reads the package name of the app that came to the front. Nothing else.</li>
+<li>It receives only one kind of event — <code>typeWindowStateChanged</code> — from which it reads the package name of the app that came to the front, and whether the new window is the on-screen keyboard. Nothing else.</li>
+<li>Until you agree to the disclosure inside Sigla, it reads nothing from those events, even if the service was switched on in Android Settings.</li>
 </ul>
-<p>Screenshots you take are handed straight to Android's share sheet or saved by you. Sigla does not keep a copy and does not transmit them. The foreground package name is used in memory to decide whether to show the button, and is not stored or sent anywhere.</p>
+<p>The screenshot action asks Android to take the screenshot with its own screenshot feature, the same one the power and volume buttons use. Android saves it to your gallery; Sigla never receives the image, and does not keep or transmit a copy. The foreground package name is used in memory to decide whether to show the button, and is not stored or sent anywhere.</p>
 
 <h2>5. Clipboard and Selected Text</h2>
 <p>Two features touch text you have chosen:</p>
@@ -79,7 +82,7 @@
 <p>Sigla offers an optional one-time in-app purchase. Payments are processed entirely by <strong>Google Play</strong>. We never receive your card or payment details. Google's handling of the transaction is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
 <h2>7. Third-Party Services</h2>
-<p>Sigla includes the Google Play Billing library, for the purchase above. It contains no analytics, advertising or tracking SDK. It does include Firebase Crashlytics, which sends a crash report if the app crashes; see below.</p>
+<p>Sigla includes the Google Play Billing library, for the purchase above, and Google Play's In-App Review library, which may ask you to rate the app using Google Play's own review prompt. It contains no analytics, advertising or tracking SDK. It does include Firebase Crashlytics, which sends a crash report if the app crashes; see below.</p>
 <ul>
 <li><strong>Firebase Crashlytics</strong> — If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your gestures, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</li>
 </ul>

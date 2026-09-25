@@ -44,11 +44,11 @@
 <header>
   <div class="app-name">Scrivox</div>
   <h1>Privacy Policy</h1>
-  <p>Last updated: September 14, 2026 &nbsp;·&nbsp; LogicGateGames LLC</p>
+  <p>Last updated: September 25, 2026 &nbsp;·&nbsp; LogicGateGames LLC</p>
 </header>
 <main>
   <div class="highlight-box">
-    <p><span>Your voice never leaves your device.</span> Scrivox processes all audio locally using on-device AI models. No recordings, transcripts, or personal data are ever sent to our servers or any third party. If the app crashes, a technical crash report is sent so we can fix it; it never contains your audio or transcripts.</p>
+    <p><span>Your voice never leaves your device.</span> Scrivox processes all audio locally using on-device AI models. No recordings or transcripts are ever sent to our servers or any third party, unless you choose to share or export them yourself. The ad, download and crash-report services described below receive limited technical data such as your IP address, device details and, for ads, your advertising ID. If the app crashes, a technical crash report is sent so we can fix it; it never contains your audio or transcripts.</p>
   </div>
   <section>
     <h2><span class="num">1</span> Who We Are</h2>
@@ -70,20 +70,20 @@
       </table>
     </div>
     <p>We do not operate servers that receive your recordings or transcripts. All AI models run entirely on your device.</p>
-    <p><strong>Firebase Crashlytics</strong> — If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your recordings or transcripts, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</p>
+    <p><strong>Firebase Crashlytics</strong> — If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID, plus the type of build and the name of the app store the app was installed from. It never includes your content, such as your recordings or transcripts, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</p>
   </section>
   <section>
     <h2><span class="num">3</span> On-Device AI Models</h2>
     <p>Scrivox uses several on-device AI models for speech recognition, summarization, speaker identification, and translation. Every one of them runs entirely on your device:</p>
     <ul>
-      <li><strong>Base speech engine</strong> — OpenAI Whisper, an open-source model licensed under the MIT License. Downloaded automatically on first launch (~75 MB). Supports 71 languages including English, Spanish, French, and more.</li>
-      <li><strong>Indian language packs</strong> — Fine-tuned Whisper models for Telugu, Hindi, Tamil, Kannada, and Gujarati, developed by <a href="https://huggingface.co/vasista22" target="_blank">vasista22 (IIT Madras)</a> and licensed under the MIT License. Optional and downloaded only when you choose to in Settings (~240–350 MB each).</li>
+      <li><strong>Base speech engine</strong> — OpenAI Whisper, an open-source model licensed under the MIT License. Downloaded automatically on first launch (~185 MB). Supports 71 languages including English, Spanish, French, and more.</li>
+      <li><strong>Indian language packs</strong> — Fine-tuned Whisper models for Telugu, Hindi, Tamil, Kannada, and Gujarati, developed by <a href="https://huggingface.co/vasista22" target="_blank">vasista22 (IIT Madras)</a> and licensed under the Apache License 2.0. Optional and downloaded only when you choose to, in Settings or from a recording in one of those languages (~694 MB each).</li>
       <li><strong>AI summary model</strong> — Qwen2.5-1.5B-Instruct (Apache License 2.0), used to generate summaries and action items. Optional and downloaded only when you choose to (~1.7 GB).</li>
-      <li><strong>Speaker identification</strong> — the pyannote.audio speaker-segmentation model (MIT License), used to label who spoke when. Optional and downloaded only when you choose to (~6 MB).</li>
-      <li><strong>Translation &amp; on-device generative AI</strong> — powered by <strong>Google ML Kit</strong>, including on-device translation models and, on supported devices, on-device summarization via Google's Gemini Nano through Android AICore. These process your text entirely on the device.</li>
+      <li><strong>Speaker identification</strong> — the pyannote.audio speaker-segmentation model (MIT License), used to label who spoke when. A Premium feature: the model is downloaded automatically the first time a Premium transcription needs it (~6 MB).</li>
+      <li><strong>Translation &amp; on-device generative AI</strong> — powered by <strong>Google ML Kit</strong>, including on-device translation models (about 30 MB per language, downloaded from Google the first time you translate into or out of that language, or when a summary of a non-English transcript needs one) and, on supported devices, on-device summarization via Google's Gemini Nano through Android AICore. These process your text entirely on the device.</li>
     </ul>
-    <p>All model files are downloaded over HTTPS — the base engine from HuggingFace (huggingface.co), and the Indian language packs, AI summary model, and speaker model from GitHub Releases (github.com); ML Kit and Gemini Nano models are provided by Google Play services / Android AICore on your device. Once installed, all models work entirely offline. No audio, recordings, or transcript data is ever sent anywhere during transcription, summarization, speaker identification, or translation.</p>
-    <p>During a model download, the respective server (HuggingFace or GitHub) will receive your IP address as part of a standard HTTPS request. No audio, recordings, or personal data is transmitted. These downloads are governed by <a href="https://huggingface.co/privacy" target="_blank">HuggingFace's Privacy Policy</a> and <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank">GitHub's Privacy Policy</a>. On-device processing by Google ML Kit is subject to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+    <p>All model files are downloaded over HTTPS — the base engine and speaker model from HuggingFace (huggingface.co), and the Indian language packs and AI summary model from GitHub Releases (github.com); ML Kit translation models are downloaded from Google&rsquo;s servers, and Gemini Nano is provided through Android AICore on your device. Once installed, all models work entirely offline. No audio, recordings, or transcript data is ever sent anywhere during transcription, summarization, speaker identification, or translation.</p>
+    <p>During a model download, the respective server (HuggingFace, GitHub or Google) will receive your IP address as part of a standard HTTPS request. No audio, recordings, or personal data is transmitted. These downloads are governed by <a href="https://huggingface.co/privacy" target="_blank">HuggingFace's Privacy Policy</a> and <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank">GitHub's Privacy Policy</a>. On-device processing by Google ML Kit is subject to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
   </section>
   <section>
     <h2><span class="num">4</span> Microphone Permission</h2>
@@ -92,14 +92,14 @@
       <li>Captured only while you are actively recording</li>
       <li>Processed on-device by the Whisper AI model</li>
       <li>Stored as a local file on your device</li>
-      <li><strong>Never transmitted over the internet</strong></li>
+      <li><strong>Never transmitted over the internet</strong> by Scrivox &mdash; it leaves the device only if you share it, export it, or save a backup yourself</li>
     </ul>
     <p>You can revoke permission anytime in <em>Settings → Apps → Scrivox → Permissions</em>.</p>
   </section>
   <section>
     <h2><span class="num">5</span> Advertising (Free Tier)</h2>
-    <p>The free version displays banner ads served by <strong>Google AdMob</strong>. Google may collect data to serve personalised ads, including advertising ID, approximate location, and device information. See <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>. Upgrading to Premium removes all ads.</p>
-    <p>If you are in the European Economic Area, the UK, or Switzerland, Scrivox shows Google&rsquo;s consent form the first time you open it, using Google&rsquo;s User Messaging Platform. Your answer determines whether ads may be requested at all and whether they are personalised. You can reopen that form and change your answer at any time from Settings, under &ldquo;Ad preferences&rdquo;; withdrawing consent takes effect immediately, without restarting the app.</p>
+    <p>The free version displays ads served by <strong>Google AdMob</strong>: banner ads, an occasional full-screen ad after a transcription, and optional rewarded ads you can choose to watch to unlock a translation. Google may collect data to serve personalised ads, including advertising ID, approximate location, and device information. See <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>. Upgrading to Premium removes all ads.</p>
+    <p>If you are in the European Economic Area, the UK, or Switzerland, Scrivox shows Google&rsquo;s consent form the first time you open it, using Google&rsquo;s User Messaging Platform. Your answer determines whether ads may be requested at all and whether they are personalised. You can reopen that form and change your answer at any time from Settings, under &ldquo;Ad Preferences&rdquo;; withdrawing consent takes effect immediately, without restarting the app.</p>
   </section>
   <section>
     <h2><span class="num">6</span> In-App Purchases</h2>
@@ -110,8 +110,9 @@
     <p>All recordings and transcripts are stored on your device and fully under your control:</p>
     <ul>
       <li>Delete individual recordings inside the app</li>
-      <li>Clear all data via <em>Settings → Clear All Recordings</em></li>
-      <li>Uninstalling the app removes all app data</li>
+      <li>Deleted recordings move to <em>Recently Deleted</em> and are removed permanently after 7 days, or straight away with <em>Settings → Clear Trash</em></li>
+      <li>Uninstalling the app removes all app data. Files you exported or backups you saved outside the app are not removed; delete them separately</li>
+      <li>Scrivox does not take part in Android&rsquo;s automatic cloud backup. Settings → Back up library creates an encrypted backup file, protected by a passphrase you choose, and saves it wherever you pick</li>
       <li>Crash reports, if any were sent, are deleted automatically after 90 days</li>
     </ul>
   </section>

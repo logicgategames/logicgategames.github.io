@@ -68,22 +68,22 @@
 <div class="wrap">
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Effective date: September 14, 2026 &middot; Applies to the <span class="app-name">WAKEM</span> Android app (package: <code>com.logicgategames.wakem</code>), published by LogicGateGames LLC.</p>
+  <p class="updated">Effective date: September 25, 2026 &middot; Applies to the <span class="app-name">WAKEM</span> Android app (package: <code>com.logicgategames.wakem</code>), published by LogicGateGames LLC.</p>
 
   <h2>Introduction</h2>
   <p>This Privacy Policy explains what information WAKEM collects, how it's used, and the choices you have. WAKEM is a mission-based alarm clock and sleep tracking app. We built it to keep as much as possible on your device rather than on our servers, and this policy tells you exactly where that's true and where it isn't.</p>
 
   <h2>Information We Collect</h2>
-  <p><strong>Data stored only on your device.</strong> The following is stored locally in WAKEM's own database and is never transmitted to us or any server we control:</p>
+  <p><strong>Data stored only on your device.</strong> The following is stored locally by WAKEM on your device and is never transmitted to us or any server we control:</p>
   <ul>
     <li>Alarms you create &mdash; time, label, repeat days, sound choice, snooze settings, and which wake-up missions you've selected</li>
-    <li>Sleep log entries &mdash; when you started and ended sleep, and the quality rating you give each night</li>
-    <li>Morning routine checklist items and completion status</li>
+    <li>Sleep log entries &mdash; when you started and ended sleep, the quality rating you give each night, and any notes or habit tags you add (caffeine, alcohol, screen time, exercise, late meal)</li>
+    <li>Morning routine checklist items and one-time tasks, and their completion status</li>
     <li>Wake-up mission statistics &mdash; which missions you've completed and how long they took</li>
     <li>Missed alarms &mdash; when an alarm rang unanswered until WAKEM stopped it, so you can see that it happened</li>
     <li>App settings &mdash; dark mode, bedtime reminder time, premium status</li>
   </ul>
-  <p>If you uninstall WAKEM, this data is deleted along with the app, unless your device's own backup system (e.g. Android's automatic backup) restores it on reinstall.</p>
+  <p>WAKEM's database is excluded from Android's automatic backup and from phone-to-phone transfer. If you uninstall WAKEM, this data is deleted along with the app, unless you saved a backup file yourself with Settings &rarr; Backup &rarr; Export backup (see Data Storage &amp; Security below).</p>
 
   <p><strong>Physical activity.</strong> If you turn on automatic sleep tracking, WAKEM asks for the Physical Activity (Activity Recognition) permission so Android can tell it when you fell asleep and when you woke up. See the dedicated section below.</p>
 
@@ -91,13 +91,13 @@
 
   <p><strong>Advertising identifier.</strong> WAKEM shows ads through Google AdMob (unless you've purchased WAKEM Premium, a single one-time purchase). AdMob may collect your device's advertising ID and other technical identifiers to serve and measure ads. See the Advertising section below.</p>
 
-  <p><strong>Crash reports.</strong> WAKEM uses Firebase Crashlytics. If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your alarms, sleep logs or mission photos, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</p>
+  <p><strong>Crash reports.</strong> WAKEM uses Firebase Crashlytics. If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, the type of build and the name of the app store it was installed from, a random Crashlytics installation ID, and, if you opened the Premium purchase screen before the crash, a one-line note saying so. It never includes your content, such as your alarms, sleep logs or mission photos, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</p>
 
   <p><strong>Purchase information.</strong> The one-time WAKEM Premium purchase is handled entirely by Google Play Billing. We receive confirmation that a purchase was made and its product ID, but we never see your payment card details &mdash; those are handled directly by Google.</p>
 
   <h2>Camera &amp; Wake-Up Missions</h2>
-  <p>If you choose the <strong>Photo</strong> mission, WAKEM asks you to register a photo of a spot in your home (like a bathroom sink) and, when the alarm rings, take a new photo of that same spot to dismiss it. If you choose the <strong>Scan Barcode</strong> mission, you register a barcode (like a product in your kitchen) and scan it to dismiss the alarm.</p>
-  <p>Both missions process images entirely on your device using on-device image matching / barcode scanning. Photos and scanned images are never uploaded, stored on a server, or seen by us. The camera permission is used only while a mission is actively in progress.</p>
+  <p>If you choose the <strong>Photo</strong> mission, you dismiss the alarm by taking a photo of anything with your camera; nothing is registered in advance. If you choose the <strong>Scan Barcode</strong> mission, you dismiss the alarm by scanning any product barcode or QR code.</p>
+  <p>The Photo mission only checks that a photo was taken: the picture is discarded straight away without being looked at or saved. The Scan Barcode mission reads the code on your device using Google ML Kit&rsquo;s on-device barcode scanner. Photos and scanned images are never uploaded, stored on a server, or seen by us. The camera permission is used only while a mission is actively in progress.</p>
 
   <h2>Sleep Tracking &amp; Physical Activity</h2>
   <p>WAKEM can log your nights in two ways. You can tap "Going to bed" and "I'm awake" yourself, which needs no special permission at all. Or you can turn on <strong>automatic sleep tracking</strong>, which uses Android's Activity Recognition (Sleep API), provided by Google Play services on your device, to detect when you fall asleep and wake up.</p>
@@ -106,14 +106,15 @@
   <h2>Advertising</h2>
   <p>WAKEM uses Google AdMob to show banner ads and an occasional ad when you open the app. WAKEM does not show interstitial or rewarded ads, and never shows an ad while an alarm is ringing. AdMob may use your advertising identifier and other data to serve ads and measure their performance. You can review how Google handles this data at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>.</p>
   <p>Where required (for example under GDPR in the EU/UK and in Switzerland), WAKEM presents a consent form before showing personalized ads, using Google's User Messaging Platform. Your answer determines whether ads may be requested at all and whether they are personalized.</p>
-  <p>If you were shown that form, you can reopen it and change your answer at any time from WAKEM's own Settings screen, under &ldquo;Ad preferences&rdquo;. Withdrawing consent takes effect immediately, without restarting the app. You can also reset your advertising ID from your device's system settings (Settings &rarr; Privacy &rarr; Ads on most Android versions).</p>
-  <p>Purchasing WAKEM Premium stops AdMob requests entirely going forward.</p>
+  <p>If you were shown that form, you can reopen it and change your answer at any time from WAKEM's own Settings screen, under &ldquo;Ad Preferences&rdquo;. Withdrawing consent takes effect immediately, without restarting the app. You can also reset your advertising ID from your device's system settings (Settings &rarr; Privacy &rarr; Ads on most Android versions).</p>
+  <p>Purchasing WAKEM Premium stops WAKEM from requesting ads going forward.</p>
 
   <h2>In-App Purchases</h2>
   <p>WAKEM offers a single one-time purchase, WAKEM Premium. There is no subscription. It is processed by Google Play Billing under your Google Play account. We don't collect or store your payment method, billing address, or card details. Purchase management, cancellation, and refunds are handled through the Google Play Store app, not within WAKEM itself.</p>
 
   <h2>Data Storage &amp; Security</h2>
   <p>WAKEM does not currently require an account or sign-in, and does not sync your data to a cloud server. Everything listed under "Data stored only on your device" above lives in a local database on your device, protected by your device's own security (screen lock, encryption, etc.).</p>
+  <p>Settings &rarr; Backup &rarr; Export backup saves a copy of your alarms, routines and tasks, sleep history, statistics and settings to a file in a location you choose with Android's file picker, and Import backup restores one. The backup file is not encrypted, and WAKEM never uploads it; if you save it to a cloud folder, that service's own privacy policy applies to it.</p>
 
   <h2>Data Sharing</h2>
   <p>We do not sell your information. The only outside parties WAKEM shares data with are the service providers necessary to run the app:</p>
@@ -121,15 +122,16 @@
     <li><strong>Google AdMob</strong> &mdash; to serve advertising, as described above</li>
     <li><strong>Google Play Billing</strong> &mdash; to process the one-time Premium purchase</li>
     <li><strong>Firebase Crashlytics</strong> &mdash; to receive crash reports, as described above</li>
+    <li><strong>Google User Messaging Platform</strong> &mdash; to show the ad-consent form where required and record your answer</li>
   </ul>
-  <p>Each operates under its own privacy policy, and none receives your locally-stored alarm, sleep, or routine data &mdash; that never leaves your device.</p>
+  <p>Each operates under its own privacy policy, and none receives your locally-stored alarm, sleep, or routine data &mdash; that never leaves your device unless you export a backup file yourself.</p>
 
   <h2>Children's Privacy</h2>
   <p>WAKEM is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can address it.</p>
 
   <h2>Your Choices &amp; Rights</h2>
   <ul>
-    <li>You can revoke the camera or notification permission at any time in your device's app settings; this will disable the Photo/Barcode missions or alarm notifications respectively.</li>
+    <li>You can revoke the camera or notification permission at any time in your device's app settings; without the camera, the Photo and Scan Barcode missions offer a mission that needs no camera instead; without notifications, alarms cannot show on your lock screen.</li>
     <li>You can delete any alarm, sleep log entry, or routine item directly within the app.</li>
     <li>Uninstalling WAKEM removes all locally-stored data described above.</li>
     <li>Depending on where you live, you may have additional rights (such as access, correction, or deletion requests) under laws like the GDPR or CCPA. Contact us using the details below to exercise them.</li>

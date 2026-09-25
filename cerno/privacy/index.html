@@ -20,10 +20,10 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 </style>
 </head>
 <body>
-<header><h1>Privacy Policy</h1><p>Cerno - Gallery Cleanup - LogicGateGames</p></header>
+<header><h1>Privacy Policy</h1><p>Cerno - Gallery Cleanup - LogicGateGames LLC</p></header>
 <main>
 <p style="font-size:0.85rem;color:#888;margin-bottom:24px">Last updated: September 2026</p>
-<p>This Privacy Policy describes how LogicGateGames collects, uses, and shares information when you use Cerno. By using the App you agree to the practices described here.</p>
+<p>This Privacy Policy describes how LogicGateGames LLC collects, uses, and shares information when you use Cerno. By using the App you agree to the practices described here.</p>
 
 <h2>1. Your Photos and Videos Never Leave Your Device</h2>
 <p>Cerno exists to help you clear space by reviewing the photos and videos already on your phone. All of that work happens on your device:</p>
@@ -32,6 +32,7 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <li>Finding near-identical photos, which is done by computing a small numeric fingerprint of each image on your device and comparing those numbers locally.</li>
 <li>Measuring image sharpness to suggest which shot in a group is the one worth keeping.</li>
 </ul>
+<p>So that the lookalikes are ready when you open the App, Cerno also does this preparation in the background about once a day, when the battery is not low, if you have given it access to your photos and videos. That background work only reads and fingerprints your library on your device; it never deletes or moves anything and uses no network connection.</p>
 <p><strong>No photo, video, thumbnail, filename, or fingerprint is ever uploaded or transmitted anywhere.</strong> We operate no servers and have no account system, so there is nowhere for your media to be sent even in principle.</p>
 
 <h2>2. Information We Collect</h2>
@@ -39,6 +40,7 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <ul>
 <li><strong>Google AdMob</strong> - Displays ads. Collects the Advertising ID (a resettable device identifier), ad interaction data, device model, OS version, and approximate location derived from your IP address. You can reset this ID in your device settings.</li>
 <li><strong>Firebase Crashlytics</strong> - If the App crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, and a random Crashlytics installation ID. It never includes your content, such as your photos and videos, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</li>
+<li><strong>Google Play Billing</strong> - Handles the optional one-time Premium purchase. Google tells the App whether you own it. We never see your payment details.</li>
 </ul>
 <p>Advertising data described above is shared with Google for advertising, ad measurement, and fraud prevention. We do not sell your data, and we do not share it with anyone else. Nothing about your photos or videos is included in any ad request.</p>
 
@@ -51,13 +53,15 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <h2>5. Permissions</h2>
 <ul>
 <li><strong>Photos and videos</strong> - Required to list what is on your device and to move items you select to the trash. Cerno needs to see your whole library because the sizes, groupings, and duplicate detection it reports are totals across all of it, which cannot be worked out from a few selected items. If you grant access to only some items, the App works with just those.</li>
-<li><strong>Internet</strong> - Used only to request ads and to send a crash report if the App crashes. Your media is never sent over it.</li>
-<li><strong>Media management</strong> (optional) - If you turn this on in system settings, Android stops asking you to confirm each cleanup. It is entirely optional, the App works fully without it, and you can turn it off at any time.</li>
+<li><strong>Internet</strong> - Used only to request ads, to reach Google Play for purchases, and to send a crash report if the App crashes. Your media is never sent over it.</li>
+<li><strong>Run at startup</strong> - Lets Android keep the daily background preparation described in section 1 scheduled after the device restarts.</li>
+<li><strong>Media management</strong> (optional) - If you turn this on in system settings (offered in the App under Settings &gt; Skip confirmations), Android stops asking you to confirm each cleanup; Cerno's own button becomes the last step, and items still go to the system trash. It is entirely optional, the App works fully without it, and you can turn it off at any time.</li>
 </ul>
 <p>Cerno deliberately does <strong>not</strong> request access to media location data, so the GPS coordinates stored inside your photos are never read. It also does not request all-files access to your device storage.</p>
 
 <h2>6. Advertising</h2>
-<p>Ads are shown via Google AdMob. You can opt out of personalised ads in device Settings under Google - Ads. If you are in the European Economic Area, the UK, or Switzerland, you will be asked for your advertising consent choices when you first open the App, and you can change them later from the App's settings.</p>
+<p>Ads are shown via Google AdMob. You can opt out of personalised ads in device Settings under Google - Ads. If you are in the European Economic Area, the UK, or Switzerland, you will be asked for your advertising consent choices when you first open the App, and you can change them later from <strong>Settings &gt; Ad privacy choices</strong> in the App.</p>
+<p>Ads can be removed with the one-time Premium purchase.</p>
 
 <h2>7. Children</h2>
 <p>Cerno is not directed at children under 13. We do not knowingly collect data from children.</p>
@@ -68,6 +72,6 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <h2>9. Contact</h2>
 <p>Questions? Email <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a></p>
 </main>
-<footer>2026 LogicGateGames. All rights reserved.</footer>
+<footer>2026 LogicGateGames LLC. All rights reserved.</footer>
 </body>
 </html>
