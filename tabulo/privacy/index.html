@@ -31,7 +31,7 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <p>The App uses the internet for two things only: to talk to Google Play about your "All designs" purchase, and to send a crash report if the App crashes. Nothing you put in a widget is part of either.</p>
 
 <h2>2. Contacts</h2>
-<p>A contact widget asks Android's own contact picker for one phone number. Android hands the App that one entry only; the App does not ask for permission to read your contacts and cannot see any others. The name and number (and the contact's photo, if Android lets the App read it) are copied into that widget's settings on your phone. Tapping the widget opens your phone app or messaging app with the number filled in; Tabulo never places a call or sends a message itself.</p>
+<p>A contact widget asks Android's own contact picker for one phone number. Android hands the App that one entry only, and the App cannot see any others. The name and number are copied into that widget's settings on your phone. If the contact has a photo and you want it on the widget, the App asks for the Contacts permission at that moment; granted, it reads that one photo and copies it into the widget's settings, and nothing else. You can say no and keep the contact's initials instead. Tapping the widget opens your phone app or messaging app with the number filled in; Tabulo never places a call or sends a message itself.</p>
 
 <h2>3. Photos</h2>
 <p>A photo widget uses Android's own photo picker. The App sees only the photo you pick, and keeps a copy of it in its own storage so the widget can show it. It asks for no storage or photo permission.</p>
