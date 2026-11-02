@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuiNotes: Notes &amp; Checklists &mdash; Notes and checklists with reminders, a lock on any note, and a home screen widget.</title>
+<meta name="description" content="QuiNotes is a notes app for Android. It opens straight into your notes, with no account and no sign-in. Start typing and the note is saved. Each note can have its own paper: its own color, ruling and lettering. You can add checklists, photos and voice memos, set a reminder, and lock any note. Your">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/quinotes/">
+<meta property="og:title" content="QuiNotes: Notes &amp; Checklists">
+<meta property="og:description" content="Notes and checklists with reminders, a lock on any note, and a home screen widget.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/quinotes/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/quinotes.png">
+<link rel="icon" href="/icons/quinotes.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QuiNotes: Notes & Checklists",
+  "description": "Notes and checklists with reminders, a lock on any note, and a home screen widget.",
+  "url": "https://logicgategames.github.io/quinotes/",
+  "image": "https://logicgategames.github.io/icons/quinotes.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "ProductivityApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.quinotes",
+  "featureList": [
+   "Notes and checklists",
+   "A different paper for each note",
+   "Lock any note",
+   "Photos, voice memos and files",
+   "Search that reads photos too",
+   "Reminders",
+   "Home screen widget",
+   "Export, print and back up"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Where does QuiNotes store my notes?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "In a private database on your phone, together with your photos, voice memos and attached files. There is no account and no server, and no sync to other devices. Nothing is uploaded unless you save a backup or export to a place that syncs, such as a cloud folder."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I lock a note, and what if I forget the PIN?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open the note and choose Lock this note. It then opens with your fingerprint, face, or your phone's screen lock. QuiNotes has no PIN of its own, so it cannot reset one. If you lose your phone's screen lock, getting back in is up to your phone, not QuiNotes."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is a locked note encrypted?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. The lock keeps a note off the screen. It is not encryption. Locked notes are written in plain text in exports and backups, and the app says so and asks you to confirm first. Do not keep passwords or card numbers in notes."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I back up QuiNotes and move my notes to a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Use Back up to a file in Settings. It writes one .zip with your notes, photos, recordings, attached files and settings. Save it to Drive, a memory card or a computer. On the new phone, choose Restore from a backup. Restoring adds notes and overwrites nothing."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my notes if I uninstall the app or change phones?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "They are removed when you uninstall, and they are not copied to a new phone by Android's own backup or transfer. Google does not back them up. Without a backup file, they are gone. Make a backup before you uninstall or switch phones."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I export notes, and in what formats?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Export as plain text, Markdown (which keeps checklists and ticks) or PDF, or print. Exports are for reading and sharing. To move notes between phones, use the backup file. QuiNotes can also read a backup file from one other notes app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does QuiNotes sync between devices or have a widget?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "There is no sync. Notes live on one phone. There is a home screen widget that shows your latest notes and a button to start a new note. Locked notes appear in it only as Locked."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does it work on tablets, and in my language?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes to both. On wide screens such as tablets, the note list and the open note sit side by side, and tablets can be used in landscape. The app is translated into many languages, including right-to-left ones, and has its own language setting."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/quinotes.png" alt="QuiNotes: Notes &amp; Checklists icon" width="72" height="72">
+    <div><h1>QuiNotes: Notes &amp; Checklists</h1><p>Notes and checklists with reminders, a lock on any note, and a home screen widget.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.quinotes"><img src="/assets/google-play-badge.png"
+     alt="Get QuiNotes: Notes &amp; Checklists on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>QuiNotes is a notes app for Android. It opens straight into your notes, with no account and no sign-in. Start typing and the note is saved.</p>
+  <p>Each note can have its own paper: its own color, ruling and lettering. You can add checklists, photos and voice memos, set a reminder, and lock any note. Your notes stay on your phone.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Notes and checklists</h3><p>Write plain notes or add a checklist to any note. Ticks stay ticked. Format text with bold, italics, headings and lists. Pin or favorite notes, file them in categories, add tags, and view your list as a list or a grid.</p></div>
+    <div class="feature"><h3>A different paper for each note</h3><p>Give every note its own paper, with its own color, ruling and lettering, so you can tell notes apart before you read them. You can also design your own paper.</p></div>
+    <div class="feature"><h3>Lock any note</h3><p>Lock a note and it opens only with your fingerprint, face, or the PIN, pattern or password of your phone. QuiNotes keeps no password of its own.</p></div>
+    <div class="feature"><h3>Photos, voice memos and files</h3><p>Add photos, record voice memos and attach files inside a note. Photos come from the Android photo picker, so QuiNotes never asks for access to your photo library.</p></div>
+    <div class="feature"><h3>Search that reads photos too</h3><p>Search finds words in titles, note text, checklist lines, tags and the text in your photos. The searching, including reading the photos, happens on your phone.</p></div>
+    <div class="feature"><h3>Reminders</h3><p>Pick a date and time, and repeat it daily, on weekdays, weekly, monthly or yearly. A reminder for a locked note shows no title or text.</p></div>
+    <div class="feature"><h3>Home screen widget</h3><p>A widget shows your latest notes and a button that starts a new one. Locked notes show only the word Locked.</p></div>
+    <div class="feature"><h3>Export, print and back up</h3><p>Export your notes as plain text, Markdown or PDF, print them, or back everything up to one ordinary .zip file. Share text into QuiNotes from other apps to save it as a note.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your notes, checklists, photos, voice memos and settings are stored in the app&#x27;s private storage on your phone. There is no account, no sync and no server of ours, so there is nowhere for a note to be sent. QuiNotes does use the internet for Google services it relies on and to send a crash report if the app crashes. None of that includes your notes, titles, photos or recordings. A backup or export is written only when you ask, to the place you choose; QuiNotes itself uploads nothing.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Where does QuiNotes store my notes?</summary><p>In a private database on your phone, together with your photos, voice memos and attached files. There is no account and no server, and no sync to other devices. Nothing is uploaded unless you save a backup or export to a place that syncs, such as a cloud folder.</p></details>
+  <details><summary>How do I lock a note, and what if I forget the PIN?</summary><p>Open the note and choose Lock this note. It then opens with your fingerprint, face, or your phone&#x27;s screen lock. QuiNotes has no PIN of its own, so it cannot reset one. If you lose your phone&#x27;s screen lock, getting back in is up to your phone, not QuiNotes.</p></details>
+  <details><summary>Is a locked note encrypted?</summary><p>No. The lock keeps a note off the screen. It is not encryption. Locked notes are written in plain text in exports and backups, and the app says so and asks you to confirm first. Do not keep passwords or card numbers in notes.</p></details>
+  <details><summary>How do I back up QuiNotes and move my notes to a new phone?</summary><p>Use Back up to a file in Settings. It writes one .zip with your notes, photos, recordings, attached files and settings. Save it to Drive, a memory card or a computer. On the new phone, choose Restore from a backup. Restoring adds notes and overwrites nothing.</p></details>
+  <details><summary>What happens to my notes if I uninstall the app or change phones?</summary><p>They are removed when you uninstall, and they are not copied to a new phone by Android&#x27;s own backup or transfer. Google does not back them up. Without a backup file, they are gone. Make a backup before you uninstall or switch phones.</p></details>
+  <details><summary>Can I export notes, and in what formats?</summary><p>Yes. Export as plain text, Markdown (which keeps checklists and ticks) or PDF, or print. Exports are for reading and sharing. To move notes between phones, use the backup file. QuiNotes can also read a backup file from one other notes app.</p></details>
+  <details><summary>Does QuiNotes sync between devices or have a widget?</summary><p>There is no sync. Notes live on one phone. There is a home screen widget that shows your latest notes and a button to start a new note. Locked notes appear in it only as Locked.</p></details>
+  <details><summary>Does it work on tablets, and in my language?</summary><p>Yes to both. On wide screens such as tablets, the note list and the open note sit side by side, and tablets can be used in landscape. The app is translated into many languages, including right-to-left ones, and has its own language setting.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/quinotes/privacy/">Privacy policy</a> &middot; <a href="/quinotes/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

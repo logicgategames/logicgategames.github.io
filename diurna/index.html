@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diurna: Journal &amp; Planner &mdash; A private journal and daily planner for Android. Your writing never leaves your phone.</title>
+<meta name="description" content="Diurna is a journal, diary and planner in one app. Pick the page that fits the day: a journal entry, a daily or weekly plan, a monthly overview, notes, goals, a habit tracker, gratitude, a dream log, affirmations, a mindful check-in or a bullet journal. There is no account and no sync. What you">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/diurna/">
+<meta property="og:title" content="Diurna: Journal &amp; Planner">
+<meta property="og:description" content="A private journal and daily planner for Android. Your writing never leaves your phone.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/diurna/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/diurna.png">
+<link rel="icon" href="/icons/diurna.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Diurna: Journal & Planner",
+  "description": "A private journal and daily planner for Android. Your writing never leaves your phone.",
+  "url": "https://logicgategames.github.io/diurna/",
+  "image": "https://logicgategames.github.io/icons/diurna.png",
+  "operatingSystem": "Android 11 or later",
+  "applicationCategory": "ProductivityApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.diurna",
+  "featureList": [
+   "A page for every kind of day",
+   "Quick capture as you type",
+   "Lock with your phone's own lock",
+   "Reminders on any line",
+   "Search and look back",
+   "Photos, voice notes and video",
+   "Home-screen widget",
+   "Backup, restore and export"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Where does Diurna store my journal entries?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "On your phone, in the app's private storage. There is no account, no server and no sync. Photos, voice notes and videos you attach are kept there too, as Diurna's own copies. Entries stay on your phone unless you choose to save a backup or export file somewhere."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I lock my Diurna journal with a PIN or fingerprint?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. In Settings, turn on Lock the journal. Diurna then asks for your fingerprint, face or screen lock each time you open it. Face recognition counts only on phones where Android rates it as strong. Diurna has no PIN of its own."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What if I forget my PIN or lose my fingerprint?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Diurna stores no PIN or password, so it has no reset and no way around the lock. It uses your phone's screen lock, so recover that through your phone maker or Google. If the phone's screen lock is removed, Diurna stays locked until you set one again."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I back up Diurna and restore it on a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Settings has Back up everything. It saves your writing, photos, voice notes and videos in one ZIP file to a place you choose. On the new phone, use Import a journal and pick that file. Import adds to what is there and never overwrites your writing."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my entries if I uninstall Diurna or get a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Uninstalling deletes the journal from the phone, and Google keeps no copy. Save a backup file first. When you set up a new phone directly from the old one, Android can copy the journal across, but the lock and widget settings are left behind and the lock starts off."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Diurna have reminders?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Put a reminder on any line, once or repeating, and add an optional nightly nudge. Android asks for notification permission the first time you set one. If exact alarms are not allowed, reminders still arrive, a little later. They are re-set after the phone restarts."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Diurna work on tablets, and in my language?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes to tablets: pages turn to landscape and portrait, and the page stays in a centered column. On phones it stays in portrait. Diurna follows your phone's language, and you can pick another in Settings. Reading dates and repeats from typed words works in English only; other languages recognize clock times."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I take my journal to another app?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Export as Markdown to read anywhere, as JSON to keep every detail, or as PDF to print with your photos. A JSON file holds no photos, voice notes or video, so use Back up everything if you want those too. The backup ZIP opens on a computer without Diurna."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/diurna.png" alt="Diurna: Journal &amp; Planner icon" width="72" height="72">
+    <div><h1>Diurna: Journal &amp; Planner</h1><p>A private journal and daily planner for Android. Your writing never leaves your phone.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.diurna"><img src="/assets/google-play-badge.png"
+     alt="Get Diurna: Journal &amp; Planner on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Diurna is a journal, diary and planner in one app. Pick the page that fits the day: a journal entry, a daily or weekly plan, a monthly overview, notes, goals, a habit tracker, gratitude, a dream log, affirmations, a mindful check-in or a bullet journal.</p>
+  <p>There is no account and no sync. What you write, and the photos, voice notes and videos you attach, stay on your phone. You can lock the journal with your fingerprint, face or screen lock.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>A page for every kind of day</h3><p>Journal, daily planner, weekly planner, monthly planner, notes, goals, habit tracker, gratitude, dream journal, affirmations, mindful check-in and bullet journal. Choose which pages you keep, and add or drop them later.</p></div>
+    <div class="feature"><h3>Quick capture as you type</h3><p>Type a line and Diurna picks out the dates, times and repeats. A Quick Settings tile lets you jot something down from the notification shade. Bold, italic and simple lists work where you want them.</p></div>
+    <div class="feature"><h3>Lock with your phone&#x27;s own lock</h3><p>Turn on the lock and Diurna asks for your fingerprint, face or screen lock before it opens. While locked, the widget and reminders show none of your writing, and the app is hidden from screenshots and the recent-apps view.</p></div>
+    <div class="feature"><h3>Reminders on any line</h3><p>Attach a reminder to a line on a page, once or on a repeat. An optional nightly nudge asks you to write your page, and stays silent on evenings when you already have.</p></div>
+    <div class="feature"><h3>Search and look back</h3><p>Search every line you have written, including by date. A calendar, a monthly view of how each month felt, a look at what you wrote on this day in earlier years, and starred entries help you look back.</p></div>
+    <div class="feature"><h3>Photos, voice notes and video</h3><p>Add photos and video from your gallery&#x27;s photo picker, or record a voice note. Diurna keeps its own copy in the app&#x27;s private storage, so entries still show them if you later delete the original.</p></div>
+    <div class="feature"><h3>Home-screen widget</h3><p>A widget shows today&#x27;s page on your home screen and scrolls through it. You can step to other days, and choose its color, opacity and which page it shows.</p></div>
+    <div class="feature"><h3>Backup, restore and export</h3><p>Back up your writing and every photo, voice note and video to a single ZIP file you save where you choose, and read it back later. Export to Markdown, JSON or PDF to read or print your journal anywhere.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your journal is stored in a private database and private folders on your phone. Diurna has no account, no sign-in, no servers and no sync, and nothing you write, attach or record is sent anywhere. The only uses of the network are a crash report if the app crashes (stack trace, device model and Android version, never your writing) and Google Play&#x27;s own services for the app. Android&#x27;s cloud backup does not include your journal. A backup or export is written only when you ask, to a place you pick; after that the file is yours, and Diurna does not upload it.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Where does Diurna store my journal entries?</summary><p>On your phone, in the app&#x27;s private storage. There is no account, no server and no sync. Photos, voice notes and videos you attach are kept there too, as Diurna&#x27;s own copies. Entries stay on your phone unless you choose to save a backup or export file somewhere.</p></details>
+  <details><summary>Can I lock my Diurna journal with a PIN or fingerprint?</summary><p>Yes. In Settings, turn on Lock the journal. Diurna then asks for your fingerprint, face or screen lock each time you open it. Face recognition counts only on phones where Android rates it as strong. Diurna has no PIN of its own.</p></details>
+  <details><summary>What if I forget my PIN or lose my fingerprint?</summary><p>Diurna stores no PIN or password, so it has no reset and no way around the lock. It uses your phone&#x27;s screen lock, so recover that through your phone maker or Google. If the phone&#x27;s screen lock is removed, Diurna stays locked until you set one again.</p></details>
+  <details><summary>How do I back up Diurna and restore it on a new phone?</summary><p>Settings has Back up everything. It saves your writing, photos, voice notes and videos in one ZIP file to a place you choose. On the new phone, use Import a journal and pick that file. Import adds to what is there and never overwrites your writing.</p></details>
+  <details><summary>What happens to my entries if I uninstall Diurna or get a new phone?</summary><p>Uninstalling deletes the journal from the phone, and Google keeps no copy. Save a backup file first. When you set up a new phone directly from the old one, Android can copy the journal across, but the lock and widget settings are left behind and the lock starts off.</p></details>
+  <details><summary>Does Diurna have reminders?</summary><p>Yes. Put a reminder on any line, once or repeating, and add an optional nightly nudge. Android asks for notification permission the first time you set one. If exact alarms are not allowed, reminders still arrive, a little later. They are re-set after the phone restarts.</p></details>
+  <details><summary>Does Diurna work on tablets, and in my language?</summary><p>Yes to tablets: pages turn to landscape and portrait, and the page stays in a centered column. On phones it stays in portrait. Diurna follows your phone&#x27;s language, and you can pick another in Settings. Reading dates and repeats from typed words works in English only; other languages recognize clock times.</p></details>
+  <details><summary>Can I take my journal to another app?</summary><p>Yes. Export as Markdown to read anywhere, as JSON to keep every detail, or as PDF to print with your photos. A JSON file holds no photos, voice notes or video, so use Back up everything if you want those too. The backup ZIP opens on a computer without Diurna.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 11 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/diurna/privacy/">Privacy policy</a> &middot; <a href="/diurna/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

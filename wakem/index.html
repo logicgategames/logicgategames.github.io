@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAKEM: Mission Alarm Clock &mdash; A mission alarm clock for heavy sleepers: the alarm stops only after you finish a task.</title>
+<meta name="description" content="WAKEM is an Android alarm clock you cannot dismiss half asleep. When it rings, you finish a mission first: solve a math problem, shake the phone, scan a barcode and more. When the alarm stops, you are awake. It re-sets your alarms after a restart, an app update, or a time zone or clock change. It">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/wakem/">
+<meta property="og:title" content="WAKEM: Mission Alarm Clock">
+<meta property="og:description" content="A mission alarm clock for heavy sleepers: the alarm stops only after you finish a task.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/wakem/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/wakem.png">
+<link rel="icon" href="/icons/wakem.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WAKEM: Mission Alarm Clock",
+  "description": "A mission alarm clock for heavy sleepers: the alarm stops only after you finish a task.",
+  "url": "https://logicgategames.github.io/wakem/",
+  "image": "https://logicgategames.github.io/icons/wakem.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.wakem",
+  "featureList": [
+   "Missions that need you awake",
+   "Stack or randomize missions",
+   "Wake-up check",
+   "Snooze and sound settings",
+   "Made to actually go off",
+   "Missed alarm history",
+   "Sleep log and stats",
+   "Groups, pausing and routine"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Does WAKEM ring if my phone is on silent or Do Not Disturb?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The alarm plays on the alarm volume, separate from the ringer, so a silent ringer does not mute it. Strict Do Not Disturb setups can hide the mission screen, so WAKEM asks for Do Not Disturb access. Total silence mutes the sound and WAKEM cannot override it. An alarm set to volume 0 is silent on purpose."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will the alarm ring after I restart my phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. WAKEM sets its alarms again after a restart, an app update, and a time zone or clock change. An alarm due after a restart rings even before you enter your PIN or pattern, and shows the mission screen. The phone must be switched on."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does the alarm ring if the app is closed or battery optimization is on?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Closing the app does not cancel an alarm. Battery optimization and some phone makers' cleaner tools can delay or remove it. Allow exact alarms, notifications, full-screen alarms and the battery exemption. Force-stopping the app removes its alarms until you open it again."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I snooze a WAKEM alarm?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes, if the alarm allows it. For each alarm you choose how many snoozes it gets and how long each lasts, or turn snooze off. When the snoozes are used up, the only way to stop the alarm is its mission. The wake-up check ring cannot be snoozed."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I turn the alarm off without doing the mission?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Not from the ringing screen: Back is blocked and there is no skip button or override code. Three exceptions: a mission that cannot run (no camera access, no motion sensor) is swapped for a math problem; an alarm nobody answers stops itself after a while and is logged as missed; you can turn an alarm off before it rings."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What permissions does WAKEM need and why?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Notifications and full-screen alarms, to show the mission on a locked phone. Exact alarms, to ring on time. Battery exemption, so Android does not delay alarms. Do Not Disturb access (recommended). Camera, only for the Photo and Scan Barcode missions. Physical activity, only if you turn on automatic sleep detection."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does WAKEM keep my photos or need a camera?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The Photo mission accepts any photo and discards it at once. It is not saved, uploaded or checked. The Scan Barcode mission accepts any barcode or QR code and reads it on your phone. If you do not want the camera, pick another mission or deny the permission; a math problem replaces a camera mission."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does WAKEM work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. On tablets the screen can rotate and the content stays at a readable width. On phones the app stays in portrait. Alarms, missions and the permission steps work the same way."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/wakem.png" alt="WAKEM: Mission Alarm Clock icon" width="72" height="72">
+    <div><h1>WAKEM: Mission Alarm Clock</h1><p>A mission alarm clock for heavy sleepers: the alarm stops only after you finish a task.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.wakem"><img src="/assets/google-play-badge.png"
+     alt="Get WAKEM: Mission Alarm Clock on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>WAKEM is an Android alarm clock you cannot dismiss half asleep. When it rings, you finish a mission first: solve a math problem, shake the phone, scan a barcode and more. When the alarm stops, you are awake.</p>
+  <p>It re-sets your alarms after a restart, an app update, or a time zone or clock change. It also checks the permissions and battery settings that can stop an alarm.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Missions that need you awake</h3><p>Pick how each alarm stops: a math problem, shaking the phone, typing a phrase, a memory game, a quiz question, taking a photo, or scanning a barcode or QR code. The photo and barcode missions need you out of bed.</p></div>
+    <div class="feature"><h3>Stack or randomize missions</h3><p>Put several missions on one alarm and do them in order. Or tick a pool and let each ring pick from it at random.</p></div>
+    <div class="feature"><h3>Wake-up check</h3><p>A few minutes after you dismiss an alarm, WAKEM rings again with a quick math problem to make sure you did not fall back asleep.</p></div>
+    <div class="feature"><h3>Snooze and sound settings</h3><p>Set how many snoozes an alarm gets and how long each lasts, or turn snooze off. Choose the volume, vibration, a gentle wake-up that starts quiet, your own sound, or a random song from a folder on your phone.</p></div>
+    <div class="feature"><h3>Made to actually go off</h3><p>Alarms use Android&#x27;s exact alarm clock scheduling and are set again after a restart, an app update, and a time zone or clock change. A banner shows any permission or battery setting that could stop an alarm, and Settings has setup steps for phones with extra battery managers.</p></div>
+    <div class="feature"><h3>Missed alarm history</h3><p>If an alarm rings with no answer until WAKEM gives up, it is saved in Stats as a missed alarm, with how long it rang. You do not have to guess whether it went off.</p></div>
+    <div class="feature"><h3>Sleep log and stats</h3><p>Log a night with two taps, or turn on automatic sleep detection. See your average sleep, how caffeine or late screens line up with your sleep, and how many missions you solved.</p></div>
+    <div class="feature"><h3>Groups, pausing and routine</h3><p>Put alarms in named groups and switch a group on or off together. Pause alarms until a date for a trip or a break. Add a morning routine checklist that appears after an alarm is dismissed.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your alarms, sleep log, routine items, statistics and settings are stored on your phone and are not sent to the developer. WAKEM needs no account and does not sync to a cloud. The database is excluded from Android&#x27;s automatic backup, so uninstalling the app deletes it unless you saved a backup file with Settings, Backup, Export backup. That file is not encrypted and is saved where you choose. The Photo mission discards the picture at once, and the Scan Barcode mission reads codes on your phone; neither is saved or uploaded. Automatic sleep detection runs on your phone through Google Play services. If the app crashes, a crash report with technical details (no alarms, sleep entries or photos) goes to Google&#x27;s Firebase Crashlytics. The privacy policy lists the other Google services the app uses.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Does WAKEM ring if my phone is on silent or Do Not Disturb?</summary><p>The alarm plays on the alarm volume, separate from the ringer, so a silent ringer does not mute it. Strict Do Not Disturb setups can hide the mission screen, so WAKEM asks for Do Not Disturb access. Total silence mutes the sound and WAKEM cannot override it. An alarm set to volume 0 is silent on purpose.</p></details>
+  <details><summary>Will the alarm ring after I restart my phone?</summary><p>Yes. WAKEM sets its alarms again after a restart, an app update, and a time zone or clock change. An alarm due after a restart rings even before you enter your PIN or pattern, and shows the mission screen. The phone must be switched on.</p></details>
+  <details><summary>Does the alarm ring if the app is closed or battery optimization is on?</summary><p>Closing the app does not cancel an alarm. Battery optimization and some phone makers&#x27; cleaner tools can delay or remove it. Allow exact alarms, notifications, full-screen alarms and the battery exemption. Force-stopping the app removes its alarms until you open it again.</p></details>
+  <details><summary>Can I snooze a WAKEM alarm?</summary><p>Yes, if the alarm allows it. For each alarm you choose how many snoozes it gets and how long each lasts, or turn snooze off. When the snoozes are used up, the only way to stop the alarm is its mission. The wake-up check ring cannot be snoozed.</p></details>
+  <details><summary>Can I turn the alarm off without doing the mission?</summary><p>Not from the ringing screen: Back is blocked and there is no skip button or override code. Three exceptions: a mission that cannot run (no camera access, no motion sensor) is swapped for a math problem; an alarm nobody answers stops itself after a while and is logged as missed; you can turn an alarm off before it rings.</p></details>
+  <details><summary>What permissions does WAKEM need and why?</summary><p>Notifications and full-screen alarms, to show the mission on a locked phone. Exact alarms, to ring on time. Battery exemption, so Android does not delay alarms. Do Not Disturb access (recommended). Camera, only for the Photo and Scan Barcode missions. Physical activity, only if you turn on automatic sleep detection.</p></details>
+  <details><summary>Does WAKEM keep my photos or need a camera?</summary><p>The Photo mission accepts any photo and discards it at once. It is not saved, uploaded or checked. The Scan Barcode mission accepts any barcode or QR code and reads it on your phone. If you do not want the camera, pick another mission or deny the permission; a math problem replaces a camera mission.</p></details>
+  <details><summary>Does WAKEM work on tablets?</summary><p>Yes. On tablets the screen can rotate and the content stays at a readable width. On phones the app stays in portrait. Alarms, missions and the permission steps work the same way.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/wakem/privacy/">Privacy policy</a> &middot; <a href="/wakem/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>
