@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theca: File Manager &amp; Vault &mdash; File manager with an encrypted document vault and a cleaner that asks before it deletes.</title>
+<meta name="description" content="Theca is a file manager for Android. It shows your phone&#x27;s storage, SD cards and USB drives, opens ZIP and other archives, and has a storage cleaner and a Trash so you can undo a delete. It also has a Vault for documents. Each file you move in is encrypted with AES-256-GCM and removed from where it">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/theca/">
+<meta property="og:title" content="Theca: File Manager &amp; Vault">
+<meta property="og:description" content="File manager with an encrypted document vault and a cleaner that asks before it deletes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/theca/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/theca.png">
+<link rel="icon" href="/icons/theca.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Theca: File Manager & Vault",
+  "description": "File manager with an encrypted document vault and a cleaner that asks before it deletes.",
+  "url": "https://logicgategames.github.io/theca/",
+  "image": "https://logicgategames.github.io/icons/theca.png",
+  "operatingSystem": "Android 11 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.theca",
+  "featureList": [
+   "Browse phone, SD card and USB",
+   "Copy, move, rename, share",
+   "ZIP and other archives",
+   "Encrypted Vault for documents",
+   "Vault PIN and fingerprint",
+   "Backup of the whole Vault",
+   "Cleaner that asks first",
+   "Trash with restore"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Is the Theca Vault real encryption, and where is the key stored?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It is real encryption. Each file is encrypted with AES-256-GCM, and file names are encrypted too. The key is a random AES-256 key made on your phone and kept in the Android Keystore, where it cannot be exported. It is not made from your PIN. The PIN only lets you into the Vault inside the app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What if I forget my Vault PIN?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "There is no reset. Theca has no recovery word, no account and no copy of your key, so neither you nor the developer can open the Vault without the PIN. Clearing Theca's data starts a new, empty Vault and deletes the old files for good. Only a Vault backup you made earlier, plus its passphrase, brings them back."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my Vault files if I uninstall Theca?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "They are deleted. The encryption key lives in the Android Keystore and goes with the app, so the encrypted files cannot be read afterward. Make a Vault backup first and restore it after reinstalling. Files you moved out of the Vault, and anything in the Trash, stay on your phone."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What does the storage cleaner delete, and can I undo it?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It only suggests: large files, installers, old downloads, empty folders, forgotten files and duplicates. Nothing goes until you choose, and removed files go to the Trash, where you can restore them. They still use space until the Trash is emptied. Uninstalling an app goes through Android's own screen, and Theca cannot undo that."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Why does Theca need All files access?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "A file manager has to see files in every folder, not only photos. Theca uses the permission to list, open, copy, move, compress, clean and encrypt files on your phone, at your request. It explains this before Android's screen opens, and you can withdraw it in Android settings. Android keeps other apps' private folders closed to every app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Theca upload my files or use the cloud?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. There is no account and no cloud sync, and your files, names and Vault are never uploaded. The app uses the internet only for built-in Google services such as Google Play and crash reports, which carry none of your files. A Vault backup goes only where you choose to save it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can Theca open and create ZIP files?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Theca compresses files to ZIP, with an optional password, and opens and extracts ZIP, 7z, TAR, GZ, BZ2 and XZ files, including password-protected ZIP files. RAR files are not extracted. A forgotten ZIP password cannot be recovered by Theca."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Theca work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones use portrait. Tablets and open foldables can rotate, and screens keep a readable width on large displays while photo grids fill the window."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/theca.png" alt="Theca: File Manager &amp; Vault icon" width="72" height="72">
+    <div><h1>Theca: File Manager &amp; Vault</h1><p>File manager with an encrypted document vault and a cleaner that asks before it deletes.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.theca"><img src="/assets/google-play-badge.png"
+     alt="Get Theca: File Manager &amp; Vault on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Theca is a file manager for Android. It shows your phone&#x27;s storage, SD cards and USB drives, opens ZIP and other archives, and has a storage cleaner and a Trash so you can undo a delete.</p>
+  <p>It also has a Vault for documents. Each file you move in is encrypted with AES-256-GCM and removed from where it was, and a PIN opens it. There is no account and no cloud sync. Your files never leave your phone.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Browse phone, SD card and USB</h3><p>Go through internal storage, SD cards and USB drives, or jump to Images, Videos, Audio, Documents, Downloads, APKs and Archives. Search by name, pin favorite folders and files to the home screen, and switch between list and grid with thumbnails.</p></div>
+    <div class="feature"><h3>Copy, move, rename, share</h3><p>Copy, move, rename and share files and folders, with a progress bar you can cancel. Photos, videos, music and text files open inside the app, and you can swipe through a folder&#x27;s photos and zoom in.</p></div>
+    <div class="feature"><h3>ZIP and other archives</h3><p>Compress files to ZIP, with an optional password. Open and extract ZIP, 7z, TAR, GZ, BZ2 and XZ files, including password-protected ZIP files. RAR files are not extracted.</p></div>
+    <div class="feature"><h3>Encrypted Vault for documents</h3><p>Move PDFs, Word files, spreadsheets, notes and other files into the Vault. Each one is encrypted with AES-256-GCM, its name is encrypted too, and the original is deleted. PDFs and text files open inside the Vault without a decrypted copy being saved. Photos and videos are not accepted.</p></div>
+    <div class="feature"><h3>Vault PIN and fingerprint</h3><p>A PIN opens the Vault, and fingerprint is optional and off until you switch it on. Wrong PINs bring longer waits. The Vault locks shortly after you leave the app, and screenshots are blocked while it is open.</p></div>
+    <div class="feature"><h3>Backup of the whole Vault</h3><p>Save the whole Vault as one encrypted file with a passphrase you choose, wherever you like through Android&#x27;s file picker. Restore it on a new phone or after reinstalling.</p></div>
+    <div class="feature"><h3>Cleaner that asks first</h3><p>See what takes up space: large files, installers for apps you already have, old downloads, empty folders, forgotten files, exact duplicate files, unused apps and a storage map. You choose what goes, and one copy of each duplicate is always kept.</p></div>
+    <div class="feature"><h3>Trash with restore</h3><p>Files you delete in Theca, including from the Cleaner, go to the Trash first. Restore one to its old folder, or empty the Trash yourself.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your files, file names, folders and Vault stay on your phone. Theca has no account and no cloud sync, and it runs no servers for your files. The app does use the internet for the Google services built into it: Google Play handles the rating prompt and tells the app what you own, and Firebase Crashlytics sends a crash report if the app crashes. A report holds technical error details and the phone model, never your files, file names or Vault contents. The privacy policy lists every service. A Vault backup is made only when you ask, and you choose where it goes. Android&#x27;s automatic cloud backup and phone-to-phone transfer are turned off for the app.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Is the Theca Vault real encryption, and where is the key stored?</summary><p>It is real encryption. Each file is encrypted with AES-256-GCM, and file names are encrypted too. The key is a random AES-256 key made on your phone and kept in the Android Keystore, where it cannot be exported. It is not made from your PIN. The PIN only lets you into the Vault inside the app.</p></details>
+  <details><summary>What if I forget my Vault PIN?</summary><p>There is no reset. Theca has no recovery word, no account and no copy of your key, so neither you nor the developer can open the Vault without the PIN. Clearing Theca&#x27;s data starts a new, empty Vault and deletes the old files for good. Only a Vault backup you made earlier, plus its passphrase, brings them back.</p></details>
+  <details><summary>What happens to my Vault files if I uninstall Theca?</summary><p>They are deleted. The encryption key lives in the Android Keystore and goes with the app, so the encrypted files cannot be read afterward. Make a Vault backup first and restore it after reinstalling. Files you moved out of the Vault, and anything in the Trash, stay on your phone.</p></details>
+  <details><summary>What does the storage cleaner delete, and can I undo it?</summary><p>It only suggests: large files, installers, old downloads, empty folders, forgotten files and duplicates. Nothing goes until you choose, and removed files go to the Trash, where you can restore them. They still use space until the Trash is emptied. Uninstalling an app goes through Android&#x27;s own screen, and Theca cannot undo that.</p></details>
+  <details><summary>Why does Theca need All files access?</summary><p>A file manager has to see files in every folder, not only photos. Theca uses the permission to list, open, copy, move, compress, clean and encrypt files on your phone, at your request. It explains this before Android&#x27;s screen opens, and you can withdraw it in Android settings. Android keeps other apps&#x27; private folders closed to every app.</p></details>
+  <details><summary>Does Theca upload my files or use the cloud?</summary><p>No. There is no account and no cloud sync, and your files, names and Vault are never uploaded. The app uses the internet only for built-in Google services such as Google Play and crash reports, which carry none of your files. A Vault backup goes only where you choose to save it.</p></details>
+  <details><summary>Can Theca open and create ZIP files?</summary><p>Yes. Theca compresses files to ZIP, with an optional password, and opens and extracts ZIP, 7z, TAR, GZ, BZ2 and XZ files, including password-protected ZIP files. RAR files are not extracted. A forgotten ZIP password cannot be recovered by Theca.</p></details>
+  <details><summary>Does Theca work on tablets?</summary><p>Yes. Phones use portrait. Tablets and open foldables can rotate, and screens keep a readable width on large displays while photo grids fill the window.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 11 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/theca/privacy/">Privacy policy</a> &middot; <a href="/theca/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sigla: Gesture Shortcuts &mdash; Draw a letter or shape to open an app, a link or a phone action, over any app.</title>
+<meta name="description" content="Sigla is a gesture shortcut app for Android. Open its pad, draw a letter such as C for Chrome or a shape such as a star, and the app, link or phone action you chose runs. You can also tap a button instead of drawing. The pad opens over whatever app you are in, so you do not go back to the home">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/sigla/">
+<meta property="og:title" content="Sigla: Gesture Shortcuts">
+<meta property="og:description" content="Draw a letter or shape to open an app, a link or a phone action, over any app.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/sigla/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/sigla.png">
+<link rel="icon" href="/icons/sigla.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sigla: Gesture Shortcuts",
+  "description": "Draw a letter or shape to open an app, a link or a phone action, over any app.",
+  "url": "https://logicgategames.github.io/sigla/",
+  "image": "https://logicgategames.github.io/icons/sigla.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.sigla",
+  "featureList": [
+   "Draw a mark to run an action",
+   "A deck of buttons under your thumb",
+   "Apps, links and phone actions",
+   "Act on what you copied or selected",
+   "Many ways to reach it",
+   "Screenshot and navigation actions",
+   "Lock-screen button",
+   "Your own look, in your language"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do I draw a gesture, and where?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open the pad: tap the floating button, the Quick Settings tile or a home-screen widget. The pad appears over the app you are in. Draw your mark anywhere on it and the action runs. You can tap a deck button instead. Teach your own marks in the app under Add gesture."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What can a Sigla gesture open or do?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It can open an app, a web link or an app deep link. It can toggle the torch, switch sound profile, change volume or brightness, lock rotation, open the camera, Wi-Fi or Bluetooth settings, start a timer, set an alarm, run a Tasker task, or act on copied text. Some actions need the accessibility service."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can a gesture call or message a contact?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Not directly. Sigla has no contact picker and asks for no contacts permission. It can dial a phone number you have copied, which opens your dialer with that number, and it can open a link of your own, such as a messaging app's deep link."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Why does Sigla use the Accessibility service?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Android offers no other way to take a screenshot, press Back, Home or Recent apps, open the power menu, lock the screen, or show a button on the lock screen. It also tells Sigla which app is in front, to hide the button in apps you choose, open a per-app deck and lift above the keyboard. It is optional."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What does the Accessibility service read, and what does it not?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It reads only the name of the app that came to the front and whether the new window is the keyboard. It has no permission to read window content, so it cannot see text, messages, passwords or pages, or tap for you. Nothing it sees is saved or sent. Until you agree on Sigla's disclosure screen, it reads nothing."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Sigla work on the lock screen?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes, as an optional button, if the accessibility service is on. It offers only the torch, camera, sound profiles and alarms, so nothing on it shows your data. The camera opens in its secure mode, and Alarm asks you to unlock first. Silent needs Do Not Disturb access."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Sigla use a lot of battery, and does it run in the background?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The floating button runs a foreground service with a notification while it is on, so Android does not stop it. Turn the button off and the service stops. The Quick Settings tile, widgets and text-selection menu start Sigla only when you use them. The lock-screen button reads the proximity sensor only while the screen is on."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is anything uploaded? Does Sigla work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Your gestures and settings never leave your phone unless you save a backup or copy them to a new phone. If the app crashes, a technical crash report is sent, never your gestures. Sigla works on tablets. Phones stay in portrait. Tablets and open foldables can rotate."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/sigla.png" alt="Sigla: Gesture Shortcuts icon" width="72" height="72">
+    <div><h1>Sigla: Gesture Shortcuts</h1><p>Draw a letter or shape to open an app, a link or a phone action, over any app.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.sigla"><img src="/assets/google-play-badge.png"
+     alt="Get Sigla: Gesture Shortcuts on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Sigla is a gesture shortcut app for Android. Open its pad, draw a letter such as C for Chrome or a shape such as a star, and the app, link or phone action you chose runs. You can also tap a button instead of drawing.</p>
+  <p>The pad opens over whatever app you are in, so you do not go back to the home screen first. Your gestures, buttons and settings stay on your phone. There is no account and no sync.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Draw a mark to run an action</h3><p>Letters, digits and simple shapes are built in, and you can teach Sigla your own strokes. It matches the shape you draw, so a slight tilt still counts.</p></div>
+    <div class="feature"><h3>A deck of buttons under your thumb</h3><p>Prefer tapping? A ring of buttons fans out around where you touched, kept clear of your thumb and on screen. You choose the buttons and their order.</p></div>
+    <div class="feature"><h3>Apps, links and phone actions</h3><p>A gesture can open an app, a web link or an app deep link, toggle the torch, switch sound profile, change volume or brightness, lock rotation, open the camera, start a timer or set an alarm. It can also run a Tasker task if Tasker is installed.</p></div>
+    <div class="feature"><h3>Act on what you copied or selected</h3><p>Search for, open as a link, show on a map, dial or share the text on your clipboard. You can also pick Sigla in Android&#x27;s text-selection menu to use the selected text.</p></div>
+    <div class="feature"><h3>Many ways to reach it</h3><p>A floating button that hides in apps you choose and lifts above the keyboard, a Quick Settings tile, home-screen widgets, an app-icon shortcut and the text-selection menu.</p></div>
+    <div class="feature"><h3>Screenshot and navigation actions</h3><p>With the optional accessibility service on, a gesture can take a screenshot, press Back, Home or Recent apps, open notifications, Quick Settings or the power menu, or lock the screen.</p></div>
+    <div class="feature"><h3>Lock-screen button</h3><p>An optional button on the lock screen with only the torch, camera, sound profiles and alarms. It ignores touches while the phone is covered, such as in a pocket.</p></div>
+    <div class="feature"><h3>Your own look, in your language</h3><p>Change the floating button&#x27;s size, shape and colour, and the ink you draw with. Back up your gestures, decks and settings to a file you keep, and pick the app&#x27;s language.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your gestures, buttons and settings are stored in Sigla&#x27;s private storage on your phone. Sigla has no account and no code that uploads them. Each saved gesture is a list of coordinates with the name and action you chose. Backups are made only when you ask, and you choose where the file is saved. The file is not encrypted. Android&#x27;s cloud backup is turned off for the app. If you set up a new phone with Android&#x27;s phone-to-phone transfer, Android copies your gestures, decks and settings directly to it. The only thing Sigla sends is an automatic crash report if the app crashes, handled by Firebase Crashlytics. It holds technical error details, the device model and Android version, and never your gestures or anything on your screen. The accessibility service reads the name of the app in front and whether the keyboard opened, uses it on your phone, and does not save or send it.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do I draw a gesture, and where?</summary><p>Open the pad: tap the floating button, the Quick Settings tile or a home-screen widget. The pad appears over the app you are in. Draw your mark anywhere on it and the action runs. You can tap a deck button instead. Teach your own marks in the app under Add gesture.</p></details>
+  <details><summary>What can a Sigla gesture open or do?</summary><p>It can open an app, a web link or an app deep link. It can toggle the torch, switch sound profile, change volume or brightness, lock rotation, open the camera, Wi-Fi or Bluetooth settings, start a timer, set an alarm, run a Tasker task, or act on copied text. Some actions need the accessibility service.</p></details>
+  <details><summary>Can a gesture call or message a contact?</summary><p>Not directly. Sigla has no contact picker and asks for no contacts permission. It can dial a phone number you have copied, which opens your dialer with that number, and it can open a link of your own, such as a messaging app&#x27;s deep link.</p></details>
+  <details><summary>Why does Sigla use the Accessibility service?</summary><p>Android offers no other way to take a screenshot, press Back, Home or Recent apps, open the power menu, lock the screen, or show a button on the lock screen. It also tells Sigla which app is in front, to hide the button in apps you choose, open a per-app deck and lift above the keyboard. It is optional.</p></details>
+  <details><summary>What does the Accessibility service read, and what does it not?</summary><p>It reads only the name of the app that came to the front and whether the new window is the keyboard. It has no permission to read window content, so it cannot see text, messages, passwords or pages, or tap for you. Nothing it sees is saved or sent. Until you agree on Sigla&#x27;s disclosure screen, it reads nothing.</p></details>
+  <details><summary>Does Sigla work on the lock screen?</summary><p>Yes, as an optional button, if the accessibility service is on. It offers only the torch, camera, sound profiles and alarms, so nothing on it shows your data. The camera opens in its secure mode, and Alarm asks you to unlock first. Silent needs Do Not Disturb access.</p></details>
+  <details><summary>Does Sigla use a lot of battery, and does it run in the background?</summary><p>The floating button runs a foreground service with a notification while it is on, so Android does not stop it. Turn the button off and the service stops. The Quick Settings tile, widgets and text-selection menu start Sigla only when you use them. The lock-screen button reads the proximity sensor only while the screen is on.</p></details>
+  <details><summary>Is anything uploaded? Does Sigla work on tablets?</summary><p>Your gestures and settings never leave your phone unless you save a backup or copy them to a new phone. If the app crashes, a technical crash report is sent, never your gestures. Sigla works on tablets. Phones stay in portrait. Tablets and open foldables can rotate.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/sigla/privacy/">Privacy policy</a> &middot; <a href="/sigla/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

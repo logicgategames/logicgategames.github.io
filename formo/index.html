@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formo: Batch Photo Resizer &mdash; Resize, compress, convert and watermark many photos at once. Originals stay untouched.</title>
+<meta name="description" content="Formo is a batch photo tool for Android. Pick a set of photos, choose what to do to them, and Formo saves a new copy of each one. It can resize, compress to a file size, convert between formats, rotate and flip, add a watermark, and remove location and other details. Your original photos are never">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/formo/">
+<meta property="og:title" content="Formo: Batch Photo Resizer">
+<meta property="og:description" content="Resize, compress, convert and watermark many photos at once. Originals stay untouched.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/formo/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/formo.png">
+<link rel="icon" href="/icons/formo.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Formo: Batch Photo Resizer",
+  "description": "Resize, compress, convert and watermark many photos at once. Originals stay untouched.",
+  "url": "https://logicgategames.github.io/formo/",
+  "image": "https://logicgategames.github.io/icons/formo.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.formo",
+  "featureList": [
+   "Resize many photos at once",
+   "Compress to a file size",
+   "Convert between formats",
+   "Rotate and flip",
+   "Text or logo watermark",
+   "Remove location and metadata",
+   "Originals are never changed",
+   "Names, sharing and next steps"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do I resize many photos at once?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open the Resize tool, pick your photos, and choose the longest side in pixels, an exact width and height, or a percent. Tap Start. Formo works through the photos one at a time and saves a resized copy of each. Keep Formo open until it finishes. If you stop it, the photos already done are kept."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I resize photos to a file size like 200 KB?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Use the Compress tool and enter the size in KB. Each photo comes out as close to it as it can get without going over. Formo lowers the quality first and scales the photo down only if that is not enough. A photo that cannot get that small is saved as small as it goes, and marked."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Which photo formats can Formo convert?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It reads JPG, PNG, WebP and HEIC, and also GIF and BMP. It saves JPG, PNG or WebP. It cannot save HEIC. Reading HEIC needs Android 9 or newer. When a PNG with a see-through background becomes a JPG, the background turns white. Photos Formo cannot read are skipped and listed."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Formo overwrite or delete my original photos? Where do the copies go?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Formo never changes or deletes the photos you pick. It saves new copies in the Pictures/Formo folder, and your gallery shows them there. By default a copy keeps the original name with _formo added, or you can name the copies yourself. On Android 8 and 9 it asks permission to save files."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to the EXIF and location data in my photos?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "By default a copy keeps the date and camera details and leaves the location out. The Remove metadata tool can take out the location only, or every detail. Your originals keep theirs. If you add your name to the copies, it is written into each one as the author and copyright."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Are my photos uploaded anywhere?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Formo has no account and no cloud, and your photos stay on your phone. It reads only the photos you choose. If you tap Share, the copies go to the app you pick, and that app handles them from there."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I crop, rename or watermark photos in a batch?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Resize can trim every photo to the same aspect ratio from the center, or crop to fill an exact size. It does not crop each photo by hand. The copies can be renamed with your own text, a number and the date. The Watermark tool adds your text or your logo to every photo."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Formo work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones use portrait. Tablets and open foldables can rotate, and the screens keep a readable width on large displays."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/formo.png" alt="Formo: Batch Photo Resizer icon" width="72" height="72">
+    <div><h1>Formo: Batch Photo Resizer</h1><p>Resize, compress, convert and watermark many photos at once. Originals stay untouched.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.formo"><img src="/assets/google-play-badge.png"
+     alt="Get Formo: Batch Photo Resizer on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Formo is a batch photo tool for Android. Pick a set of photos, choose what to do to them, and Formo saves a new copy of each one. It can resize, compress to a file size, convert between formats, rotate and flip, add a watermark, and remove location and other details.</p>
+  <p>Your original photos are never changed. The copies are saved in the Pictures/Formo folder, where your gallery shows them. There is no account and no cloud, and your photos never leave your phone.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Resize many photos at once</h3><p>Set the longest side in pixels, an exact width and height, or a percent. Ready sizes cover square and portrait posts, stories, banners, thumbnails and link previews. You can also trim every photo to an aspect ratio from the center.</p></div>
+    <div class="feature"><h3>Compress to a file size</h3><p>Type the size a form or website asks for, in KB. Each photo is made as close to that size as it can get without going over. If a photo cannot get that small, it is saved as small as it goes and marked. You can also set the quality yourself.</p></div>
+    <div class="feature"><h3>Convert between formats</h3><p>Turn HEIC, PNG, WebP and JPG photos into JPG, PNG or WebP. Other tools can keep each photo&#x27;s own format.</p></div>
+    <div class="feature"><h3>Rotate and flip</h3><p>Turn every photo the same way, mirror it, or flip it upside down. A no-turn choice makes sideways photos upright in the pixels, for sites that show them sideways.</p></div>
+    <div class="feature"><h3>Text or logo watermark</h3><p>Put your text or your logo on every photo. Choose the position, size, opacity and angle, or repeat the mark across the whole photo. Save the texts you use often.</p></div>
+    <div class="feature"><h3>Remove location and metadata</h3><p>Take the place a photo was taken out of the copies, or take out every detail: date, camera and settings. Every tool leaves the location out unless you switch on Keep location in copies.</p></div>
+    <div class="feature"><h3>Originals are never changed</h3><p>Formo only reads the photos you pick and saves new files. It uses Android&#x27;s photo picker, so it sees only the photos you choose, and it asks for no access to your whole library.</p></div>
+    <div class="feature"><h3>Names, sharing and next steps</h3><p>Keep the file names or name the copies with your own text, a number and the date. A live preview shows the first photo before and after. Share all the copies at once, or send them straight into another Formo tool. You can also send photos to Formo from any app&#x27;s Share menu.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Everything Formo does to your photos happens on your phone. Formo reads only the photos you choose in Android&#x27;s photo picker or send to it from another app&#x27;s Share menu, and only while it works on them. It writes new copies to Pictures/Formo and never changes the originals. There is no account and no cloud, and your photos, their file names and their metadata are not uploaded. Your settings, saved watermark texts, a copy of your logo, the name you add to copies, and a short list of recent batches stay on your phone. The app is left out of Android&#x27;s cloud backup, and the Export in Settings saves your options to a file you choose. The app does connect to Google services for things that do not involve your photos, including crash reports through Firebase Crashlytics. A crash report holds technical error details and basic device information, never photos, file names or metadata. When you share copies, Formo hands them to the app you pick in Android&#x27;s share screen.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do I resize many photos at once?</summary><p>Open the Resize tool, pick your photos, and choose the longest side in pixels, an exact width and height, or a percent. Tap Start. Formo works through the photos one at a time and saves a resized copy of each. Keep Formo open until it finishes. If you stop it, the photos already done are kept.</p></details>
+  <details><summary>Can I resize photos to a file size like 200 KB?</summary><p>Yes. Use the Compress tool and enter the size in KB. Each photo comes out as close to it as it can get without going over. Formo lowers the quality first and scales the photo down only if that is not enough. A photo that cannot get that small is saved as small as it goes, and marked.</p></details>
+  <details><summary>Which photo formats can Formo convert?</summary><p>It reads JPG, PNG, WebP and HEIC, and also GIF and BMP. It saves JPG, PNG or WebP. It cannot save HEIC. Reading HEIC needs Android 9 or newer. When a PNG with a see-through background becomes a JPG, the background turns white. Photos Formo cannot read are skipped and listed.</p></details>
+  <details><summary>Does Formo overwrite or delete my original photos? Where do the copies go?</summary><p>No. Formo never changes or deletes the photos you pick. It saves new copies in the Pictures/Formo folder, and your gallery shows them there. By default a copy keeps the original name with _formo added, or you can name the copies yourself. On Android 8 and 9 it asks permission to save files.</p></details>
+  <details><summary>What happens to the EXIF and location data in my photos?</summary><p>By default a copy keeps the date and camera details and leaves the location out. The Remove metadata tool can take out the location only, or every detail. Your originals keep theirs. If you add your name to the copies, it is written into each one as the author and copyright.</p></details>
+  <details><summary>Are my photos uploaded anywhere?</summary><p>No. Formo has no account and no cloud, and your photos stay on your phone. It reads only the photos you choose. If you tap Share, the copies go to the app you pick, and that app handles them from there.</p></details>
+  <details><summary>Can I crop, rename or watermark photos in a batch?</summary><p>Yes. Resize can trim every photo to the same aspect ratio from the center, or crop to fill an exact size. It does not crop each photo by hand. The copies can be renamed with your own text, a number and the date. The Watermark tool adds your text or your logo to every photo.</p></details>
+  <details><summary>Does Formo work on tablets?</summary><p>Yes. Phones use portrait. Tablets and open foldables can rotate, and the screens keep a readable width on large displays.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/formo/privacy/">Privacy policy</a> &middot; <a href="/formo/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

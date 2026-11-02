@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrivox: Record &amp; Transcribe &mdash; Voice recorder that turns speech into text on your phone, in many languages.</title>
+<meta name="description" content="Scrivox is a voice recorder with transcription for Android. You record, or import an audio file you already have, and the app turns the speech into text using the Whisper speech model running on your phone. There is no account and no cloud sync. Your recordings and transcripts stay on your phone.">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/scrivox/">
+<meta property="og:title" content="Scrivox: Record &amp; Transcribe">
+<meta property="og:description" content="Voice recorder that turns speech into text on your phone, in many languages.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/scrivox/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/scrivox.png">
+<link rel="icon" href="/icons/scrivox.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Scrivox: Record & Transcribe",
+  "description": "Voice recorder that turns speech into text on your phone, in many languages.",
+  "url": "https://logicgategames.github.io/scrivox/",
+  "image": "https://logicgategames.github.io/icons/scrivox.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "ProductivityApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.scrivox",
+  "featureList": [
+   "Records with the screen off",
+   "Transcription on your phone",
+   "Many languages",
+   "Import audio you already have",
+   "Timestamps and speaker labels",
+   "Summaries of key points",
+   "Translate a transcript",
+   "Export and back up"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Does Scrivox transcribe on my phone or in the cloud? Is my audio uploaded?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "On your phone. Scrivox runs the Whisper speech model locally. The model is downloaded once from HuggingFace the first time you set the app up, and after that transcription needs no server. Your audio and transcripts are not uploaded. Optional language packs and the summary model are downloaded from GitHub."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Which languages does Scrivox support?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Many. You can choose the spoken language or let the app detect it. Whisper covers a wide range of languages, and some Indian languages, such as Hindi and Telugu, have optional dedicated packs. The menu inside the app shows the exact list."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How accurate is the transcription?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Good on clear speech, weaker with background noise, strong accents, several people talking at once and unusual names. The speech model is compact so it can run on a phone. You can edit any transcript, and Add Vocabulary lets you list names or terms it often gets wrong."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can Scrivox record in the background or with the screen off?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Recording runs as a foreground service with a notification, so it continues when the screen is off or you leave the app. If a phone call or another app takes the microphone, recording pauses or captures silence until you resume. Transcription afterward also runs in the background."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I transcribe an audio file I already have?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Use the import button in Scrivox, or share or open an audio file from another app. Imports are set to detect the language automatically. A very long file takes a long time to transcribe on a phone, and files Android cannot decode are rejected."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does it show timestamps or label who is speaking?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Timestamps, yes: each segment has a time, and tapping it jumps to that spot in the audio. Speaker labels are also available, shown as Speaker 1, Speaker 2 and so on, and you can rename them. Labels are approximate and can mix up similar voices, especially in long recordings."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I export a transcript or the audio?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open a recording and tap Export. You can share the text, save it as a .txt or PDF file in Downloads, save subtitles as .srt, copy it, or share the original audio. Recordings are made as m4a (AAC) files; imported files keep their original format."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Scrivox work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones use portrait. Tablets and open foldables can rotate between portrait and landscape."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/scrivox.png" alt="Scrivox: Record &amp; Transcribe icon" width="72" height="72">
+    <div><h1>Scrivox: Record &amp; Transcribe</h1><p>Voice recorder that turns speech into text on your phone, in many languages.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.scrivox"><img src="/assets/google-play-badge.png"
+     alt="Get Scrivox: Record &amp; Transcribe on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Scrivox is a voice recorder with transcription for Android. You record, or import an audio file you already have, and the app turns the speech into text using the Whisper speech model running on your phone.</p>
+  <p>There is no account and no cloud sync. Your recordings and transcripts stay on your phone. You can edit a transcript, search your library, sort recordings into folders and export the result as text, PDF or subtitles.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Records with the screen off</h3><p>Recording runs in a foreground service with a notification, so it keeps going when the screen turns off or you switch apps. You can pause and resume, and start a recording from a Quick Settings tile or the app icon&#x27;s shortcut.</p></div>
+    <div class="feature"><h3>Transcription on your phone</h3><p>The Whisper speech model runs on your phone, so your audio is not sent anywhere to be transcribed. The model is downloaded once the first time you set the app up, and transcription needs it.</p></div>
+    <div class="feature"><h3>Many languages</h3><p>Scrivox can detect the spoken language or you can choose it yourself. For some Indian languages, such as Hindi and Telugu, you can add a dedicated language pack for better accuracy.</p></div>
+    <div class="feature"><h3>Import audio you already have</h3><p>Pick an audio file from inside Scrivox, or share or open one from another app. It is added to your library and transcribed like a new recording.</p></div>
+    <div class="feature"><h3>Timestamps and speaker labels</h3><p>A transcript is split into timed segments. Tap one to jump to that point in the audio. The app can also mark who spoke when, and you can rename each speaker.</p></div>
+    <div class="feature"><h3>Summaries of key points</h3><p>Scrivox can write a short summary with key points and action items on your phone. A basic summary works right away, and you can add an optional larger model for sharper results.</p></div>
+    <div class="feature"><h3>Translate a transcript</h3><p>Translate a transcript into many other languages on your phone. Each language is downloaded once from Google, and the text itself is not sent anywhere.</p></div>
+    <div class="feature"><h3>Export and back up</h3><p>Share or save a transcript as text, a PDF or a subtitle file, copy it, or share the original audio. You can also save the whole library as an encrypted backup file, protected by a passphrase you choose.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your recordings and transcripts are stored in the app&#x27;s private storage on your phone and are not uploaded by Scrivox. There is no account and no cloud sync. The app uses the internet to download its models: the speech model from HuggingFace, the optional language packs and summary model from GitHub, and translation languages from Google. Those servers see your IP address, never your audio or text. If the app crashes, a technical crash report is sent through Firebase Crashlytics, without your recordings or transcripts. Other services built into the app are listed in the privacy policy. Android&#x27;s automatic cloud backup is turned off for the app, and uninstalling removes your recordings.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Does Scrivox transcribe on my phone or in the cloud? Is my audio uploaded?</summary><p>On your phone. Scrivox runs the Whisper speech model locally. The model is downloaded once from HuggingFace the first time you set the app up, and after that transcription needs no server. Your audio and transcripts are not uploaded. Optional language packs and the summary model are downloaded from GitHub.</p></details>
+  <details><summary>Which languages does Scrivox support?</summary><p>Many. You can choose the spoken language or let the app detect it. Whisper covers a wide range of languages, and some Indian languages, such as Hindi and Telugu, have optional dedicated packs. The menu inside the app shows the exact list.</p></details>
+  <details><summary>How accurate is the transcription?</summary><p>Good on clear speech, weaker with background noise, strong accents, several people talking at once and unusual names. The speech model is compact so it can run on a phone. You can edit any transcript, and Add Vocabulary lets you list names or terms it often gets wrong.</p></details>
+  <details><summary>Can Scrivox record in the background or with the screen off?</summary><p>Yes. Recording runs as a foreground service with a notification, so it continues when the screen is off or you leave the app. If a phone call or another app takes the microphone, recording pauses or captures silence until you resume. Transcription afterward also runs in the background.</p></details>
+  <details><summary>Can I transcribe an audio file I already have?</summary><p>Yes. Use the import button in Scrivox, or share or open an audio file from another app. Imports are set to detect the language automatically. A very long file takes a long time to transcribe on a phone, and files Android cannot decode are rejected.</p></details>
+  <details><summary>Does it show timestamps or label who is speaking?</summary><p>Timestamps, yes: each segment has a time, and tapping it jumps to that spot in the audio. Speaker labels are also available, shown as Speaker 1, Speaker 2 and so on, and you can rename them. Labels are approximate and can mix up similar voices, especially in long recordings.</p></details>
+  <details><summary>How do I export a transcript or the audio?</summary><p>Open a recording and tap Export. You can share the text, save it as a .txt or PDF file in Downloads, save subtitles as .srt, copy it, or share the original audio. Recordings are made as m4a (AAC) files; imported files keep their original format.</p></details>
+  <details><summary>Does Scrivox work on tablets?</summary><p>Yes. Phones use portrait. Tablets and open foldables can rotate between portrait and landscape.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/scrivox/privacy/">Privacy policy</a> &middot; <a href="/scrivox/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

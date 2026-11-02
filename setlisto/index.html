@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setlisto: Sheet Music Reader &mdash; Read sheet music, play setlists and turn pages with a Bluetooth pedal.</title>
+<meta name="description" content="Setlisto is a sheet music reader for performing. You add your own PDFs and scans, put songs in setlists, and play a whole set straight through while a Bluetooth pedal, a tap or a swipe turns the pages. It works on phones and tablets. Your music stays where you keep it and never leaves your device.">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/setlisto/">
+<meta property="og:title" content="Setlisto: Sheet Music Reader">
+<meta property="og:description" content="Read sheet music, play setlists and turn pages with a Bluetooth pedal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/setlisto/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/setlisto.png">
+<link rel="icon" href="/icons/setlisto.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Setlisto: Sheet Music Reader",
+  "description": "Read sheet music, play setlists and turn pages with a Bluetooth pedal.",
+  "url": "https://logicgategames.github.io/setlisto/",
+  "image": "https://logicgategames.github.io/icons/setlisto.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "ProductivityApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.setlisto",
+  "featureList": [
+   "Bluetooth pedals and keyboards",
+   "Tap and swipe turns",
+   "Setlists for every gig",
+   "Half-page turns",
+   "Two pages on a tablet",
+   "Pen and highlighter",
+   "Your music, where it is",
+   "Made for the stage"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Does Setlisto work with a Bluetooth page-turner pedal?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Pair the pedal in Android's Bluetooth settings. Pedals act as keyboards, so common keys such as Page Down, Page Up, the arrows, Space and Enter turn pages straight away. If your pedal sends other keys, open Settings, then Pedals and page turns, pick an action and press the pedal. Next song and previous song can have keys too."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I turn pages without a pedal?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Tap the right side of the page for the next page and the left side for the previous one, or swipe sideways. Tap the middle to show the controls. A setting lets the whole lower half go forward instead. Every turn is an instant change, not a slide."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I add PDFs and images?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Add a folder of PDFs and scans, pick single files, or use Open with or Share from another app. Setlisto reads PDF, JPEG, PNG and WebP files where they are and never copies, changes or deletes them. A password-protected PDF will not open. You can split a songbook into songs, each with its own pages."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I use setlists at a gig?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Make a setlist, add songs from your library and drag them into order. The same song can appear twice. Play the setlist and the last page of each song turns into the first page of the next. Setlisto remembers the song and page you were on, even after the app closes or the phone restarts."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I see two pages at once, and does it work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. On a tablet in landscape you can show two pages side by side. Phones stay in portrait with one page. Half-page turns put the top half of the next page above the bottom half of the current page, so you can read ahead. Fit to width moves down the page first, then turns."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I write on my sheet music?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Open Annotate in the reader's menu and draw with one finger or a pen. Choose the black, red or blue pen or the highlighter. The eraser removes whole strokes, and undo steps back. Marks are kept inside Setlisto, not written into your PDF. Uninstalling Setlisto removes them unless you exported your library."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is my music uploaded, and does Setlisto need a connection on stage?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Your music, setlists and marks stay on your device and are never uploaded. There is no account. Setlisto draws pages from the files on the device, so turning pages does not depend on a connection. Keep your gig music on the device itself, not only in a cloud-storage app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I back up my library or move to a new tablet?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "In Settings, choose Export library to save a file with your songs, details, setlists, pen marks and bookmarks. It does not include the music files. On the new device, add the folder with your music, then choose Import library. Settings can be exported too. Android's automatic backup is off, so export before you uninstall."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/setlisto.png" alt="Setlisto: Sheet Music Reader icon" width="72" height="72">
+    <div><h1>Setlisto: Sheet Music Reader</h1><p>Read sheet music, play setlists and turn pages with a Bluetooth pedal.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.setlisto"><img src="/assets/google-play-badge.png"
+     alt="Get Setlisto: Sheet Music Reader on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Setlisto is a sheet music reader for performing. You add your own PDFs and scans, put songs in setlists, and play a whole set straight through while a Bluetooth pedal, a tap or a swipe turns the pages.</p>
+  <p>It works on phones and tablets. Your music stays where you keep it and never leaves your device. Setlisto includes no sheet music, only what you add.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Bluetooth pedals and keyboards</h3><p>A page-turn pedal works like a keyboard, so common keys turn pages right away. You can teach Setlisto other keys, including keys for next song and previous song. A held pedal does not repeat.</p></div>
+    <div class="feature"><h3>Tap and swipe turns</h3><p>Tap the right side of the page for the next page and the left side for the previous one, or swipe sideways. You can choose a layout where the lower half of the screen goes forward. Every turn is instant.</p></div>
+    <div class="feature"><h3>Setlists for every gig</h3><p>Make a setlist, drag songs into order and use the same song twice in one set. Play straight through: the last page of one song turns into the first page of the next. Your song and page are saved on every turn.</p></div>
+    <div class="feature"><h3>Half-page turns</h3><p>The top half of the next page appears above the bottom half of the current page. You can read ahead without a jump in the middle of a phrase.</p></div>
+    <div class="feature"><h3>Two pages on a tablet</h3><p>On a tablet in landscape, show two pages side by side. Phones stay in portrait and show one page at a time.</p></div>
+    <div class="feature"><h3>Pen and highlighter</h3><p>Mark any page with a black, red or blue pen or a highlighter. Erase and undo. Marks sit on top of the page and your PDF is never changed.</p></div>
+    <div class="feature"><h3>Your music, where it is</h3><p>Add folders of PDFs and scans and Setlisto reads them in place, copying nothing. Split a songbook into songs, add a title, composer, key and tags, and search your library. Open or share files from other apps.</p></div>
+    <div class="feature"><h3>Made for the stage</h3><p>Night mode, a screen that stays on, crop margins (automatic or by hand), fit to width, zoom, bookmarks and go to page. A touch lock ignores an elbow or a sleeve, and the pedal still turns pages.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your sheet music, setlists, pen marks, bookmarks and settings stay on your device. There is no account and no sign-in. Setlisto asks for no storage permission: it reads only the folders and files you choose in Android&#x27;s file picker, and it never changes, moves or deletes them. Pen marks and song details are kept in the app&#x27;s own storage, not in your files. What does leave the device is an automatic crash report if the app crashes, handled by Firebase Crashlytics, and requests to Google Play, such as the rating sheet. A crash report holds technical error details, the device model, Android version, app version and a random installation ID, never your music, file names or notes. Library and settings files are made only when you export them, and you choose where they go. Android&#x27;s automatic cloud backup is turned off for the app. Uninstalling removes everything Setlisto stored; your music files stay where they were.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Does Setlisto work with a Bluetooth page-turner pedal?</summary><p>Yes. Pair the pedal in Android&#x27;s Bluetooth settings. Pedals act as keyboards, so common keys such as Page Down, Page Up, the arrows, Space and Enter turn pages straight away. If your pedal sends other keys, open Settings, then Pedals and page turns, pick an action and press the pedal. Next song and previous song can have keys too.</p></details>
+  <details><summary>Can I turn pages without a pedal?</summary><p>Yes. Tap the right side of the page for the next page and the left side for the previous one, or swipe sideways. Tap the middle to show the controls. A setting lets the whole lower half go forward instead. Every turn is an instant change, not a slide.</p></details>
+  <details><summary>How do I add PDFs and images?</summary><p>Add a folder of PDFs and scans, pick single files, or use Open with or Share from another app. Setlisto reads PDF, JPEG, PNG and WebP files where they are and never copies, changes or deletes them. A password-protected PDF will not open. You can split a songbook into songs, each with its own pages.</p></details>
+  <details><summary>How do I use setlists at a gig?</summary><p>Make a setlist, add songs from your library and drag them into order. The same song can appear twice. Play the setlist and the last page of each song turns into the first page of the next. Setlisto remembers the song and page you were on, even after the app closes or the phone restarts.</p></details>
+  <details><summary>Can I see two pages at once, and does it work on tablets?</summary><p>Yes. On a tablet in landscape you can show two pages side by side. Phones stay in portrait with one page. Half-page turns put the top half of the next page above the bottom half of the current page, so you can read ahead. Fit to width moves down the page first, then turns.</p></details>
+  <details><summary>Can I write on my sheet music?</summary><p>Yes. Open Annotate in the reader&#x27;s menu and draw with one finger or a pen. Choose the black, red or blue pen or the highlighter. The eraser removes whole strokes, and undo steps back. Marks are kept inside Setlisto, not written into your PDF. Uninstalling Setlisto removes them unless you exported your library.</p></details>
+  <details><summary>Is my music uploaded, and does Setlisto need a connection on stage?</summary><p>Your music, setlists and marks stay on your device and are never uploaded. There is no account. Setlisto draws pages from the files on the device, so turning pages does not depend on a connection. Keep your gig music on the device itself, not only in a cloud-storage app.</p></details>
+  <details><summary>How do I back up my library or move to a new tablet?</summary><p>In Settings, choose Export library to save a file with your songs, details, setlists, pen marks and bookmarks. It does not include the music files. On the new device, add the folder with your music, then choose Import library. Settings can be exported too. Android&#x27;s automatic backup is off, so export before you uninstall.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/setlisto/privacy/">Privacy policy</a> &middot; <a href="/setlisto/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

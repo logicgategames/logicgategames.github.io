@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerno: Swipe Photo Cleaner &mdash; Swipe left to trash a photo, right to keep it. Clean up photos, videos and screenshots.</title>
+<meta name="description" content="Cerno is a swipe-to-clean photo and video cleaner for Android. It shows your gallery one item at a time. Swipe left to trash, swipe right to keep. It opens straight into piles that are already sorted, so there is nothing to set up. Cerno never deletes anything on its own. Trashed items go to your">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/cerno/">
+<meta property="og:title" content="Cerno: Swipe Photo Cleaner">
+<meta property="og:description" content="Swipe left to trash a photo, right to keep it. Clean up photos, videos and screenshots.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/cerno/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/cerno.png">
+<link rel="icon" href="/icons/cerno.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cerno: Swipe Photo Cleaner",
+  "description": "Swipe left to trash a photo, right to keep it. Clean up photos, videos and screenshots.",
+  "url": "https://logicgategames.github.io/cerno/",
+  "image": "https://logicgategames.github.io/icons/cerno.png",
+  "operatingSystem": "Android 11 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.cerno",
+  "featureList": [
+   "Swipe to decide",
+   "Nothing happens until you confirm",
+   "Piles ready to open",
+   "Lookalike photos",
+   "Videos, largest first",
+   "Protect what matters",
+   "Sort and track",
+   "Private by design"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "What happens to a photo when I swipe it away?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Swiping left only marks it. Nothing moves until you open the review screen and confirm. Then Cerno moves the items to your phone's own Android trash, not a permanent delete. Before you confirm, you can undo swipes and pull any marked item back."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I get a trashed photo back, and for how long?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Open the trash in your phone's gallery or files app and restore it. Android decides how long items stay there and empties it on its own, so restore soon. Cerno has no trash screen of its own. A photo you restore is treated as kept and is not offered again."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Cerno delete photos from Google Photos or my cloud backup?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Cerno never connects to Google Photos or any cloud account, and it has no sign-in. It only moves files on your phone to the Android trash. What a backup or sync app does when a file leaves the phone is up to that app, so check its settings first if you rely on it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Cerno find duplicate or similar photos?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. It compares small numeric fingerprints of your photos on the phone, groups near-identical shots such as bursts, and marks the sharpest as the one to keep. The rest are only offered; you choose what to trash. This works on photos, not videos."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does it work with videos and screenshots?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Screenshots get their own pile. Videos can be reviewed largest first and played before you decide. Clips and photos received through WhatsApp and Telegram have their own piles. Photos and videos from the past week, and your favorites, are never offered."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Which permissions does Cerno need, and why?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Access to your photos and videos, so it can list them and move the ones you choose to the trash. If you share only some items, Cerno works with just those. It does not ask for photo location data or all-files access. Skipping Android's confirmation on each cleanup is optional."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is anything uploaded?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No photo, video, thumbnail, file name or image fingerprint leaves your phone, and there is no account or server for them to go to. The only thing Cerno sends about itself is a crash report if the app crashes. It holds technical details, never your media."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Cerno work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones use portrait. Tablets and open foldables can rotate, and every screen keeps a readable width on large displays."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/cerno.png" alt="Cerno: Swipe Photo Cleaner icon" width="72" height="72">
+    <div><h1>Cerno: Swipe Photo Cleaner</h1><p>Swipe left to trash a photo, right to keep it. Clean up photos, videos and screenshots.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.cerno"><img src="/assets/google-play-badge.png"
+     alt="Get Cerno: Swipe Photo Cleaner on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Cerno is a swipe-to-clean photo and video cleaner for Android. It shows your gallery one item at a time. Swipe left to trash, swipe right to keep. It opens straight into piles that are already sorted, so there is nothing to set up.</p>
+  <p>Cerno never deletes anything on its own. Trashed items go to your phone&#x27;s own Android trash, and only after you review the batch and confirm. There is no account and no server, and your photos and videos stay on your phone.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Swipe to decide</h3><p>Swipe left to trash, right to keep, or skip a photo and it comes back next time. Undo steps back through your last swipes.</p></div>
+    <div class="feature"><h3>Nothing happens until you confirm</h3><p>Swipes only mark photos. You see everything marked for the trash on a review screen, can pull any item back, and then confirm the whole batch. Cerno has no automatic clean and no schedule.</p></div>
+    <div class="feature"><h3>Piles ready to open</h3><p>Your library is sorted into piles by month, screenshots, folders, media received through WhatsApp and Telegram, and what is new since your last cleanup. Each pile shows how much space it takes.</p></div>
+    <div class="feature"><h3>Lookalike photos</h3><p>Cerno groups near-identical shots, such as a burst of the same moment, and suggests the sharpest one to keep. The others are offered to you, never trashed for you.</p></div>
+    <div class="feature"><h3>Videos, largest first</h3><p>Review videos starting with the biggest, since that is where most of the space is. Play a clip on the card or open it full screen before you decide.</p></div>
+    <div class="feature"><h3>Protect what matters</h3><p>Choose folders Cerno must never offer. Favorites and anything from the past week are held back automatically.</p></div>
+    <div class="feature"><h3>Sort and track</h3><p>Order a pile by largest, smallest, oldest or newest first. A stats screen shows the space you have cleared and how many photos you have reviewed.</p></div>
+    <div class="feature"><h3>Private by design</h3><p>Reading your library, grouping it and comparing photos all happen on your phone. Cerno never reads the location data stored inside your photos.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your photos and videos stay on your phone. Cerno reads your library, groups it and compares photos for lookalikes on the device. No photo, video, thumbnail, file name or image fingerprint is ever uploaded. There is no account, no sign-in and no analytics service. Cerno keeps a small private index on your phone, made of media IDs, sizes, dates, folder names and image fingerprints, and it is left out of Android&#x27;s backups and deleted when you uninstall. If the app crashes, it sends a crash report through Firebase Crashlytics with technical error details, the phone model and the Android version, never your media. Cerno also uses Google services for functions unrelated to your photos; the privacy policy lists what they collect. Cerno prepares your piles in the background from time to time. That work only reads and never deletes or moves anything.</p>
+
+  <h2>Questions</h2>
+  <details><summary>What happens to a photo when I swipe it away?</summary><p>Swiping left only marks it. Nothing moves until you open the review screen and confirm. Then Cerno moves the items to your phone&#x27;s own Android trash, not a permanent delete. Before you confirm, you can undo swipes and pull any marked item back.</p></details>
+  <details><summary>Can I get a trashed photo back, and for how long?</summary><p>Yes. Open the trash in your phone&#x27;s gallery or files app and restore it. Android decides how long items stay there and empties it on its own, so restore soon. Cerno has no trash screen of its own. A photo you restore is treated as kept and is not offered again.</p></details>
+  <details><summary>Does Cerno delete photos from Google Photos or my cloud backup?</summary><p>Cerno never connects to Google Photos or any cloud account, and it has no sign-in. It only moves files on your phone to the Android trash. What a backup or sync app does when a file leaves the phone is up to that app, so check its settings first if you rely on it.</p></details>
+  <details><summary>Does Cerno find duplicate or similar photos?</summary><p>Yes. It compares small numeric fingerprints of your photos on the phone, groups near-identical shots such as bursts, and marks the sharpest as the one to keep. The rest are only offered; you choose what to trash. This works on photos, not videos.</p></details>
+  <details><summary>Does it work with videos and screenshots?</summary><p>Yes. Screenshots get their own pile. Videos can be reviewed largest first and played before you decide. Clips and photos received through WhatsApp and Telegram have their own piles. Photos and videos from the past week, and your favorites, are never offered.</p></details>
+  <details><summary>Which permissions does Cerno need, and why?</summary><p>Access to your photos and videos, so it can list them and move the ones you choose to the trash. If you share only some items, Cerno works with just those. It does not ask for photo location data or all-files access. Skipping Android&#x27;s confirmation on each cleanup is optional.</p></details>
+  <details><summary>Is anything uploaded?</summary><p>No photo, video, thumbnail, file name or image fingerprint leaves your phone, and there is no account or server for them to go to. The only thing Cerno sends about itself is a crash report if the app crashes. It holds technical details, never your media.</p></details>
+  <details><summary>Does Cerno work on tablets?</summary><p>Yes. Phones use portrait. Tablets and open foldables can rotate, and every screen keeps a readable width on large displays.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 11 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/cerno/privacy/">Privacy policy</a> &middot; <a href="/cerno/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixPort: Passport &amp; Visa Photo &mdash; Make passport, OCI and visa photos and signatures on your phone, checked to the rules</title>
+<meta name="description" content="PixPort prepares passport and visa photos on your phone. You choose a photo from your gallery or take one in the app, and it finds your face, crops the photo to the size the document asks for, checks it against the published rules and saves a JPEG you can upload or print. It started with India&#x27;s">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/pixport/">
+<meta property="og:title" content="PixPort: Passport &amp; Visa Photo">
+<meta property="og:description" content="Make passport, OCI and visa photos and signatures on your phone, checked to the rules">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/pixport/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/pixport.png">
+<link rel="icon" href="/icons/pixport.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PixPort: Passport & Visa Photo",
+  "description": "Make passport, OCI and visa photos and signatures on your phone, checked to the rules",
+  "url": "https://logicgategames.github.io/pixport/",
+  "image": "https://logicgategames.github.io/icons/pixport.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.pixport",
+  "featureList": [
+   "Crops to the size the document asks for",
+   "Checks the photo before you upload",
+   "Passport, OCI and visa photos",
+   "Signature tool",
+   "Guided camera",
+   "4 x 6 inch print sheet",
+   "Saved at print size",
+   "English and Hindi"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Which countries and documents does PixPort support?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "India passport photos and signatures, OCI card photos and signatures, a US 2 x 2 inch photo for a passport or visa, and visa photos for the UK, Schengen countries, Canada and Australia. Each document type has its own rules for size, background and glasses. Other countries are not covered."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does PixPort size the photo and position my head?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It finds your face and the top of your head on your phone, then crops so the head fills the share of the frame the rule gives. For the US 2 x 2 inch photo it also places your eye line at the published height. The result is scaled to the exact pixel size and saved as a JPEG."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can PixPort change or remove the background?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. PixPort does not replace or remove your background. It checks whether the wall behind you is plain and the right color for the document, and whether lines, objects or shadows show. If not, it tells you to retake the photo against a plain wall with even light."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I print the photos, and can I upload them online?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Both. Each photo is a JPEG at the exact pixel size and file size the portal asks for, ready to upload. For printing, save the 4 x 6 inch print sheet and take it to a photo shop. It holds as many copies as fit at true size, with cut guides. Ask the shop to print at actual size."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will my photo be accepted?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "PixPort cannot promise that. It follows the published size and photo rules and shows what looks wrong, but the portal or the authority decides whether to accept a photo. Rules change, so check the current requirements with the portal, embassy or visa center before you upload. PixPort is not a government app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is my photo uploaded anywhere?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Your photo is checked and cropped on your phone and is not uploaded by PixPort. It is saved to your gallery only when you tap Save. If you tap Share, the photo goes to the app you choose, and that app's own rules apply from then on."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does PixPort work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It installs and runs on tablets, which can rotate freely. Phones stay in portrait. The screens are designed for phones and use the same layout on a tablet, so it is not a tablet-specific design."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/pixport.png" alt="PixPort: Passport &amp; Visa Photo icon" width="72" height="72">
+    <div><h1>PixPort: Passport &amp; Visa Photo</h1><p>Make passport, OCI and visa photos and signatures on your phone, checked to the rules</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.pixport"><img src="/assets/google-play-badge.png"
+     alt="Get PixPort: Passport &amp; Visa Photo on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>PixPort prepares passport and visa photos on your phone. You choose a photo from your gallery or take one in the app, and it finds your face, crops the photo to the size the document asks for, checks it against the published rules and saves a JPEG you can upload or print.</p>
+  <p>It started with India&#x27;s passport application portal and also makes OCI card photos and signatures, a US 2 x 2 inch photo, and visa photos for the UK, Schengen countries, Canada and Australia. Your photos never leave your phone through PixPort. PixPort is an independent tool, not a government app.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Crops to the size the document asks for</h3><p>PixPort finds your face on your phone and crops the photo so your head fills the share of the frame that the document&#x27;s rule gives. It scales the result to the exact pixel size and keeps the file inside the portal&#x27;s file-size range.</p></div>
+    <div class="feature"><h3>Checks the photo before you upload</h3><p>It looks at background, head turn and tilt, eyes, expression, mouth, forehead, ears, lighting and sharpness. Where the rule says to take glasses off, it checks for glasses too. Red marks what the rules do not allow. Yellow marks what could be better.</p></div>
+    <div class="feature"><h3>Passport, OCI and visa photos</h3><p>Presets cover the India passport photo, the OCI card photo, a US 2 x 2 inch photo, and visa photos for the UK, Schengen countries, Canada and Australia. Each has its own size, file-size range, background colour and glasses rule.</p></div>
+    <div class="feature"><h3>Signature tool</h3><p>Take a photo of your signature on paper. PixPort finds the ink, crops it so it fills the share of the image the portal asks for, and saves a small JPEG. It can also make the exact 3:1 strip used for the OCI card.</p></div>
+    <div class="feature"><h3>Guided camera</h3><p>Take the photo inside the app. An oval shows where to put your face, and hints tell you to move closer, move back or center your face. When the frame is right, it takes the photo for you. The camera is optional, and choosing from your gallery needs no camera permission.</p></div>
+    <div class="feature"><h3>4 x 6 inch print sheet</h3><p>Save a sheet with as many copies of your photo as fit, each at its true physical size, with thin cut guides. The sheet is built for 4 x 6 inch paper, so a photo shop can print it at actual size.</p></div>
+    <div class="feature"><h3>Saved at print size</h3><p>Each saved photo is tagged with the resolution for its physical size, so printing it at 100 percent gives the right size on paper. Save it to your gallery or share it to another app.</p></div>
+    <div class="feature"><h3>English and Hindi</h3><p>The app is available in English and in Hindi, and you can switch the language in Settings.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">PixPort works on your photos and signatures on your phone. Face detection, the glasses check and the check for which pixels are you all run on the phone, and your photos are not uploaded. There is no account and no sign-in. Photos you process are kept in the app&#x27;s private storage for a short time and removed automatically. A photo goes to your gallery only when you tap Save, and it goes to another app only when you tap Share and choose one. The camera is used only on the in-app camera screen. If the app crashes, a crash report with technical details and the phone model is sent through Firebase Crashlytics. It never includes your photos. The privacy policy lists the other Google services the app uses. None of them receives your photos.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Which countries and documents does PixPort support?</summary><p>India passport photos and signatures, OCI card photos and signatures, a US 2 x 2 inch photo for a passport or visa, and visa photos for the UK, Schengen countries, Canada and Australia. Each document type has its own rules for size, background and glasses. Other countries are not covered.</p></details>
+  <details><summary>How does PixPort size the photo and position my head?</summary><p>It finds your face and the top of your head on your phone, then crops so the head fills the share of the frame the rule gives. For the US 2 x 2 inch photo it also places your eye line at the published height. The result is scaled to the exact pixel size and saved as a JPEG.</p></details>
+  <details><summary>Can PixPort change or remove the background?</summary><p>No. PixPort does not replace or remove your background. It checks whether the wall behind you is plain and the right color for the document, and whether lines, objects or shadows show. If not, it tells you to retake the photo against a plain wall with even light.</p></details>
+  <details><summary>Can I print the photos, and can I upload them online?</summary><p>Both. Each photo is a JPEG at the exact pixel size and file size the portal asks for, ready to upload. For printing, save the 4 x 6 inch print sheet and take it to a photo shop. It holds as many copies as fit at true size, with cut guides. Ask the shop to print at actual size.</p></details>
+  <details><summary>Will my photo be accepted?</summary><p>PixPort cannot promise that. It follows the published size and photo rules and shows what looks wrong, but the portal or the authority decides whether to accept a photo. Rules change, so check the current requirements with the portal, embassy or visa center before you upload. PixPort is not a government app.</p></details>
+  <details><summary>Is my photo uploaded anywhere?</summary><p>No. Your photo is checked and cropped on your phone and is not uploaded by PixPort. It is saved to your gallery only when you tap Save. If you tap Share, the photo goes to the app you choose, and that app&#x27;s own rules apply from then on.</p></details>
+  <details><summary>Does PixPort work on tablets?</summary><p>It installs and runs on tablets, which can rotate freely. Phones stay in portrait. The screens are designed for phones and use the same layout on a tablet, so it is not a tablet-specific design.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/pixport/privacy/">Privacy policy</a> &middot; <a href="/pixport/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

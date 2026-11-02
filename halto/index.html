@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halto - App Blocker &amp; Focus &mdash; Block distracting apps with focus sessions, schedules and a strict mode.</title>
+<meta name="description" content="Halto is an app blocker and focus app for Android. Start a focus session, or set a schedule, and when you open an app you chose to block, Halto covers it with a block screen that shows how much time is left. Halto blocks apps, not websites. It needs two permissions you grant in Android settings,">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/halto/">
+<meta property="og:title" content="Halto - App Blocker &amp; Focus">
+<meta property="og:description" content="Block distracting apps with focus sessions, schedules and a strict mode.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/halto/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/halto.png">
+<link rel="icon" href="/icons/halto.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Halto - App Blocker & Focus",
+  "description": "Block distracting apps with focus sessions, schedules and a strict mode.",
+  "url": "https://logicgategames.github.io/halto/",
+  "image": "https://logicgategames.github.io/icons/halto.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "ProductivityApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.halto",
+  "featureList": [
+   "Focus sessions that block at once",
+   "Recurring schedules",
+   "Strict mode",
+   "Intent mode",
+   "Accountability partner",
+   "Daily time budgets per app",
+   "Stats and streaks",
+   "Always-allowed apps, tile and widget"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How does Halto block an app?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "While a session or schedule is running, Halto watches which app comes to the front. When it is one you chose to block, Halto shows a full-screen block screen over it with a timer. The Accessibility service makes this instant. Without it, Halto checks the open app about once a second."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Why does Halto need Usage Access, Display over other apps and Accessibility?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Usage Access lets Halto see which app is open and how long each app is used, for blocking, daily budgets and stats. Display over other apps lets it show the block screen on top of a blocked app. Accessibility is optional: it tells Halto instantly when an app opens, and is needed for daily app budgets."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What can Halto's Accessibility service see?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Only the package name of the app whose window just came to the front, such as an app's internal ID. The service is set up without permission to read window content, so it cannot read text, messages or passwords on your screen. Halto also uses it to press Home when it must send you out of a blocked app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I end a session early in Strict mode?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes, but it takes effort. There is no End session button on the block screen. In the app you must type a confirmation phrase and wait out a countdown. Strict mode cannot be switched off while a session runs. If you set up an accountability partner, their short timed accesses still work."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I uninstall Halto or turn off its permissions during a block?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Halto does not lock you in. Android Settings is never blocked, so you can remove a permission, switch off Accessibility, force-stop or uninstall Halto at any time, even in Strict mode. Switching off or deleting a running schedule also ends its block. If a permission goes, Halto posts a notice that blocking has stopped."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Halto block websites?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Halto blocks apps. It does not see web addresses or page content. Browsers are left alone by the built-in categories, including All apps. If you pick a browser by name in Custom apps, Halto blocks that whole browser app while the session runs."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Do blocks and schedules still work after I restart my phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. After a restart, an app update or a clock or time zone change, Halto sets its schedule alarms again, and a manual session that is still running resumes for its remaining time. If you deny the Alarms and reminders permission, schedules still run but start less precisely."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Halto use a lot of battery, and does it work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "While a session or schedule runs, Halto keeps a notification and checks the open app. With Accessibility on, that check is a slow safety net. Some phones stop background apps, so allow unrestricted battery use if blocking stops. Yes on tablets: phones stay in portrait, tablets can rotate."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/halto.png" alt="Halto - App Blocker &amp; Focus icon" width="72" height="72">
+    <div><h1>Halto - App Blocker &amp; Focus</h1><p>Block distracting apps with focus sessions, schedules and a strict mode.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.halto"><img src="/assets/google-play-badge.png"
+     alt="Get Halto - App Blocker &amp; Focus on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Halto is an app blocker and focus app for Android. Start a focus session, or set a schedule, and when you open an app you chose to block, Halto covers it with a block screen that shows how much time is left.</p>
+  <p>Halto blocks apps, not websites. It needs two permissions you grant in Android settings, Usage Access and Display over other apps. A third, the Accessibility service, is optional and makes blocking faster on some phones. What each one is used for is explained below.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Focus sessions that block at once</h3><p>Pick a length, pick what to block (social apps, streaming, games, all apps, or apps you choose), and start. Opening a blocked app brings up the block screen with a countdown and a Back to work button.</p></div>
+    <div class="feature"><h3>Recurring schedules</h3><p>Set start and end times for chosen days of the week, including overnight windows such as 10 PM to 7 AM. Quick presets and a Bedtime mode are built in. Schedules start on their own, with the app closed.</p></div>
+    <div class="feature"><h3>Strict mode</h3><p>Removes the End session button from the block screen. Stopping early means opening Halto, typing a confirmation phrase and waiting out a countdown; the Quick Settings tile only opens the app. It cannot be switched off during a session.</p></div>
+    <div class="feature"><h3>Intent mode</h3><p>Instead of a plain block, Halto asks how long you need the app and opens it for that many minutes. It is for moments when you want to use an app on purpose, not by habit.</p></div>
+    <div class="feature"><h3>Accountability partner</h3><p>A friend or family member sets a secret PIN on your phone. The PIN is needed to change how many short timed accesses you get per day. Your partner&#x27;s name and the PIN hash stay on your phone.</p></div>
+    <div class="feature"><h3>Daily time budgets per app</h3><p>Give an app a daily allowance in minutes. When today&#x27;s use reaches it, Halto blocks the app until midnight. This works whether or not a session is running, and needs the Accessibility service.</p></div>
+    <div class="feature"><h3>Stats and streaks</h3><p>See focus time, completed sessions, which apps you tried to open most, screen time and your daily streak. Set a daily focus goal. Export your sessions as a CSV file.</p></div>
+    <div class="feature"><h3>Always-allowed apps, tile and widget</h3><p>Choose apps that are never blocked. Start or stop a session from a Quick Settings tile or a home screen widget. Phone, Settings, clock and emergency apps are never blocked.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your focus sessions, schedules, stats, blocked-app choices and settings are stored on your phone. The app-usage information Halto reads through Usage Access and the Accessibility service is processed on your phone and is not uploaded. If the app crashes, it sends a crash report through Firebase Crashlytics with technical error details, the phone model, the Android version and the app version, never your blocked apps, sessions or partner details. Exports and backup files are saved only where you choose. Android&#x27;s cloud backup is turned off for the app. The privacy policy lists the third-party services Halto uses.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How does Halto block an app?</summary><p>While a session or schedule is running, Halto watches which app comes to the front. When it is one you chose to block, Halto shows a full-screen block screen over it with a timer. The Accessibility service makes this instant. Without it, Halto checks the open app about once a second.</p></details>
+  <details><summary>Why does Halto need Usage Access, Display over other apps and Accessibility?</summary><p>Usage Access lets Halto see which app is open and how long each app is used, for blocking, daily budgets and stats. Display over other apps lets it show the block screen on top of a blocked app. Accessibility is optional: it tells Halto instantly when an app opens, and is needed for daily app budgets.</p></details>
+  <details><summary>What can Halto&#x27;s Accessibility service see?</summary><p>Only the package name of the app whose window just came to the front, such as an app&#x27;s internal ID. The service is set up without permission to read window content, so it cannot read text, messages or passwords on your screen. Halto also uses it to press Home when it must send you out of a blocked app.</p></details>
+  <details><summary>Can I end a session early in Strict mode?</summary><p>Yes, but it takes effort. There is no End session button on the block screen. In the app you must type a confirmation phrase and wait out a countdown. Strict mode cannot be switched off while a session runs. If you set up an accountability partner, their short timed accesses still work.</p></details>
+  <details><summary>Can I uninstall Halto or turn off its permissions during a block?</summary><p>Yes. Halto does not lock you in. Android Settings is never blocked, so you can remove a permission, switch off Accessibility, force-stop or uninstall Halto at any time, even in Strict mode. Switching off or deleting a running schedule also ends its block. If a permission goes, Halto posts a notice that blocking has stopped.</p></details>
+  <details><summary>Does Halto block websites?</summary><p>No. Halto blocks apps. It does not see web addresses or page content. Browsers are left alone by the built-in categories, including All apps. If you pick a browser by name in Custom apps, Halto blocks that whole browser app while the session runs.</p></details>
+  <details><summary>Do blocks and schedules still work after I restart my phone?</summary><p>Yes. After a restart, an app update or a clock or time zone change, Halto sets its schedule alarms again, and a manual session that is still running resumes for its remaining time. If you deny the Alarms and reminders permission, schedules still run but start less precisely.</p></details>
+  <details><summary>Does Halto use a lot of battery, and does it work on tablets?</summary><p>While a session or schedule runs, Halto keeps a notification and checks the open app. With Accessibility on, that check is a slow safety net. Some phones stop background apps, so allow unrestricted battery use if blocking stops. Yes on tablets: phones stay in portrait, tablets can rotate.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/halto/privacy/">Privacy policy</a> &middot; <a href="/halto/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>
