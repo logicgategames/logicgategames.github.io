@@ -37,25 +37,27 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <li><strong>Google User Messaging Platform</strong> - Where the law requires it, asks for your consent to personalized ads and stores your answer on your phone. You can change your answer at any time in the App's Settings.</li>
 <li><strong>Firebase Crashlytics</strong> - If the App crashes, or hits certain errors it recovers from, a report is sent so we can fix the problem. It contains the technical details of the error, the device model, Android version, app version and a random installation ID. Reports contain no name, email, advertising ID, photo or anything from your book. Reports are kept for up to 90 days.</li>
 <li><strong>Google Play In-App Review</strong> - After you have made a few keepsakes (an art card, a backdrop, a PDF book or an export), the App may ask Google Play once to show its rating sheet. Your rating goes to Google Play; the App is not told whether or how you rated it.</li>
-<li><strong>Google Play Billing</strong> - Handles the one-time Pro purchase. Google tells the App whether you own it. We never see your card or payment details.</li>
+<li><strong>Google Play Billing</strong> - Handles the one-time Pro purchase. Google tells the App whether you own it. To tag the purchase, the App sends Google a random installation ID, scrambled with a one-way hash; it is not your name or your account. We never see your card or payment details.</li>
 <li><strong>Google Play services (Backdrops)</strong> - The cut-out that lifts your baby from a photo for a backdrop scene runs on your phone. Google Play services downloads the tool the first time it is needed; your photo is not sent anywhere.</li>
 </ul>
 
 <h2>3. Camera, Photos And Videos</h2>
-<p>Parvulo does not ask for access to your whole gallery. You choose photos and videos with Android's photo picker, and only the items you pick are copied into your book. "Take a photo" and "Record a video" open your camera app, and only the picture or video you keep comes back to Parvulo. Saving a picture to your gallery or sharing it happens only when you ask, through Android's own screens. When you share a photo, the copy that leaves the App has its location (GPS) information removed; the photo in your book is not changed.</p>
+<p>Parvulo does not ask for access to your whole gallery. You choose photos and videos with Android's photo picker, and only the items you pick are copied into your book. "Take a photo" and "Record a video" open your camera app, and only the picture or video you keep comes back to Parvulo. Saving a picture to your gallery or sharing it happens only when you ask, through Android's own screens. When you share a photo, the copy that leaves the App has its location (GPS) information removed; the photo in your book is not changed. On Android 8 and 9 only, saving a picture or video to your gallery first asks for Android's storage permission, with a reason, at the moment you save; newer versions of Android need no permission for this.</p>
 
 <h2>4. Export And Restore</h2>
 <p>You can save your whole book as one ZIP file and restore it on another phone. This only happens when you ask for it, and Android asks you where the file goes. Once saved, the file is under your control; if you put it somewhere that syncs to a cloud service, that service's terms apply to it. Android's own device backup is turned off for Parvulo, so a ZIP file or Drive sharing is how a book moves to a new phone.</p>
 
 <h2>5. Sharing Through Your Google Drive (Optional)</h2>
 <p>If you turn on Drive sharing, the App asks Google for permission to use your Google Drive with the narrowest access Google offers (the "drive.file" permission): the App can see and change only the folder and files it creates, never the rest of your Drive. It then keeps a copy of your book in that folder: your children's names and dates, your memories with their captions and notes, and their photos and videos. Height and weight entries, your own custom milestones and your settings are not copied there; they travel only in the ZIP file from Export (section 4).</p>
-<p>The folder belongs to your Google account and is stored by Google under Google's terms and privacy policy. If you share it with relatives, Google sends them the invitation and they see it in Google Drive; we never receive the folder, its contents or their addresses. You can stop sharing, turn Drive sharing off, or delete the folder in Google Drive at any time; you can also remove Parvulo's access in your Google Account settings.</p>
+<p>The folder belongs to your Google account and is stored by Google under Google's terms and privacy policy. If you share it with relatives, Google sends them the invitation and they see it in Google Drive; we never receive the folder, its contents or their addresses. You can stop sharing, turn Drive sharing off, or delete the folder in Google Drive at any time; you can also remove Parvulo's access in your Google Account settings. A large photo or video can take a while to send, so Android may show a notification while a transfer runs, and a sync you started can finish after you leave the App. Sync only starts from the Drive screens; there is no background schedule.</p>
 
 <h2>6. What Is Stored On Your Phone</h2>
 <ul>
 <li>Your book (section 1), and the name you gave to sign your keepsakes, if any.</li>
 <li>Your language, appearance and unit settings.</li>
-<li>Whether you have bought Pro, and your ad-consent answer.</li>
+<li>If you turn on the app lock, a salted hash of your PIN (never the PIN itself). The fingerprint check is done by Android; the App never receives your fingerprint.</li>
+<li>If you turn on Drive sharing, the Google account address you chose, the folder's name and link, and a record of what has been sent.</li>
+<li>Whether you have bought Pro (with Google Play's signed purchase receipt), your ad-consent answer, and a random installation ID used only to tag purchases.</li>
 </ul>
 <p>Everything is removed when you uninstall the App. Save a ZIP file or use Drive sharing first if you want to keep your book.</p>
 

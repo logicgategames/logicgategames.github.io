@@ -15,10 +15,10 @@
 </head>
 <body>
 <h1>Privacy Policy — Fotolok</h1>
-<p class="updated">Last updated: October 2026 · LogicGateGames LLC</p>
+<p class="updated">Last updated: November 2026 · LogicGateGames LLC</p>
 
 <div class="highlight">
-<strong>In short:</strong> Fotolok keeps your vault on your device. There are no accounts, no cloud, no ads, and no analytics. We never see, receive, or store your photos or videos. If the app crashes, a technical crash report is sent so we can fix it; it never contains your photos, videos, PIN or anything from your vault.
+<strong>In short:</strong> Fotolok keeps your vault on your device. There are no accounts, no cloud, and no analytics. We never see, receive, or store your photos or videos. If the app crashes, a technical crash report is sent so we can fix it; it never contains your photos, videos, PIN or anything from your vault.
 </div>
 
 <h2>1. Data We Do NOT Collect</h2>
@@ -26,7 +26,7 @@
 <li><strong>Your photos and videos</strong> — encrypted and stored only on your device; never uploaded to us or anyone else.</li>
 <li><strong>Personal information</strong> — no account, no name, no email address, no phone number.</li>
 <li><strong>Usage analytics</strong> — we do not track how you use the app. There is no analytics SDK.</li>
-<li><strong>Advertising data</strong> — Fotolok shows no ads and contains no advertising SDK. It does not collect or share an advertising ID.</li>
+<li><strong>Advertising ID</strong> — Fotolok does not collect or share an advertising ID.</li>
 <li><strong>Location, contacts, or camera</strong> — the app does not request the camera permission and does not access your location or contacts.</li>
 </ul>
 
@@ -36,6 +36,7 @@
 <li><strong>Your PIN</strong> — stored only as a salted PBKDF2 hash, never as the PIN itself. We cannot recover it.</li>
 <li><strong>Your recovery word</strong> (optional) — stored the same way, never as the word itself. We cannot recover it.</li>
 <li><strong>App settings</strong> — such as your feature choices (fingerprint unlock, decoy vault, disguise).</li>
+<li><strong>Album names and details of what you hide</strong> — the albums you create, and each hidden item's original file name and folder. File names and folders are stored encrypted.</li>
 <li><strong>A local log of failed unlock attempts</strong> — the time and the number of digits tried. No photo is taken; there is no camera.</li>
 </ul>
 <p>All of the above lives in the app's private storage and is excluded from Android's automatic cloud backup.</p>
@@ -50,7 +51,7 @@
 
 <h2>4. Permissions</h2>
 <ul>
-<li><strong>Photos and videos</strong> — so you can choose which items to move into the vault. Selected items are encrypted on your device. Once the encrypted copies are saved, Fotolok asks Android to delete the originals from your gallery; on Android 11 and later, Android shows its own confirmation first. If you choose <em>Unhide to gallery</em>, an ordinary, unencrypted copy of that item is written back to your device's shared photo storage.</li>
+<li><strong>Photos and videos</strong> — on Android 13 and later, Fotolok uses Android's system photo picker, so you choose which items to move into the vault and the app requests no photo or video permission. On Android 12 and earlier it asks for access to your photos and videos to show its own gallery, and on Android 9 and earlier also for permission to delete the originals. Where it has that access (Android 10 to 12), it also uses the "Access media location" permission so a hidden photo keeps its location details; they stay inside the encrypted copy and never leave your phone. Selected items are encrypted on your device. Once the encrypted copies are saved, Fotolok asks Android to delete the originals from your gallery; on Android 11 and later, Android shows its own confirmation first. Items that live only in a cloud photo library are copied into the vault and their originals stay in that library. If you choose <em>Unhide to gallery</em>, an ordinary, unencrypted copy of that item is written back to your device's shared photo storage.</li>
 <li><strong>Fingerprint / biometric</strong> — optional, to unlock the vault without typing your PIN. Biometric data is handled entirely by Android and never seen by the app.</li>
 <li><strong>Internet</strong> — Fotolok's own features never use the network and never upload your photos or videos. The permission is added by Google Play Billing and Firebase Crashlytics, which sends a crash report when the app crashes. In-App Review is handled by the Google Play Store app on your device.</li>
 </ul>
@@ -59,7 +60,7 @@
 <p>Fotolok offers an optional in-app purchase that unlocks additional capacity. Payments are processed entirely by <strong>Google Play</strong>. We never receive your card or payment details. Google's handling of the transaction is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
 <h2>6. Third-Party Services</h2>
-<p>Fotolok uses Google Play Billing and Google Play In-App Review, both provided through the Google Play Store app on your device, and Firebase Crashlytics for crash reports. It uses no advertising networks and no analytics services.</p>
+<p>Fotolok uses Google Play Billing and Google Play In-App Review, both provided through the Google Play Store app on your device, and Firebase Crashlytics for crash reports. It uses no analytics services.</p>
 <ul>
 <li><strong>Firebase Crashlytics</strong> — If the app crashes, Crashlytics sends a crash report so we can fix the problem. A report contains the error's technical details (stack trace), device model, Android version, app version, the type of build and the name of the app store it was installed from, and a random Crashlytics installation ID. It never includes your content, such as your photos and videos, and it contains no name, email or advertising ID. Reports are processed by Google and kept for up to 90 days. We do not sell or share them.</li>
 </ul>

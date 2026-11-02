@@ -23,7 +23,7 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <body>
 <header><h1>Privacy Policy</h1><p>Theca: File Manager &amp; Vault - LogicGateGames LLC</p></header>
 <main>
-<p style="font-size:0.85rem;color:#888;margin-bottom:24px">Last updated: October 2026</p>
+<p style="font-size:0.85rem;color:#888;margin-bottom:24px">Last updated: November 2026</p>
 <p>This Privacy Policy describes how LogicGateGames LLC handles information when you use Theca (the "App"), a file manager, storage cleaner and encrypted vault for Android. By using the App you agree to the practices described here.</p>
 
 <h2>1. Your Files Never Leave Your Phone</h2>
@@ -37,7 +37,7 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <p>Only if you open the Cleaner's "Unused apps" card or the storage map's apps and choose to allow it, Theca asks for Android's "Usage access". With it, Theca reads on your phone when each app you installed was last used and how much space it takes, to list apps you have not opened for a long time and to show your apps on the storage map. This information is not stored by Theca and never leaves your phone. Theca never offers system apps for removal, and uninstalling an app always happens through Android's own screen, where you confirm it.</p>
 
 <h2>4. The Vault</h2>
-<p>Documents you move into the Vault are encrypted on your phone with AES-256-GCM, using a key kept in the Android Keystore, and the original is removed. The Vault does not take photos or videos. The names of Vault files are encrypted too. Your PIN is never stored, only a verifier sealed by the same key. Fingerprint unlock, if you switch it on, is handled by Android; the App never receives your fingerprint. PDFs and text files open inside the Vault without a decrypted copy being saved to storage.</p>
+<p>Documents you move into the Vault are encrypted on your phone with AES-256-GCM, using a key kept in the Android Keystore, and the original is removed. The Vault does not take photos or videos. The names of Vault files are encrypted too. Your PIN itself is never stored. To check it, the App keeps only a salted hash of the PIN, sealed under the same Keystore key, so it is of no use away from this phone. Fingerprint unlock, if you switch it on, is handled by Android; the App never receives your fingerprint. PDFs and text files open inside the Vault without a decrypted copy being saved to storage.</p>
 <p>If you forget your PIN, we cannot recover it or your Vault: we never have the key. A Vault backup, below, is the way to keep a copy.</p>
 
 <h2>5. Vault Backup</h2>
@@ -57,8 +57,8 @@ footer { text-align: center; padding: 24px; font-size: 0.8rem; color: #aaa; }
 <ul>
 <li>Your settings: language, appearance, list or grid view, sort order, whether hidden files are shown.</li>
 <li>Your favourites and colour tags (the paths of the files and folders you chose).</li>
-<li>The Trash list: what you deleted and where it came from, so it can be restored. Items in the Trash are removed after a while.</li>
-<li>The Vault: the encrypted files, their encrypted names and the PIN verifier.</li>
+<li>The Trash list: what you deleted and where it came from, so it can be restored. Items in the Trash are removed after 30 days.</li>
+<li>The Vault: the encrypted files, their encrypted names, the sealed PIN hash, and a count of recent wrong PINs (for the waiting time between tries).</li>
 <li>Whether you have bought Theca Pro, and your ad-consent answer.</li>
 </ul>
 <p>The App is excluded from Android's device backup: the Vault's key cannot leave the phone, so a restored copy could never be opened. Use the Vault backup instead. Everything the App stores is removed when you uninstall it, the Vault included, unless you have made a Vault backup. Files still in the Trash are the exception: they sit in a hidden folder named ".Theca Trash" on your storage, and stay there until you empty the Trash or delete that folder.</p>
