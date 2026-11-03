@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeonCrosser &mdash; Drag the glowing nodes until no lines cross. A calm untangle puzzle game for Android.</title>
+<meta name="description" content="NeonCrosser is an untangle puzzle game for Android. Each level is a web of glowing neon lines joined at nodes. You drag the nodes around until no two lines cross. The levels start with a short tutorial and grow harder, from easy to expert and beyond. There is no account and no sign-in, and your">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/neon-crosser/">
+<meta property="og:title" content="NeonCrosser">
+<meta property="og:description" content="Drag the glowing nodes until no lines cross. A calm untangle puzzle game for Android.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/neon-crosser/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/neon-crosser.png">
+<link rel="icon" href="/icons/neon-crosser.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "NeonCrosser",
+  "description": "Drag the glowing nodes until no lines cross. A calm untangle puzzle game for Android.",
+  "url": "https://logicgategames.github.io/neon-crosser/",
+  "image": "https://logicgategames.github.io/icons/neon-crosser.png",
+  "operatingSystem": "Android 7.0 or later",
+  "applicationCategory": "GameApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.NeonCrosser",
+  "featureList": [
+   "Drag nodes to untangle",
+   "Hundreds of levels",
+   "Live crossing counter",
+   "Undo and reset",
+   "Skip tickets for hard levels",
+   "Level map with stars",
+   "Saves where you left off",
+   "Music, sound and languages"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do you play NeonCrosser?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Drag the glowing nodes with your finger until no lines cross each other. Crossing lines show in red, and the crossing counter at the top falls as you fix them. When it reaches zero, the level is solved and the game moves on to the next one."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do the levels and stars work?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Level 1 is open from the start. Solving a level opens the next one. You earn one to three stars for each solved level, depending on how many moves you needed. Replaying a level keeps your top result, so a worse try never lowers it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What if I get stuck on a level?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Use Undo to step back, or Reset to start the level again. If you still cannot solve it, a skip ticket lets you move on to the next level. The skipped level is not marked solved, so you can return to it any time from the level map."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does NeonCrosser need an internet connection?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. All levels are inside the game, and you can play and save progress without a connection. Parts of the game that use Google services need a connection to work, such as the rating prompt."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will my progress move to a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Your levels, stars and skip tickets are stored only on the phone you play on. The game has no account and no cloud save, and Android's automatic backup is turned off for it, so a new phone starts again at level 1."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my progress if I uninstall the game?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It is deleted. Your saved levels, stars and tickets live in the game's private storage and go when the game is removed or its data is cleared. We hold no copy, so we cannot restore them. Reinstalling starts you at level 1."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I turn the music off or change the language?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Open Settings from the main menu. Music and sound effects each have an on and off switch, and a volume slider sets the loudness. The game language can be changed from the same Settings screen."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does NeonCrosser work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. On phones the game stays in portrait. On tablets it can rotate, and the level map fits more columns on a wide screen. The puzzle keeps its shape when you turn the device, and your layout is not lost."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/neon-crosser.png" alt="NeonCrosser icon" width="72" height="72">
+    <div><h1>NeonCrosser</h1><p>Drag the glowing nodes until no lines cross. A calm untangle puzzle game for Android.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.NeonCrosser"><img src="/assets/google-play-badge.png"
+     alt="Get NeonCrosser on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>NeonCrosser is an untangle puzzle game for Android. Each level is a web of glowing neon lines joined at nodes. You drag the nodes around until no two lines cross.</p>
+  <p>The levels start with a short tutorial and grow harder, from easy to expert and beyond. There is no account and no sign-in, and your progress is saved on your phone.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Drag nodes to untangle</h3><p>Touch a node and drag it to a new spot. Lines that cross glow red, and clear lines glow cyan. When the last crossing is gone, the level is solved.</p></div>
+    <div class="feature"><h3>Hundreds of levels</h3><p>Levels are grouped by difficulty, from tutorial and easy through medium, hard, expert, master and ultimate. Bigger levels have more nodes and more lines to sort out.</p></div>
+    <div class="feature"><h3>Live crossing counter</h3><p>See how many lines still cross while you move. A move counter and a timer show how you are doing. The timer starts on your first move.</p></div>
+    <div class="feature"><h3>Undo and reset</h3><p>Tap Undo to take back a move, or Reset to put the level back as it started. Stars depend on how many moves you use, so you can replay a level to do better.</p></div>
+    <div class="feature"><h3>Skip tickets for hard levels</h3><p>If a level has you stuck, spend a skip ticket to move on to the next one. The skipped level stays on your level map, so you can come back and solve it later.</p></div>
+    <div class="feature"><h3>Level map with stars</h3><p>The level map shows every level, the stars you earned and the levels that are not open yet. You open the next level by solving the one before it. Your previous result is shown when you replay a level.</p></div>
+    <div class="feature"><h3>Saves where you left off</h3><p>If you leave a level part-way, the game keeps the layout and brings it back next time. Your solved levels and stars are kept as well.</p></div>
+    <div class="feature"><h3>Music, sound and languages</h3><p>Relaxing electronic music plays while you solve. Music and sound effects each have a switch, and there is a volume slider in Settings. You can change the game language in Settings. It also runs on tablets.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">NeonCrosser has no account and no server of ours, and it does not collect your name, email, contacts, photos or location. Your solved levels, stars, skip tickets and settings are saved in the game&#x27;s private storage on your phone. Nothing is uploaded to us, and Android&#x27;s automatic cloud backup is turned off for the game. The game uses Google services, described in the privacy policy, and Google may receive technical device information through them. It also uses Google Play services for the in-app rating prompt. Uninstalling the game deletes your saved progress, and we cannot restore it.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do you play NeonCrosser?</summary><p>Drag the glowing nodes with your finger until no lines cross each other. Crossing lines show in red, and the crossing counter at the top falls as you fix them. When it reaches zero, the level is solved and the game moves on to the next one.</p></details>
+  <details><summary>How do the levels and stars work?</summary><p>Level 1 is open from the start. Solving a level opens the next one. You earn one to three stars for each solved level, depending on how many moves you needed. Replaying a level keeps your top result, so a worse try never lowers it.</p></details>
+  <details><summary>What if I get stuck on a level?</summary><p>Use Undo to step back, or Reset to start the level again. If you still cannot solve it, a skip ticket lets you move on to the next level. The skipped level is not marked solved, so you can return to it any time from the level map.</p></details>
+  <details><summary>Does NeonCrosser need an internet connection?</summary><p>No. All levels are inside the game, and you can play and save progress without a connection. Parts of the game that use Google services need a connection to work, such as the rating prompt.</p></details>
+  <details><summary>Will my progress move to a new phone?</summary><p>No. Your levels, stars and skip tickets are stored only on the phone you play on. The game has no account and no cloud save, and Android&#x27;s automatic backup is turned off for it, so a new phone starts again at level 1.</p></details>
+  <details><summary>What happens to my progress if I uninstall the game?</summary><p>It is deleted. Your saved levels, stars and tickets live in the game&#x27;s private storage and go when the game is removed or its data is cleared. We hold no copy, so we cannot restore them. Reinstalling starts you at level 1.</p></details>
+  <details><summary>Can I turn the music off or change the language?</summary><p>Yes. Open Settings from the main menu. Music and sound effects each have an on and off switch, and a volume slider sets the loudness. The game language can be changed from the same Settings screen.</p></details>
+  <details><summary>Does NeonCrosser work on tablets?</summary><p>Yes. On phones the game stays in portrait. On tablets it can rotate, and the level map fits more columns on a wide screen. The puzzle keeps its shape when you turn the device, and your layout is not lost.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 7.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/neon-crosser/privacy/">Privacy policy</a> &middot; <a href="/neon-crosser/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

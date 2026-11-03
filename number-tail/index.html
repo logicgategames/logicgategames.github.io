@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Tail &mdash; Swipe one path through the numbers in order and fill every open tile.</title>
+<meta name="description" content="Number Tail is a path puzzle for Android. You start on the tile marked 1 and swipe a single unbroken path through the numbers in order, 1, 2, 3 and on to the last one, while covering every open tile on the board. Each level adds something new to plan around: walls, keys and locks, ice, portals,">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/number-tail/">
+<meta property="og:title" content="Number Tail">
+<meta property="og:description" content="Swipe one path through the numbers in order and fill every open tile.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/number-tail/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/number-tail.png">
+<link rel="icon" href="/icons/number-tail.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Number Tail",
+  "description": "Swipe one path through the numbers in order and fill every open tile.",
+  "url": "https://logicgategames.github.io/number-tail/",
+  "image": "https://logicgategames.github.io/icons/number-tail.png",
+  "operatingSystem": "Android 7.0 or later",
+  "applicationCategory": "GameApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.numbertail",
+  "featureList": [
+   "One swipe, one path",
+   "Many levels in stages",
+   "New tile types, taught one at a time",
+   "Hints when you are stuck",
+   "Undo and restart at no cost",
+   "Stars for neat solutions",
+   "Your place is saved",
+   "Light and dark themes, many languages"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do you play Number Tail?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Press on the tile marked 1 and drag to a neighboring tile, one step at a time. Visit the numbers in order, 1, 2, 3 and so on. To finish, reach the last number and cover every open tile with your one path. You cannot cross your own path, except on bridge tiles."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Do I have to fill every square?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Every tile that is not blocked must be on your path, and the numbers must be reached in order. Reaching the last number early does not finish the level while open tiles remain. Walls and blocked tiles are the only parts you do not have to cover."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What do the special tiles do?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Ice pushes your path onward in the direction you were moving. Arrows allow entry from one direction only. Portals jump your path to their partner. Keys open locks of the same color, and hammers break tiles of their color. Swap tiles trade the places of the next two numbers, and dark tiles hide their number until you reveal it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I get a hint, and can I undo a move?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Tap the hint button for a hint. It adds the next part of a route that can still be finished. The undo and restart buttons are always there and cost nothing. Undo takes back your last stretch of path, and restart clears the whole board."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I get three stars on a level?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Stars depend on moves. Finish in the fewest moves the level allows and you get three stars. Finish within 30 percent more moves than that and you get two. Any finished level earns at least one, and you can replay a level to improve its stars."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Number Tail work without an internet connection?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. The levels are made on your phone and your progress is saved there, so the game plays without an internet connection. A connection is only needed for the parts that use Google services, and for opening the privacy policy or the Play Store page from Settings."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will my progress move to a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Not by itself. The game has no account and no cloud save of its own, and progress is stored on your phone. Android's own Google backup may restore app data when you set up a new phone, but that is not something the game controls, so do not count on it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my progress if I uninstall the game?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The saved progress is deleted with the game, and the developer cannot bring it back because no copy is kept. If you reinstall, you start again at level 1. Stars and hints held are lost along with the rest of the save."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Number Tail work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones play in portrait. On larger screens the game can rotate, and in landscape the buttons move beside the board."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/number-tail.png" alt="Number Tail icon" width="72" height="72">
+    <div><h1>Number Tail</h1><p>Swipe one path through the numbers in order and fill every open tile.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.numbertail"><img src="/assets/google-play-badge.png"
+     alt="Get Number Tail on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Number Tail is a path puzzle for Android. You start on the tile marked 1 and swipe a single unbroken path through the numbers in order, 1, 2, 3 and on to the last one, while covering every open tile on the board.</p>
+  <p>Each level adds something new to plan around: walls, keys and locks, ice, portals, hidden tiles and more. There is no timer, undo and restart cost nothing, and a hint is there when you are stuck.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>One swipe, one path</h3><p>Drag from tile 1 to the next tile in line, moving up, down, left or right. The level is done when you reach the last number and every open tile is covered.</p></div>
+    <div class="feature"><h3>Many levels in stages</h3><p>Levels run from a short tutorial stage through Apprentice, Journeyman, Expert and Master to Grandmaster, with boards that grow harder. Each level opens when you finish the one before it.</p></div>
+    <div class="feature"><h3>New tile types, taught one at a time</h3><p>Walls, blocked tiles, one-way arrows, ice, bridges, portals, keys and locks, hammers and breakable tiles, magnets, gears, swap tiles and hidden dark tiles arrive gradually. A short animated demo shows each one the first time it appears.</p></div>
+    <div class="feature"><h3>Hints when you are stuck</h3><p>A hint extends your path along a route that can still be finished. If your path has already gone wrong, the hint steps back first.</p></div>
+    <div class="feature"><h3>Undo and restart at no cost</h3><p>Undo takes back your last stretch of path, and restart clears the board. You can use both as often as you like, so you can try ideas without worry.</p></div>
+    <div class="feature"><h3>Stars for neat solutions</h3><p>Every finished level earns one to three stars, depending on how close your move count is to the shortest solution. Replay a level any time to improve it.</p></div>
+    <div class="feature"><h3>Your place is saved</h3><p>If you leave a level half done, the game keeps your drawn path and puts it back when you return. The level list shows your stars and where you are up to.</p></div>
+    <div class="feature"><h3>Light and dark themes, many languages</h3><p>Switch between a dark and a light look, and turn sound, music and vibration on or off. The game follows your phone&#x27;s language when it has a translation and lets you pick another in Settings.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Number Tail has no account and no sign-in. Your progress, stars, hints held and settings are saved in the game&#x27;s own private storage on your phone, and the game does not upload them to us. The game does not collect your name, email, contacts, photos or location. It uses Google services for features described in the privacy policy, such as the rating prompt, and those services may process device information as Google&#x27;s privacy policy explains. Where a consent form is required, the game shows it, and Android Settings lets you reset your advertising ID. Uninstalling the game deletes the saved progress, and we cannot restore it for you.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do you play Number Tail?</summary><p>Press on the tile marked 1 and drag to a neighboring tile, one step at a time. Visit the numbers in order, 1, 2, 3 and so on. To finish, reach the last number and cover every open tile with your one path. You cannot cross your own path, except on bridge tiles.</p></details>
+  <details><summary>Do I have to fill every square?</summary><p>Yes. Every tile that is not blocked must be on your path, and the numbers must be reached in order. Reaching the last number early does not finish the level while open tiles remain. Walls and blocked tiles are the only parts you do not have to cover.</p></details>
+  <details><summary>What do the special tiles do?</summary><p>Ice pushes your path onward in the direction you were moving. Arrows allow entry from one direction only. Portals jump your path to their partner. Keys open locks of the same color, and hammers break tiles of their color. Swap tiles trade the places of the next two numbers, and dark tiles hide their number until you reveal it.</p></details>
+  <details><summary>How do I get a hint, and can I undo a move?</summary><p>Tap the hint button for a hint. It adds the next part of a route that can still be finished. The undo and restart buttons are always there and cost nothing. Undo takes back your last stretch of path, and restart clears the whole board.</p></details>
+  <details><summary>How do I get three stars on a level?</summary><p>Stars depend on moves. Finish in the fewest moves the level allows and you get three stars. Finish within 30 percent more moves than that and you get two. Any finished level earns at least one, and you can replay a level to improve its stars.</p></details>
+  <details><summary>Does Number Tail work without an internet connection?</summary><p>Yes. The levels are made on your phone and your progress is saved there, so the game plays without an internet connection. A connection is only needed for the parts that use Google services, and for opening the privacy policy or the Play Store page from Settings.</p></details>
+  <details><summary>Will my progress move to a new phone?</summary><p>Not by itself. The game has no account and no cloud save of its own, and progress is stored on your phone. Android&#x27;s own Google backup may restore app data when you set up a new phone, but that is not something the game controls, so do not count on it.</p></details>
+  <details><summary>What happens to my progress if I uninstall the game?</summary><p>The saved progress is deleted with the game, and the developer cannot bring it back because no copy is kept. If you reinstall, you start again at level 1. Stars and hints held are lost along with the rest of the save.</p></details>
+  <details><summary>Does Number Tail work on tablets?</summary><p>Yes. Phones play in portrait. On larger screens the game can rotate, and in landscape the buttons move beside the board.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 7.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/number-tail/privacy/">Privacy policy</a> &middot; <a href="/number-tail/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

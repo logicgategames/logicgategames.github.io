@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logic Puzzles Vault &mdash; A collection of classic logic and brain puzzles for your phone, from Sudoku to mazes.</title>
+<meta name="description" content="Logic Puzzles Vault, also called Puzzle Vault, is a collection of puzzle games for Android in one app. You get Sudoku, 2048, sliding puzzles, pipes, mazes, Lights Out, Tower of Hanoi, word search, memory cards, match-three and more. Pick a puzzle from the grid on the main screen and start playing.">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/puzzle-vault/">
+<meta property="og:title" content="Logic Puzzles Vault">
+<meta property="og:description" content="A collection of classic logic and brain puzzles for your phone, from Sudoku to mazes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/puzzle-vault/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/puzzle-vault.png">
+<link rel="icon" href="/icons/puzzle-vault.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Logic Puzzles Vault",
+  "description": "A collection of classic logic and brain puzzles for your phone, from Sudoku to mazes.",
+  "url": "https://logicgategames.github.io/puzzle-vault/",
+  "image": "https://logicgategames.github.io/icons/puzzle-vault.png",
+  "operatingSystem": "Android 7.0 or later",
+  "applicationCategory": "GameApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.puzzlevault",
+  "featureList": [
+   "Many puzzle types in one app",
+   "A tutorial for every puzzle",
+   "Levels and stars",
+   "Undo, hint and restart",
+   "Pick up where you left off",
+   "Sound, music and vibration",
+   "Your language",
+   "Phones and tablets"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do I play Logic Puzzles Vault?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Tap a puzzle on the main screen. The first time, a short tutorial level shows the rules. After that you play numbered levels, or an endless board for games like 2048. Use Undo, Hint and Restart at the bottom of the screen."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do levels and stars work?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Finish a level to earn one to three stars. Fewer moves earn more stars, and in some puzzles hints count against you. Later levels in a puzzle open as you collect stars in that puzzle. Replaying a level can raise its star count but never lowers it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does it need an internet connection to play?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. The puzzles play without an internet connection. The Google services the game uses, described in the privacy policy, only connect when the phone is online."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does my progress carry over to a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The game has no account and no in-game backup or transfer. Progress is a file in the game's private storage. The game allows Android's own backup, so a new phone set up from a Google backup may bring it back, but that depends on Android and cannot be promised."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my progress if I uninstall the game?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Uninstalling removes the saved progress from your phone, and the developer cannot restore it because we never receive it. If Android's backup is on for your phone, it may restore the save when you reinstall, but do not count on it."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I reset my progress and start over?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The game has no reset button in its settings. To start from nothing, open Android Settings, go to Apps, then Logic Puzzles Vault, then Storage, and clear the data. This erases all stars and saved games for every puzzle."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do hints work?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Tap the Hint button and the puzzle helps with your next move. Each puzzle has its own supply of hints, and it refreshes every day. If you run out, you can keep playing, and your hints return the next day."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Logic Puzzles Vault work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. On a tablet the game can rotate to landscape, and the puzzle grid and dialogs resize for the bigger screen. On phones it stays upright."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/puzzle-vault.png" alt="Logic Puzzles Vault icon" width="72" height="72">
+    <div><h1>Logic Puzzles Vault</h1><p>A collection of classic logic and brain puzzles for your phone, from Sudoku to mazes.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.puzzlevault"><img src="/assets/google-play-badge.png"
+     alt="Get Logic Puzzles Vault on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Logic Puzzles Vault, also called Puzzle Vault, is a collection of puzzle games for Android in one app. You get Sudoku, 2048, sliding puzzles, pipes, mazes, Lights Out, Tower of Hanoi, word search, memory cards, match-three and more. Pick a puzzle from the grid on the main screen and start playing.</p>
+  <p>Every puzzle has a short built-in tutorial. There is no account and no sign-in, and your progress is saved on your phone.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Many puzzle types in one app</h3><p>Number and grid puzzles such as Sudoku and 2048, path puzzles such as Pipes, One Line and mazes, sorting puzzles such as Color Sort and Tower of Hanoi, and pattern games such as Memory Match, Tile Match and Match 3. Category tabs on the main screen narrow the grid.</p></div>
+    <div class="feature"><h3>A tutorial for every puzzle</h3><p>The first time you open a puzzle, it starts with a short guided tutorial level that shows the rules on a small board. Then you move on to the real levels.</p></div>
+    <div class="feature"><h3>Levels and stars</h3><p>Most puzzles have a long run of numbered levels that get harder. Each level you finish earns one to three stars, and more stars for fewer moves. The game keeps your lowest move count for each level.</p></div>
+    <div class="feature"><h3>Undo, hint and restart</h3><p>Every puzzle has Undo, Hint and Restart buttons at the bottom of the screen. Undo takes back your moves one at a time. Each puzzle gets a fresh set of hints every day.</p></div>
+    <div class="feature"><h3>Pick up where you left off</h3><p>Many puzzles save a game in progress. When you come back to a level, you choose Continue or New Game.</p></div>
+    <div class="feature"><h3>Sound, music and vibration</h3><p>Sound effects, music and vibration each have their own switch in Settings. Music starts out off.</p></div>
+    <div class="feature"><h3>Your language</h3><p>The game follows your phone&#x27;s language when it can and has a language picker in Settings, with translations for many languages.</p></div>
+    <div class="feature"><h3>Phones and tablets</h3><p>On a phone the game stays upright. On a tablet it can rotate, and the puzzle grid and dialogs resize to fit the larger screen.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Logic Puzzles Vault has no account, no sign-in and no server of ours. Your levels, stars, daily hints and settings are saved in the game&#x27;s private storage on your phone, and we do not receive them. The game uses Google services, described in the privacy policy, and some of them use the internet when it is available. Puzzles themselves do not need a connection. Uninstalling the game deletes the saved progress from your phone. The full details are in the privacy policy.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do I play Logic Puzzles Vault?</summary><p>Tap a puzzle on the main screen. The first time, a short tutorial level shows the rules. After that you play numbered levels, or an endless board for games like 2048. Use Undo, Hint and Restart at the bottom of the screen.</p></details>
+  <details><summary>How do levels and stars work?</summary><p>Finish a level to earn one to three stars. Fewer moves earn more stars, and in some puzzles hints count against you. Later levels in a puzzle open as you collect stars in that puzzle. Replaying a level can raise its star count but never lowers it.</p></details>
+  <details><summary>Does it need an internet connection to play?</summary><p>No. The puzzles play without an internet connection. The Google services the game uses, described in the privacy policy, only connect when the phone is online.</p></details>
+  <details><summary>Does my progress carry over to a new phone?</summary><p>The game has no account and no in-game backup or transfer. Progress is a file in the game&#x27;s private storage. The game allows Android&#x27;s own backup, so a new phone set up from a Google backup may bring it back, but that depends on Android and cannot be promised.</p></details>
+  <details><summary>What happens to my progress if I uninstall the game?</summary><p>Uninstalling removes the saved progress from your phone, and the developer cannot restore it because we never receive it. If Android&#x27;s backup is on for your phone, it may restore the save when you reinstall, but do not count on it.</p></details>
+  <details><summary>How do I reset my progress and start over?</summary><p>The game has no reset button in its settings. To start from nothing, open Android Settings, go to Apps, then Logic Puzzles Vault, then Storage, and clear the data. This erases all stars and saved games for every puzzle.</p></details>
+  <details><summary>How do hints work?</summary><p>Tap the Hint button and the puzzle helps with your next move. Each puzzle has its own supply of hints, and it refreshes every day. If you run out, you can keep playing, and your hints return the next day.</p></details>
+  <details><summary>Does Logic Puzzles Vault work on tablets?</summary><p>Yes. On a tablet the game can rotate to landscape, and the puzzle grid and dialogs resize for the bigger screen. On phones it stays upright.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 7.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/puzzle-vault/privacy/">Privacy policy</a> &middot; <a href="/puzzle-vault/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

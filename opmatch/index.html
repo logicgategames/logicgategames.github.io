@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpMatch &mdash; A math crossword puzzle game: fill in the missing numbers and operators.</title>
+<meta name="description" content="OpMatch is a math crossword puzzle game for Android. The grid is made of interlocking equations, and every row and column has to come out true. You place numbers, operators, or both into the blank cells until the whole grid works. There is no account and no sign-in. Your progress, settings and">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/opmatch/">
+<meta property="og:title" content="OpMatch">
+<meta property="og:description" content="A math crossword puzzle game: fill in the missing numbers and operators.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/opmatch/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/opmatch.png">
+<link rel="icon" href="/icons/opmatch.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OpMatch",
+  "description": "A math crossword puzzle game: fill in the missing numbers and operators.",
+  "url": "https://logicgategames.github.io/opmatch/",
+  "image": "https://logicgategames.github.io/icons/opmatch.png",
+  "operatingSystem": "Android 7.0 or later",
+  "applicationCategory": "GameApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.OpMatch",
+  "featureList": [
+   "Three kinds of puzzle",
+   "Crossword-style equation grids",
+   "Hints and undo",
+   "Daily Challenge with streak",
+   "Level generator",
+   "Stars, achievements and statistics",
+   "Zoom and pan big grids",
+   "Themes, sound and languages"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do you play OpMatch?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Tap a blank cell, then tap a number or operator from the bank at the bottom to place it. Every row and every column that forms an equation must be true. Equations cross, so use the ones you can already solve to find the rest. Finish the grid to earn stars."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What are the three kinds of puzzle?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Fill Numbers gives you the operators and asks for the missing numbers. Fill Operators gives you the numbers and asks for plus, minus, times or divide. The mixed kind hides both. As you play, levels rotate through all three, and the Daily Challenge uses the mixed kind."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What are lives and stars in OpMatch?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Each level starts with three lives. Making an equation wrong costs a life, and the tutorial has no lives. Stars depend on mistakes: no mistakes gives three stars, one or two gives two, and more gives one. If you run out of lives, you can replay the level."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does the Daily Challenge work?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open Daily Challenge, pick a date on the calendar and choose a difficulty from easy to expert. The puzzle is made from the date, so it is the same for every player. The calendar shows what you finished, and finishing puzzles on consecutive days builds your streak."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Do I need an internet connection to play?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Levels, the Daily Challenge, hints and your progress all run on your phone, and the game sends no gameplay data to a server. The Google services described in the privacy policy need a connection when they are used. The game still plays without one."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will my progress carry over to a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Not by itself. There is no account and no backup feature in the game, and progress is saved only on your phone. Android's own backup is not turned off for the game, so Google's phone backup may restore it when you set up a new phone, but that is not guaranteed."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my progress if I uninstall OpMatch?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It is deleted. Levels finished, stars, streaks, hints and settings are stored only in the game's private storage, and the developer has no copy to restore. Android's own backup, if you use it, may bring it back after you reinstall, but do not rely on that."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does OpMatch work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones stay in portrait. Tablets can rotate, the puzzle refits to the new screen size, and menus keep a readable width on large screens."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/opmatch.png" alt="OpMatch icon" width="72" height="72">
+    <div><h1>OpMatch</h1><p>A math crossword puzzle game: fill in the missing numbers and operators.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.OpMatch"><img src="/assets/google-play-badge.png"
+     alt="Get OpMatch on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>OpMatch is a math crossword puzzle game for Android. The grid is made of interlocking equations, and every row and column has to come out true. You place numbers, operators, or both into the blank cells until the whole grid works.</p>
+  <p>There is no account and no sign-in. Your progress, settings and daily streak are saved on your phone. The game has a tutorial, a new Daily Challenge each day, a level generator, achievements, statistics and several color themes.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Three kinds of puzzle</h3><p>In Fill Numbers the operators are given and you find the missing numbers. In Fill Operators the numbers are given and you choose plus, minus, times or divide. In the mixed kind, both are missing.</p></div>
+    <div class="feature"><h3>Crossword-style equation grids</h3><p>Equations cross each other, so one cell can sit in a row equation and a column equation at once. Early levels are small and use simple math. Grids, number ranges and operators grow as you play.</p></div>
+    <div class="feature"><h3>Hints and undo</h3><p>Tap Hint and the game fills in one cell for you, or clears a cell you placed wrongly. Undo takes back your last placement. Each level gives you three lives, and a wrong equation costs one.</p></div>
+    <div class="feature"><h3>Daily Challenge with streak</h3><p>A new puzzle each day at four difficulty levels, with a calendar of the days you finished and a streak counter. The puzzle for a given date is the same on every phone.</p></div>
+    <div class="feature"><h3>Level generator</h3><p>Pick a puzzle type and a difficulty from easy to expert, and the game makes a new grid for you to solve.</p></div>
+    <div class="feature"><h3>Stars, achievements and statistics</h3><p>Finish a level with no mistakes for three stars. Earn achievements, and check your times, streaks and progress on the statistics screen.</p></div>
+    <div class="feature"><h3>Zoom and pan big grids</h3><p>Pinch to zoom and drag to move around large puzzles. The grid fits the screen when a level opens, and it refits when a tablet is rotated.</p></div>
+    <div class="feature"><h3>Themes, sound and languages</h3><p>Choose a color theme, switch sound, music and vibration on or off, show or hide the timer, and pick the division sign you prefer. The game is translated into many languages, chosen in Settings.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">OpMatch has no account, no sign-in and no server of its own. Your progress, daily streak, settings and statistics are saved in the game&#x27;s private storage on your phone, and they are not uploaded to us. The game uses Google services, described in the privacy policy, and those services may handle some device information. Uninstalling the game deletes its saved data from your phone. The privacy policy lists everything in full.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do you play OpMatch?</summary><p>Tap a blank cell, then tap a number or operator from the bank at the bottom to place it. Every row and every column that forms an equation must be true. Equations cross, so use the ones you can already solve to find the rest. Finish the grid to earn stars.</p></details>
+  <details><summary>What are the three kinds of puzzle?</summary><p>Fill Numbers gives you the operators and asks for the missing numbers. Fill Operators gives you the numbers and asks for plus, minus, times or divide. The mixed kind hides both. As you play, levels rotate through all three, and the Daily Challenge uses the mixed kind.</p></details>
+  <details><summary>What are lives and stars in OpMatch?</summary><p>Each level starts with three lives. Making an equation wrong costs a life, and the tutorial has no lives. Stars depend on mistakes: no mistakes gives three stars, one or two gives two, and more gives one. If you run out of lives, you can replay the level.</p></details>
+  <details><summary>How does the Daily Challenge work?</summary><p>Open Daily Challenge, pick a date on the calendar and choose a difficulty from easy to expert. The puzzle is made from the date, so it is the same for every player. The calendar shows what you finished, and finishing puzzles on consecutive days builds your streak.</p></details>
+  <details><summary>Do I need an internet connection to play?</summary><p>No. Levels, the Daily Challenge, hints and your progress all run on your phone, and the game sends no gameplay data to a server. The Google services described in the privacy policy need a connection when they are used. The game still plays without one.</p></details>
+  <details><summary>Will my progress carry over to a new phone?</summary><p>Not by itself. There is no account and no backup feature in the game, and progress is saved only on your phone. Android&#x27;s own backup is not turned off for the game, so Google&#x27;s phone backup may restore it when you set up a new phone, but that is not guaranteed.</p></details>
+  <details><summary>What happens to my progress if I uninstall OpMatch?</summary><p>It is deleted. Levels finished, stars, streaks, hints and settings are stored only in the game&#x27;s private storage, and the developer has no copy to restore. Android&#x27;s own backup, if you use it, may bring it back after you reinstall, but do not rely on that.</p></details>
+  <details><summary>Does OpMatch work on tablets?</summary><p>Yes. Phones stay in portrait. Tablets can rotate, the puzzle refits to the new screen size, and menus keep a readable width on large screens.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 7.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/opmatch/privacy/">Privacy policy</a> &middot; <a href="/opmatch/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

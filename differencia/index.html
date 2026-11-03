@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differencia &mdash; A Sun and Moon logic puzzle: fill the grid using the number clues</title>
+<meta name="description" content="Differencia is a logic puzzle game for Android. You fill a grid with Suns and Moons. Each number clue tells you how many of the cells next to it hold the other symbol, and you work out the rest by deduction. There is nothing to guess. Start on a small grid, move up to bigger ones, and play a">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/differencia/">
+<meta property="og:title" content="Differencia">
+<meta property="og:description" content="A Sun and Moon logic puzzle: fill the grid using the number clues">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/differencia/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/differencia.png">
+<link rel="icon" href="/icons/differencia.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Differencia",
+  "description": "A Sun and Moon logic puzzle: fill the grid using the number clues",
+  "url": "https://logicgategames.github.io/differencia/",
+  "image": "https://logicgategames.github.io/icons/differencia.png",
+  "operatingSystem": "Android 7.0 or later",
+  "applicationCategory": "GameApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.Differencia",
+  "featureList": [
+   "Deduce the Sun and Moon grid",
+   "Grids from small to large",
+   "A daily puzzle",
+   "Undo, redo and notes",
+   "Hints and skipping",
+   "Learn the rules in the game",
+   "Many languages",
+   "Phones and tablets"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "How do you play Differencia?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Every cell holds a Sun or a Moon. A number clue says how many of the cells touching it (up, down, left, right, never diagonal) hold the other symbol. A 0 means all its neighbors match it. Use the clues to work out every cell. The level ends when the grid is filled correctly."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What do the numbers in Differencia mean?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The number counts the neighbors that are different from that cell. Corner cells have two neighbors and edge cells have three, so their clues cannot be higher than that. Some cells show no number or a question mark, so you work those out from the cells around them. Press and hold a cell for a plain explanation."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Differencia work without an internet connection?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The levels, the daily puzzle, undo, notes and hints are all stored in the game, so they play without a connection. The Google services described in the privacy policy, such as the rating prompt, need a connection to work, and the privacy policy and rating links open in your browser."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is my progress saved if I close the game?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Completed levels are saved on your phone, and a level you leave half finished keeps your moves and timer so you can pick it up later. There is no cloud sync inside the game and no account to sign in to."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Will my progress move to a new phone, or survive an uninstall?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Not by anything we provide. Progress lives only on your phone and uninstalling the game deletes it. The game allows Android's own backup, so if backup is on for your Google account, your progress may come back on a new phone, but this is not guaranteed."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What if I get stuck on a level?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Use Undo to back out of a wrong move, Notes to keep track of possibilities, or Hints to check your grid for mistakes or get the next logical step. You can also skip a level you are stuck on. A skipped level counts as passed for moving on, and you can come back and solve it later."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does the daily puzzle work?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The Daily Puzzle button is on the main menu. It is separate from the numbered levels, and the grid size depends on the day of the week. When you solve it, the game marks it done for that day and lets you play again the next day."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Differencia work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. On tablets the game uses a layout for larger screens and can rotate between portrait and landscape. On phones it stays in portrait."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/differencia.png" alt="Differencia icon" width="72" height="72">
+    <div><h1>Differencia</h1><p>A Sun and Moon logic puzzle: fill the grid using the number clues</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.Differencia"><img src="/assets/google-play-badge.png"
+     alt="Get Differencia on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Differencia is a logic puzzle game for Android. You fill a grid with Suns and Moons. Each number clue tells you how many of the cells next to it hold the other symbol, and you work out the rest by deduction.</p>
+  <p>There is nothing to guess. Start on a small grid, move up to bigger ones, and play a separate daily puzzle. Your progress is saved on your phone and there is no account.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Deduce the Sun and Moon grid</h3><p>Tap a cell to place a Sun, tap again for a Moon, tap again to clear it. Each number clue counts the neighbors above, below, left and right that differ from its own cell.</p></div>
+    <div class="feature"><h3>Grids from small to large</h3><p>Play on grids from 4x4 up to 8x8. Levels in each size run in order from easy to hard, and a finished level shows your stars and fastest time.</p></div>
+    <div class="feature"><h3>A daily puzzle</h3><p>Play a daily puzzle from the main menu. Once you solve it, it is marked done for that day. The grid size changes with the day of the week.</p></div>
+    <div class="feature"><h3>Undo, redo and notes</h3><p>Step back or forward through your moves. Switch on Notes mode to pencil a Sun, a Moon or both in an empty cell without committing to it.</p></div>
+    <div class="feature"><h3>Hints and skipping</h3><p>Check your grid for mistakes or ask for the next logical step. If a level has you stuck, you can skip it and move on to the next one.</p></div>
+    <div class="feature"><h3>Learn the rules in the game</h3><p>An interactive tutorial walks new players through a first puzzle, and the rules screen is one tap away. Press and hold any cell to see exactly what its clue means.</p></div>
+    <div class="feature"><h3>Many languages</h3><p>Differencia follows your phone&#x27;s language when it can, and you can change the language in Settings. Sound, music and vibration each have their own switch.</p></div>
+    <div class="feature"><h3>Phones and tablets</h3><p>On phones the game stays in portrait. On tablets it has a layout for larger screens and rotates freely.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Differencia has no account and no sign-in. Your completed levels, saved moves and settings are stored on your phone, and the game does not upload them to us. Uninstalling the game deletes them. The game uses Google services for the in-app rating prompt and the other services described in the privacy policy, and your device&#x27;s Android backup, if you have it switched on, may also keep a copy. The full list is in the privacy policy.</p>
+
+  <h2>Questions</h2>
+  <details><summary>How do you play Differencia?</summary><p>Every cell holds a Sun or a Moon. A number clue says how many of the cells touching it (up, down, left, right, never diagonal) hold the other symbol. A 0 means all its neighbors match it. Use the clues to work out every cell. The level ends when the grid is filled correctly.</p></details>
+  <details><summary>What do the numbers in Differencia mean?</summary><p>The number counts the neighbors that are different from that cell. Corner cells have two neighbors and edge cells have three, so their clues cannot be higher than that. Some cells show no number or a question mark, so you work those out from the cells around them. Press and hold a cell for a plain explanation.</p></details>
+  <details><summary>Does Differencia work without an internet connection?</summary><p>The levels, the daily puzzle, undo, notes and hints are all stored in the game, so they play without a connection. The Google services described in the privacy policy, such as the rating prompt, need a connection to work, and the privacy policy and rating links open in your browser.</p></details>
+  <details><summary>Is my progress saved if I close the game?</summary><p>Yes. Completed levels are saved on your phone, and a level you leave half finished keeps your moves and timer so you can pick it up later. There is no cloud sync inside the game and no account to sign in to.</p></details>
+  <details><summary>Will my progress move to a new phone, or survive an uninstall?</summary><p>Not by anything we provide. Progress lives only on your phone and uninstalling the game deletes it. The game allows Android&#x27;s own backup, so if backup is on for your Google account, your progress may come back on a new phone, but this is not guaranteed.</p></details>
+  <details><summary>What if I get stuck on a level?</summary><p>Use Undo to back out of a wrong move, Notes to keep track of possibilities, or Hints to check your grid for mistakes or get the next logical step. You can also skip a level you are stuck on. A skipped level counts as passed for moving on, and you can come back and solve it later.</p></details>
+  <details><summary>How does the daily puzzle work?</summary><p>The Daily Puzzle button is on the main menu. It is separate from the numbered levels, and the grid size depends on the day of the week. When you solve it, the game marks it done for that day and lets you play again the next day.</p></details>
+  <details><summary>Does Differencia work on tablets?</summary><p>Yes. On tablets the game uses a layout for larger screens and can rotate between portrait and landscape. On phones it stays in portrait.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 7.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/differencia/privacy/">Privacy policy</a> &middot; <a href="/differencia/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>
