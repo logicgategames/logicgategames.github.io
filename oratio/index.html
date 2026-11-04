@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oratio: Teleprompter for Video &mdash; A teleprompter that scrolls as you speak. Record yourself with your script.</title>
+<meta name="description" content="Oratio is a teleprompter for Android phones and tablets. Write, paste or import a script, read it from the screen at a speed you set, or let voice follow move the text as you speak. You can also record yourself with the words close to the camera. There is no account. Your scripts and videos stay on">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/oratio/">
+<meta property="og:title" content="Oratio: Teleprompter for Video">
+<meta property="og:description" content="A teleprompter that scrolls as you speak. Record yourself with your script.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/oratio/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/oratio.png">
+<link rel="icon" href="/icons/oratio.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Oratio: Teleprompter for Video",
+  "description": "A teleprompter that scrolls as you speak. Record yourself with your script.",
+  "url": "https://logicgategames.github.io/oratio/",
+  "image": "https://logicgategames.github.io/icons/oratio.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "ProductivityApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.oratio",
+  "featureList": [
+   "Voice follow",
+   "Record with your script",
+   "Speed, size and mirror",
+   "Countdown and quick restart",
+   "Keyboard and remote keys",
+   "Write, paste or import",
+   "Export and move to a new phone",
+   "Phones and tablets"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Does Oratio record video with the script on screen?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes, you record with the script in front of you. It runs in the top part of the screen, close to the front camera, and you can use the front or back camera, with sound. The script is a guide for you only. It is not part of the saved video."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does voice follow work? Is it on the phone or in the cloud?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It runs on the phone, using the open-source Vosk speech recognizer. Your speech is turned into words, matched to your script and discarded. Nothing is sent anywhere. It works in many languages, including English, Spanish, German, French, Hindi and Persian. Languages other than English download from Google Play once."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I control the speed, text size and mirror myself?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Without voice follow the text scrolls at a steady speed you choose. You can also change the text size, turn on mirror for a teleprompter glass, set a countdown, and use a Bluetooth keyboard or remote. Arrow keys change the speed."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What kind of script files can I import?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Plain text files (.txt). Oratio reads the text from the file you pick and makes a new script. Word and PDF files are not read; copy the text and paste it into a new script instead."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Where are my videos saved and in what format?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Videos are saved as MP4 files in the Movies/Oratio folder in your phone's videos, up to 1080p when the phone supports it. The script title is in the file name. They appear in your gallery, ready to share or edit, and they stay if you uninstall the app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is anything uploaded?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No scripts, videos or speech are uploaded. There is no account. The app uses the internet only to download a voice follow language from Google Play, for Google Play services, and to send a crash report if the app crashes. The crash report has no scripts, voice or video."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Oratio work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Phones use portrait. Tablets and open foldables can rotate, and the script stays in a readable column on large screens."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/oratio.png" alt="Oratio: Teleprompter for Video icon" width="72" height="72">
+    <div><h1>Oratio: Teleprompter for Video</h1><p>A teleprompter that scrolls as you speak. Record yourself with your script.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.oratio"><img src="/assets/google-play-badge.png"
+     alt="Get Oratio: Teleprompter for Video on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Oratio is a teleprompter for Android phones and tablets. Write, paste or import a script, read it from the screen at a speed you set, or let voice follow move the text as you speak. You can also record yourself with the words close to the camera.</p>
+  <p>There is no account. Your scripts and videos stay on your phone. Voice follow runs on the phone and keeps none of your speech.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Voice follow</h3><p>The script scrolls as you speak and waits when you pause. If you skip a sentence or go back to one, it finds your place. The word you are on is highlighted.</p></div>
+    <div class="feature"><h3>Record with your script</h3><p>The script runs in the top part of the screen, close to the front camera, while you record. Use the front or back camera, with sound, and switch between them on the recording screen.</p></div>
+    <div class="feature"><h3>Speed, size and mirror</h3><p>Set a steady scroll speed and the text size. Large white text on a black screen is easy to read from a distance. Mirror flips the text for a teleprompter glass.</p></div>
+    <div class="feature"><h3>Countdown and quick restart</h3><p>Choose a countdown before you start, and go back to the top of the script in one tap. The screen stays on while you read.</p></div>
+    <div class="feature"><h3>Keyboard and remote keys</h3><p>A Bluetooth keyboard or remote can start and pause the script. The arrow keys change the speed.</p></div>
+    <div class="feature"><h3>Write, paste or import</h3><p>Type or paste a script, or import a text file. Duplicate a script to try another version.</p></div>
+    <div class="feature"><h3>Export and move to a new phone</h3><p>Export all your scripts and your prompter settings to one file that you save where you choose. Import it on a new phone.</p></div>
+    <div class="feature"><h3>Phones and tablets</h3><p>Phones use portrait. Tablets and open foldables can rotate, and the script keeps a readable column width on large screens.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your scripts, your prompter settings and the videos you record stay on your phone. There is no account and no sign-in, and Oratio runs no server for your scripts or videos. Voice follow turns your speech into words with a speech model that runs on the phone, compares them with your script and discards them. Nothing is stored or sent. The model for English is part of the app. Models for the other voice follow languages are downloaded from Google Play the first time a script in that language needs one, and nothing about you or your scripts is sent to get it. Recorded videos are saved to the Movies/Oratio folder in your videos, where your gallery and other apps that can see your videos can see them. The app does not upload them. The only other thing Oratio sends is an automatic crash report from Firebase Crashlytics if the app crashes. It holds technical details of the crash, never your scripts, voice or videos. Android&#x27;s automatic cloud backup is turned off for the app.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Does Oratio record video with the script on screen?</summary><p>Yes, you record with the script in front of you. It runs in the top part of the screen, close to the front camera, and you can use the front or back camera, with sound. The script is a guide for you only. It is not part of the saved video.</p></details>
+  <details><summary>How does voice follow work? Is it on the phone or in the cloud?</summary><p>It runs on the phone, using the open-source Vosk speech recognizer. Your speech is turned into words, matched to your script and discarded. Nothing is sent anywhere. It works in many languages, including English, Spanish, German, French, Hindi and Persian. Languages other than English download from Google Play once.</p></details>
+  <details><summary>Can I control the speed, text size and mirror myself?</summary><p>Yes. Without voice follow the text scrolls at a steady speed you choose. You can also change the text size, turn on mirror for a teleprompter glass, set a countdown, and use a Bluetooth keyboard or remote. Arrow keys change the speed.</p></details>
+  <details><summary>What kind of script files can I import?</summary><p>Plain text files (.txt). Oratio reads the text from the file you pick and makes a new script. Word and PDF files are not read; copy the text and paste it into a new script instead.</p></details>
+  <details><summary>Where are my videos saved and in what format?</summary><p>Videos are saved as MP4 files in the Movies/Oratio folder in your phone&#x27;s videos, up to 1080p when the phone supports it. The script title is in the file name. They appear in your gallery, ready to share or edit, and they stay if you uninstall the app.</p></details>
+  <details><summary>Is anything uploaded?</summary><p>No scripts, videos or speech are uploaded. There is no account. The app uses the internet only to download a voice follow language from Google Play, for Google Play services, and to send a crash report if the app crashes. The crash report has no scripts, voice or video.</p></details>
+  <details><summary>Does Oratio work on tablets?</summary><p>Yes. Phones use portrait. Tablets and open foldables can rotate, and the script stays in a readable column on large screens.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <div class="contact">
+    <p><a href="/oratio/privacy/">Privacy policy</a> &middot; <a href="/oratio/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>
