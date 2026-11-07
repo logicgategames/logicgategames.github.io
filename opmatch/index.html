@@ -69,6 +69,17 @@ summary{font-weight:650;cursor:pointer}
 details p{margin-top:8px;color:var(--muted)}
 .req{color:var(--muted);font-size:.95rem}
 .req li{margin-left:20px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+      border-radius:12px;padding:12px;color:inherit;text-decoration:none}
+.mini:hover{border-color:var(--brand)}
+.mini img{width:44px;height:44px;border-radius:10px;flex:none;background:var(--line)}
+.mini span{min-width:0}
+.mini b{display:block;font-size:.92rem;font-weight:650;line-height:1.3}
+.mini small{font-size:.8rem;color:var(--muted);line-height:1.4;display:-webkit-box;
+            -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.all{margin-top:12px;font-size:.9rem}
+.all a{color:var(--brand)}
 </style>
 <script type="application/ld+json">
 [
@@ -215,6 +226,15 @@ details p{margin-top:8px;color:var(--muted)}
     <li>Android 7.0 or later</li>
     <li>Phones and tablets</li>
   </ul>
+
+  <h2>More from LogicGateGames</h2>
+  <div class="more">
+    <a class="mini" href="/differencia/"><img src="/icons/differencia.png" alt="" width="44" height="44" loading="lazy"><span><b>Differencia</b><small>Spot what changed between two pictures.</small></span></a>
+    <a class="mini" href="/neon-crosser/"><img src="/icons/neon-crosser.png" alt="" width="44" height="44" loading="lazy"><span><b>NeonCrosser</b><small>Cross the neon traffic without getting hit.</small></span></a>
+    <a class="mini" href="/number-tail/"><img src="/icons/number-tail.png" alt="" width="44" height="44" loading="lazy"><span><b>Number Tail</b><small>Chain the numbers together in the right order.</small></span></a>
+    <a class="mini" href="/puzzle-vault/"><img src="/icons/puzzle-vault.png" alt="" width="44" height="44" loading="lazy"><span><b>Logic Puzzles Vault</b><small>Twenty-four logic puzzle games in one app.</small></span></a>
+  </div>
+  <p class="all"><a href="/">See all 22 apps and games &rarr;</a></p>
 
   <div class="contact">
     <p><a href="/opmatch/privacy/">Privacy policy</a> &middot; <a href="/opmatch/terms/">Terms</a>.

@@ -69,6 +69,17 @@ summary{font-weight:650;cursor:pointer}
 details p{margin-top:8px;color:var(--muted)}
 .req{color:var(--muted);font-size:.95rem}
 .req li{margin-left:20px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+      border-radius:12px;padding:12px;color:inherit;text-decoration:none}
+.mini:hover{border-color:var(--brand)}
+.mini img{width:44px;height:44px;border-radius:10px;flex:none;background:var(--line)}
+.mini span{min-width:0}
+.mini b{display:block;font-size:.92rem;font-weight:650;line-height:1.3}
+.mini small{font-size:.8rem;color:var(--muted);line-height:1.4;display:-webkit-box;
+            -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.all{margin-top:12px;font-size:.9rem}
+.all a{color:var(--brand)}
 </style>
 <script type="application/ld+json">
 [
@@ -215,6 +226,17 @@ details p{margin-top:8px;color:var(--muted)}
     <li>Android 8.0 or later</li>
     <li>Phones and tablets</li>
   </ul>
+
+  <h2>More from LogicGateGames</h2>
+  <div class="more">
+    <a class="mini" href="/fotolok/"><img src="/icons/fotolok.png" alt="" width="44" height="44" loading="lazy"><span><b>Fotolok</b><small>A photo vault that opens from behind a working calculator.</small></span></a>
+    <a class="mini" href="/theca/"><img src="/icons/theca.png" alt="" width="44" height="44" loading="lazy"><span><b>Theca</b><small>A file manager, a cleaner and an encrypted vault in one app.</small></span></a>
+    <a class="mini" href="/diurna/"><img src="/icons/diurna.png" alt="" width="44" height="44" loading="lazy"><span><b>Diurna</b><small>A planner and journal you can restyle to suit how you think.</small></span></a>
+    <a class="mini" href="/permitto/"><img src="/icons/permitto.png" alt="" width="44" height="44" loading="lazy"><span><b>Permitto</b><small>Practice for the US learner&#x27;s permit test, for all 50 states and DC, in English and Spanish.</small></span></a>
+    <a class="mini" href="/wakem/"><img src="/icons/wakem.png" alt="" width="44" height="44" loading="lazy"><span><b>WAKEM</b><small>An alarm that stays on until you finish the task you set it.</small></span></a>
+    <a class="mini" href="/folio/"><img src="/icons/folio.png" alt="" width="44" height="44" loading="lazy"><span><b>Folio PDF Editor, Reader, Scan</b><small>Read, annotate and edit PDFs. Scanning, redaction and Office-to-PDF included.</small></span></a>
+  </div>
+  <p class="all"><a href="/">See all 22 apps and games &rarr;</a></p>
 
   <div class="contact">
     <p><a href="/quinotes/privacy/">Privacy policy</a> &middot; <a href="/quinotes/terms/">Terms</a>.
