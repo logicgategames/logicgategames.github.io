@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabulo: Home Screen Widgets &mdash; Clocks, calendars, checklists, sun times, quotes and shortcuts for your home screen.</title>
+<meta name="description" content="Tabulo is a collection of home screen widgets for Android. Pick a design, add it to your home screen, then choose its colors and transparency on the widget itself. Your notes, lists, photos, contacts and counters stay on your phone. There is no account and no sign-in, and no widget needs your">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/tabulo/">
+<meta property="og:title" content="Tabulo: Home Screen Widgets">
+<meta property="og:description" content="Clocks, calendars, checklists, sun times, quotes and shortcuts for your home screen.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/tabulo/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/tabulo.png">
+<link rel="icon" href="/icons/tabulo.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+      border-radius:12px;padding:12px;color:inherit;text-decoration:none}
+.mini:hover{border-color:var(--brand)}
+.mini img{width:44px;height:44px;border-radius:10px;flex:none;background:var(--line)}
+.mini span{min-width:0}
+.mini b{display:block;font-size:.92rem;font-weight:650;line-height:1.3}
+.mini small{font-size:.8rem;color:var(--muted);line-height:1.4;display:-webkit-box;
+            -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.all{margin-top:12px;font-size:.9rem}
+.all a{color:var(--brand)}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tabulo: Home Screen Widgets",
+  "description": "Clocks, calendars, checklists, sun times, quotes and shortcuts for your home screen.",
+  "url": "https://logicgategames.github.io/tabulo/",
+  "image": "https://logicgategames.github.io/icons/tabulo.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "UtilitiesApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.tabulo",
+  "featureList": [
+   "Clocks of every style",
+   "Date and calendar widgets",
+   "Battery, hybrid and work hours",
+   "Sun times for a city you pick",
+   "Checklists, notes, counters and quotes",
+   "Photos, contacts and shortcuts",
+   "Colors and two kinds of transparency",
+   "Resize, edit and move to a new phone"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "What kinds of widgets does Tabulo have?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Digital, analog and world clocks, date and calendar widgets, battery, a hybrid clock, countdowns and work hours, sun times, photos, contacts and favorite people, search, app and settings shortcuts, notes, counters, checklists and daily quotes. There is no weather widget."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I add a Tabulo widget to my home screen?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open Tabulo, tap a design and choose Add to home screen. Your home screen asks where to put it. You can also touch and hold an empty spot on the home screen, tap Widgets and find Tabulo. To change a widget later, tap its pencil or open Your widgets in the app."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I change fonts, colors and transparency?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Colors and transparency, yes. Each design has color sets or your own background, text and accent colors, plus separate sliders for background transparency and for the whole widget. A font choice is offered on notes and quotes, where a few fonts are built in. Clock and calendar fonts come with the design you pick."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Tabulo work with my launcher (Samsung One UI, Pixel and others)?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It uses Android's standard widgets. It has been tried on the Pixel launcher and Samsung One UI. Other home screen apps that support Android widgets should work, but the launcher draws the widget, so the look can differ a little from phone to phone."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Where do the sun times come from? Does Tabulo use my location?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Tabulo does not use your location and does not go online for sun times. You choose a city from a list in the app, and the phone calculates sunrise, sunset and day length. The times are accurate to about a minute for most places, and less so near the poles."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Do Tabulo widgets use a lot of battery? How often do they update?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Clocks are kept by Android itself. Calendars, countdowns, the battery widget and work hours redraw on low-priority timers that never wake the phone. Tabulo asks once to be exempt from battery optimization after you add such a widget, because Android can pause them otherwise. You can say no."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "My widget is blank, shows a placeholder or stopped updating. What can I do?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Open Tabulo once. Android disables widgets of an app that was force-stopped or had its data cleared until it is opened again. If a calendar, countdown or battery widget lags, check Settings, Background updates, and allow it. A widget set to Auto follows light and dark mode; chosen colors stay the same in both."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Tabulo work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Widgets can be placed on a tablet home screen, and the app's screens keep a readable width on large displays. Phones use portrait. Tablets and open foldables can rotate."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/tabulo.png" alt="Tabulo: Home Screen Widgets icon" width="72" height="72">
+    <div><h1>Tabulo: Home Screen Widgets</h1><p>Clocks, calendars, checklists, sun times, quotes and shortcuts for your home screen.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.tabulo"><img src="/assets/google-play-badge.png"
+     alt="Get Tabulo: Home Screen Widgets on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Tabulo is a collection of home screen widgets for Android. Pick a design, add it to your home screen, then choose its colors and transparency on the widget itself.</p>
+  <p>Your notes, lists, photos, contacts and counters stay on your phone. There is no account and no sign-in, and no widget needs your location.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Clocks of every style</h3><p>Digital clocks, analog clocks and world clocks that show the cities you choose. Clocks keep time on their own, so they always show the right minute.</p></div>
+    <div class="feature"><h3>Date and calendar widgets</h3><p>Show today&#x27;s date, the week or the whole month. Tapping a calendar widget opens your phone&#x27;s calendar.</p></div>
+    <div class="feature"><h3>Battery, hybrid and work hours</h3><p>See the battery level and charging state. A hybrid widget puts the clock, date, battery, next alarm and storage space left in one place, and a work hours widget shows how much of your day remains.</p></div>
+    <div class="feature"><h3>Sun times for a city you pick</h3><p>Sunrise, sunset and the length of the day for a city you choose from a list. The times are calculated on your phone.</p></div>
+    <div class="feature"><h3>Checklists, notes, counters and quotes</h3><p>Tick items off right on the home screen, with an option to start fresh each morning. Add a sticky note in a font you pick, a counter, or your own quotes, one a day.</p></div>
+    <div class="feature"><h3>Photos, contacts and shortcuts</h3><p>Show a photo cut to a shape, or several photos in turn. Put favorite people, apps, web pages and Android settings one tap away. Contact and search widgets open your phone, messages and search apps.</p></div>
+    <div class="feature"><h3>Colors and two kinds of transparency</h3><p>Choose a color set or your own colors. Background transparency and whole-widget transparency are set separately. On Android 12 and newer, widgets can follow your wallpaper&#x27;s colors.</p></div>
+    <div class="feature"><h3>Resize, edit and move to a new phone</h3><p>Widgets can be made larger or smaller, and you can change a placed widget later. Settings can export every widget&#x27;s setup, photos included, to a file you choose.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Everything you put in a widget, such as notes, checklist items, quotes, counters, countdowns, photos and contacts, is stored on your phone. Tabulo has no account, no sign-in and no server of ours, so there is nowhere for it to be sent. It asks for no location permission: sunrise and sunset are worked out on the phone from a list of cities built into the app. Photos come through Android&#x27;s photo picker, and a contact&#x27;s photo is read only if you allow the Contacts permission at that moment. The only things that leave the phone are an automatic crash report if the app crashes, handled by Firebase Crashlytics, and requests to Google Play. A crash report holds technical error details, the device model, Android version, app version and a random installation ID, never what you put in a widget. Android&#x27;s cloud backup is turned off for the app. A settings file is made only when you export it, and you choose where it goes. Uninstalling removes everything Tabulo stored.</p>
+
+  <h2>Questions</h2>
+  <details><summary>What kinds of widgets does Tabulo have?</summary><p>Digital, analog and world clocks, date and calendar widgets, battery, a hybrid clock, countdowns and work hours, sun times, photos, contacts and favorite people, search, app and settings shortcuts, notes, counters, checklists and daily quotes. There is no weather widget.</p></details>
+  <details><summary>How do I add a Tabulo widget to my home screen?</summary><p>Open Tabulo, tap a design and choose Add to home screen. Your home screen asks where to put it. You can also touch and hold an empty spot on the home screen, tap Widgets and find Tabulo. To change a widget later, tap its pencil or open Your widgets in the app.</p></details>
+  <details><summary>Can I change fonts, colors and transparency?</summary><p>Colors and transparency, yes. Each design has color sets or your own background, text and accent colors, plus separate sliders for background transparency and for the whole widget. A font choice is offered on notes and quotes, where a few fonts are built in. Clock and calendar fonts come with the design you pick.</p></details>
+  <details><summary>Does Tabulo work with my launcher (Samsung One UI, Pixel and others)?</summary><p>It uses Android&#x27;s standard widgets. It has been tried on the Pixel launcher and Samsung One UI. Other home screen apps that support Android widgets should work, but the launcher draws the widget, so the look can differ a little from phone to phone.</p></details>
+  <details><summary>Where do the sun times come from? Does Tabulo use my location?</summary><p>Tabulo does not use your location and does not go online for sun times. You choose a city from a list in the app, and the phone calculates sunrise, sunset and day length. The times are accurate to about a minute for most places, and less so near the poles.</p></details>
+  <details><summary>Do Tabulo widgets use a lot of battery? How often do they update?</summary><p>Clocks are kept by Android itself. Calendars, countdowns, the battery widget and work hours redraw on low-priority timers that never wake the phone. Tabulo asks once to be exempt from battery optimization after you add such a widget, because Android can pause them otherwise. You can say no.</p></details>
+  <details><summary>My widget is blank, shows a placeholder or stopped updating. What can I do?</summary><p>Open Tabulo once. Android disables widgets of an app that was force-stopped or had its data cleared until it is opened again. If a calendar, countdown or battery widget lags, check Settings, Background updates, and allow it. A widget set to Auto follows light and dark mode; chosen colors stay the same in both.</p></details>
+  <details><summary>Does Tabulo work on tablets?</summary><p>Yes. Widgets can be placed on a tablet home screen, and the app&#x27;s screens keep a readable width on large displays. Phones use portrait. Tablets and open foldables can rotate.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <h2>More from LogicGateGames</h2>
+  <div class="more">
+    <a class="mini" href="/fotolok/"><img src="/icons/fotolok.png" alt="" width="44" height="44" loading="lazy"><span><b>Fotolok</b><small>A photo vault that opens from behind a working calculator.</small></span></a>
+    <a class="mini" href="/quinotes/"><img src="/icons/quinotes.png" alt="" width="44" height="44" loading="lazy"><span><b>QuiNotes</b><small>Notes and checklists, with search that reads the text inside your images.</small></span></a>
+    <a class="mini" href="/theca/"><img src="/icons/theca.png" alt="" width="44" height="44" loading="lazy"><span><b>Theca</b><small>A file manager, a cleaner and an encrypted vault in one app.</small></span></a>
+    <a class="mini" href="/diurna/"><img src="/icons/diurna.png" alt="" width="44" height="44" loading="lazy"><span><b>Diurna</b><small>A planner and journal you can restyle to suit how you think.</small></span></a>
+    <a class="mini" href="/permitto/"><img src="/icons/permitto.png" alt="" width="44" height="44" loading="lazy"><span><b>Permitto</b><small>Practice for the US learner&#x27;s permit test, for all 50 states and DC, in English and Spanish.</small></span></a>
+    <a class="mini" href="/wakem/"><img src="/icons/wakem.png" alt="" width="44" height="44" loading="lazy"><span><b>WAKEM</b><small>An alarm that stays on until you finish the task you set it.</small></span></a>
+  </div>
+  <p class="all"><a href="/">See all 23 apps and games &rarr;</a></p>
+
+  <div class="contact">
+    <p><a href="/tabulo/privacy/">Privacy policy</a> &middot; <a href="/tabulo/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>
