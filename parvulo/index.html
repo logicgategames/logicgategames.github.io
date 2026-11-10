@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parvulo: Baby Book &amp; Album &mdash; A baby book and photo album: milestones, growth and keepsakes. No account.</title>
+<meta name="description" content="Parvulo is a baby book and photo album for Android. Add the photos and videos you already have and it puts them in order by month, with your child&#x27;s age beside each one. It covers the whole first chapter, from the bump to the first day of school. There is no account to make and no server of ours,">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/parvulo/">
+<meta property="og:title" content="Parvulo: Baby Book &amp; Album">
+<meta property="og:description" content="A baby book and photo album: milestones, growth and keepsakes. No account.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/parvulo/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/parvulo.png">
+<link rel="icon" href="/icons/parvulo.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+      border-radius:12px;padding:12px;color:inherit;text-decoration:none}
+.mini:hover{border-color:var(--brand)}
+.mini img{width:44px;height:44px;border-radius:10px;flex:none;background:var(--line)}
+.mini span{min-width:0}
+.mini b{display:block;font-size:.92rem;font-weight:650;line-height:1.3}
+.mini small{font-size:.8rem;color:var(--muted);line-height:1.4;display:-webkit-box;
+            -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.all{margin-top:12px;font-size:.9rem}
+.all a{color:var(--brand)}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Parvulo: Baby Book & Album",
+  "description": "A baby book and photo album: milestones, growth and keepsakes. No account.",
+  "url": "https://logicgategames.github.io/parvulo/",
+  "image": "https://logicgategames.github.io/icons/parvulo.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "LifestyleApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.parvulo",
+  "featureList": [
+   "A timeline for every month",
+   "Pregnancy diary",
+   "Milestones and growth charts",
+   "Art Studio keepsakes",
+   "Printable PDF book",
+   "Share through your own Google Drive",
+   "One-file backup and restore",
+   "App lock"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Where does Parvulo store my baby's photos?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "On your phone, in the app's private storage. When you add a photo or video, Parvulo copies it into your book and leaves the original where it was. There is no Parvulo account and no server of ours. A copy goes to Google Drive only if you turn on Drive sharing."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does sharing with family work?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It is optional. You connect your own Google account, and Parvulo makes a folder in your Drive holding your children's names and dates, memories, notes, photos and videos. You share that folder by email. People you invite can see all of it but cannot change it. They open it in Drive and do not need Parvulo."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Parvulo upload to Google Drive automatically?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Nothing goes to Drive until you connect it, and after that a sync starts only from the Drive screens, for example when you tap Sync now. There is no background schedule. A sync you started can finish after you leave the app. You can set it to run on Wi-Fi only."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I keep more than one child in Parvulo?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. One book holds several children, each with their own timeline, and you switch between them. Twins can be set up together. A photo can belong to more than one child. Siblings at the same age shows two children's photos from the same age side by side."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Parvulo track milestones and growth?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. It has a list of firsts, from the first cuddle to the first day at school, and you can add your own. Growth charts show weight, length and head size against CDC reference curves for babies and toddlers. Choose boy or girl so the right curves are drawn. The charts are not medical advice."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I print my baby book or make a PDF?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Make a PDF of one child's book: a cover, a page for each month and a page for each milestone, with each photo under its date and age. Choose A4 or Letter, save it to your phone, then print or share it. Videos appear as words only, because a PDF cannot play them."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How do I move my book to a new phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Android's own backup is turned off for Parvulo, so you move the book yourself. Save a ZIP file with Export my book, then restore it when you first open the app on the new phone. It carries everything, including growth entries. Restoring from Google Drive brings back photos, videos and notes only, using the same Google account."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my book if I uninstall Parvulo?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "The book is deleted from your phone, with its photos, videos and notes. Save a ZIP file first, or turn on Drive sharing, if you want to keep it. A copy already in your Drive folder stays there until you delete it in Drive. Pictures you saved to your gallery stay in the gallery."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/parvulo.png" alt="Parvulo: Baby Book &amp; Album icon" width="72" height="72">
+    <div><h1>Parvulo: Baby Book &amp; Album</h1><p>A baby book and photo album: milestones, growth and keepsakes. No account.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.parvulo"><img src="/assets/google-play-badge.png"
+     alt="Get Parvulo: Baby Book &amp; Album on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Parvulo is a baby book and photo album for Android. Add the photos and videos you already have and it puts them in order by month, with your child&#x27;s age beside each one. It covers the whole first chapter, from the bump to the first day of school.</p>
+  <p>There is no account to make and no server of ours, so your book stays on your phone. If you want family to see it, you can keep a copy in your own Google Drive and share that folder. It works on phones and tablets.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>A timeline for every month</h3><p>Photos, videos and notes sit in order with your child&#x27;s age beside each one. Search captions and notes, filter by photos, videos, notes, milestones or favorites, and look back on this day in earlier years. One book can hold several children, and twins can be set up together.</p></div>
+    <div class="feature"><h3>Pregnancy diary</h3><p>Keep weekly bump photos, scans and notes before the birth. When the baby arrives, tap Baby is born and everything you kept moves into the timeline.</p></div>
+    <div class="feature"><h3>Milestones and growth charts</h3><p>Tick off a long list of firsts with a date, a note and photos, or add your own. Record weight, length and head size on charts with CDC reference curves, in metric or imperial. The charts are for your records, not medical advice.</p></div>
+    <div class="feature"><h3>Art Studio keepsakes</h3><p>Dress up one photo as an age card, a first, a pregnancy week, a holiday card or an announcement. Names, ages and dates are filled in from your book, and you can change every word. Backdrops lift your baby out of a photo and place them on a painted scene. Your original photo is never changed.</p></div>
+    <div class="feature"><h3>Printable PDF book</h3><p>Turn one child&#x27;s book into a PDF with a cover, a page for each month and a page for each milestone. Choose A4 or Letter, and include every photo or only the ones you gave a heart.</p></div>
+    <div class="feature"><h3>Share through your own Google Drive</h3><p>Connect your Google account and Parvulo keeps a copy of your memories in a folder in your Drive. Share the folder with relatives by email. They open it in Drive and do not need Parvulo.</p></div>
+    <div class="feature"><h3>One-file backup and restore</h3><p>Save your whole book as a single ZIP file, with your photos and videos exactly as they were. Restore it on any phone, either added to the book already there or in place of it.</p></div>
+    <div class="feature"><h3>App lock</h3><p>Ask for a PIN or your fingerprint when Parvulo opens. While the lock is on, screenshots and the recent-apps preview are blocked.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Everything in your book lives in the app&#x27;s private storage on your phone: your children&#x27;s names and dates, notes, milestones, growth entries, and copies of the photos and videos you add. Your originals stay where they were. There is no Parvulo account and we run no server for your book, so we never receive it. You pick photos with Android&#x27;s photo picker, and Parvulo does not ask to see your whole gallery. Your book leaves the phone only when you ask: when you save a ZIP file or a PDF, share a picture, or turn on Google Drive sharing. Drive sharing uses your own Google account and the narrowest access Google offers, so Parvulo can see only the folder and files it creates. Android&#x27;s automatic device backup is turned off for the app. The app also uses Google services, including crash reports through Firebase Crashlytics, which hold technical error details and never anything from your book. Google Play services downloads the on-device tool that Backdrops uses the first time it is needed. The privacy policy lists them all.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Where does Parvulo store my baby&#x27;s photos?</summary><p>On your phone, in the app&#x27;s private storage. When you add a photo or video, Parvulo copies it into your book and leaves the original where it was. There is no Parvulo account and no server of ours. A copy goes to Google Drive only if you turn on Drive sharing.</p></details>
+  <details><summary>How does sharing with family work?</summary><p>It is optional. You connect your own Google account, and Parvulo makes a folder in your Drive holding your children&#x27;s names and dates, memories, notes, photos and videos. You share that folder by email. People you invite can see all of it but cannot change it. They open it in Drive and do not need Parvulo.</p></details>
+  <details><summary>Does Parvulo upload to Google Drive automatically?</summary><p>No. Nothing goes to Drive until you connect it, and after that a sync starts only from the Drive screens, for example when you tap Sync now. There is no background schedule. A sync you started can finish after you leave the app. You can set it to run on Wi-Fi only.</p></details>
+  <details><summary>Can I keep more than one child in Parvulo?</summary><p>Yes. One book holds several children, each with their own timeline, and you switch between them. Twins can be set up together. A photo can belong to more than one child. Siblings at the same age shows two children&#x27;s photos from the same age side by side.</p></details>
+  <details><summary>Does Parvulo track milestones and growth?</summary><p>Yes. It has a list of firsts, from the first cuddle to the first day at school, and you can add your own. Growth charts show weight, length and head size against CDC reference curves for babies and toddlers. Choose boy or girl so the right curves are drawn. The charts are not medical advice.</p></details>
+  <details><summary>Can I print my baby book or make a PDF?</summary><p>Yes. Make a PDF of one child&#x27;s book: a cover, a page for each month and a page for each milestone, with each photo under its date and age. Choose A4 or Letter, save it to your phone, then print or share it. Videos appear as words only, because a PDF cannot play them.</p></details>
+  <details><summary>How do I move my book to a new phone?</summary><p>Android&#x27;s own backup is turned off for Parvulo, so you move the book yourself. Save a ZIP file with Export my book, then restore it when you first open the app on the new phone. It carries everything, including growth entries. Restoring from Google Drive brings back photos, videos and notes only, using the same Google account.</p></details>
+  <details><summary>What happens to my book if I uninstall Parvulo?</summary><p>The book is deleted from your phone, with its photos, videos and notes. Save a ZIP file first, or turn on Drive sharing, if you want to keep it. A copy already in your Drive folder stays there until you delete it in Drive. Pictures you saved to your gallery stay in the gallery.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <h2>More from LogicGateGames</h2>
+  <div class="more">
+    <a class="mini" href="/fotolok/"><img src="/icons/fotolok.png" alt="" width="44" height="44" loading="lazy"><span><b>Fotolok</b><small>A photo vault that opens from behind a working calculator.</small></span></a>
+    <a class="mini" href="/quinotes/"><img src="/icons/quinotes.png" alt="" width="44" height="44" loading="lazy"><span><b>QuiNotes</b><small>Notes and checklists, with search that reads the text inside your images.</small></span></a>
+    <a class="mini" href="/theca/"><img src="/icons/theca.png" alt="" width="44" height="44" loading="lazy"><span><b>Theca</b><small>A file manager, a cleaner and an encrypted vault in one app.</small></span></a>
+    <a class="mini" href="/diurna/"><img src="/icons/diurna.png" alt="" width="44" height="44" loading="lazy"><span><b>Diurna</b><small>A planner and journal you can restyle to suit how you think.</small></span></a>
+    <a class="mini" href="/permitto/"><img src="/icons/permitto.png" alt="" width="44" height="44" loading="lazy"><span><b>Permitto</b><small>Practice for the US learner&#x27;s permit test, for all 50 states and DC, in English and Spanish.</small></span></a>
+    <a class="mini" href="/wakem/"><img src="/icons/wakem.png" alt="" width="44" height="44" loading="lazy"><span><b>WAKEM</b><small>An alarm that stays on until you finish the task you set it.</small></span></a>
+  </div>
+  <p class="all"><a href="/">See all 26 apps and games &rarr;</a></p>
+
+  <div class="contact">
+    <p><a href="/parvulo/privacy/">Privacy policy</a> &middot; <a href="/parvulo/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cobrio: Invoice Maker &amp; Quotes &mdash; Make invoices, estimates, receipts and job reports as PDFs on your phone.</title>
+<meta name="description" content="Cobrio is an invoice maker for Android. Set up your business once, then build invoices, estimates and receipts from your saved clients and items, and share or print them as clean PDFs. There is no account. Your records stay on your phone unless you share a document or turn on Google Drive sync.">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/cobrio/">
+<meta property="og:title" content="Cobrio: Invoice Maker &amp; Quotes">
+<meta property="og:description" content="Make invoices, estimates, receipts and job reports as PDFs on your phone.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/cobrio/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/cobrio.png">
+<link rel="icon" href="/icons/cobrio.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+      border-radius:12px;padding:12px;color:inherit;text-decoration:none}
+.mini:hover{border-color:var(--brand)}
+.mini img{width:44px;height:44px;border-radius:10px;flex:none;background:var(--line)}
+.mini span{min-width:0}
+.mini b{display:block;font-size:.92rem;font-weight:650;line-height:1.3}
+.mini small{font-size:.8rem;color:var(--muted);line-height:1.4;display:-webkit-box;
+            -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.all{margin-top:12px;font-size:.9rem}
+.all a{color:var(--brand)}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cobrio: Invoice Maker & Quotes",
+  "description": "Make invoices, estimates, receipts and job reports as PDFs on your phone.",
+  "url": "https://logicgategames.github.io/cobrio/",
+  "image": "https://logicgategames.github.io/icons/cobrio.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "BusinessApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.cobrio",
+  "featureList": [
+   "Invoices with taxes and discounts",
+   "Estimates that become invoices",
+   "Receipts and payment status",
+   "Payment QR code on the invoice",
+   "PDFs you can preview and share",
+   "Job reports with marked-up photos",
+   "Clients, items, expenses and reports",
+   "Backup, export and Drive sync"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Does Cobrio need an account?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. There is no sign-up and no sign-in. You set up your business details in the app and start making documents. Your records are stored on your phone, and we run no server that receives them."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I make an invoice, an estimate and a receipt?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Cobrio makes invoices, estimates (quotes) and receipts as PDFs. An accepted estimate converts to an invoice in one tap, and a receipt can be made from a paid invoice or started blank."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can customers pay through Cobrio?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Cobrio does not collect money. An invoice can print a payment QR code for UPI, SEPA (GiroCode) or Pix, which the client scans with their own banking app. Other payment methods have no code, and you mark the invoice paid yourself."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Cobrio give tax or legal advice?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Cobrio helps you lay out clear documents. You choose the tax name and rates, and you are responsible for what they say. It does not check them against your local rules."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens to my invoices if I lose or change my phone?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Without a copy, they are gone, because they live only on your phone and Android's own backup is turned off. Save a backup file or turn on Google Drive sync, then restore on the new phone."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I export my data to Excel or CSV?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. You can export clients, invoices and expenses to Excel or CSV files and choose where the file goes. You can also import clients and items from such files."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Cobrio send reminders to my clients?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Cobrio can remind you on your phone when an invoice becomes overdue, and a recurring invoice makes a draft for you to review. Nothing is sent to your clients until you share it yourself."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Does Cobrio work on tablets?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. On a wide tablet screen the document list sits on one side and the document on the other. Phones use portrait. Tablets and open foldables can rotate."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/cobrio.png" alt="Cobrio: Invoice Maker &amp; Quotes icon" width="72" height="72">
+    <div><h1>Cobrio: Invoice Maker &amp; Quotes</h1><p>Make invoices, estimates, receipts and job reports as PDFs on your phone.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.cobrio"><img src="/assets/google-play-badge.png"
+     alt="Get Cobrio: Invoice Maker &amp; Quotes on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Cobrio is an invoice maker for Android. Set up your business once, then build invoices, estimates and receipts from your saved clients and items, and share or print them as clean PDFs.</p>
+  <p>There is no account. Your records stay on your phone unless you share a document or turn on Google Drive sync.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Invoices with taxes and discounts</h3><p>Pick a client, add lines from your saved items or type them in, and watch the totals. Tax can be set by line or on the whole document with your own tax name, and discounts, shipping and other charges are supported.</p></div>
+    <div class="feature"><h3>Estimates that become invoices</h3><p>Make a quote with a valid-until date and mark it accepted or declined. Turn an accepted estimate into an invoice in one tap. Every page of an estimate carries an ESTIMATE watermark.</p></div>
+    <div class="feature"><h3>Receipts and payment status</h3><p>Make a receipt from a paid invoice or start a blank one. Mark invoices sent, partly paid, paid or overdue, and note how each part was paid.</p></div>
+    <div class="feature"><h3>Payment QR code on the invoice</h3><p>Print a QR code on an invoice for UPI, SEPA (GiroCode) or Pix. Your client scans it with their own banking app. Cobrio only prints the code and does not move money.</p></div>
+    <div class="feature"><h3>PDFs you can preview and share</h3><p>Preview the PDF, then share it with any app on your phone or print it. Choose A4 or US Letter, the text size and an accent color, with your logo, business details, bank details, signatures and photos on the page.</p></div>
+    <div class="feature"><h3>Job reports with marked-up photos</h3><p>Log dated visits with the work done, the area, photos and short videos. Draw arrows, boxes, circles and text on a photo, add before-and-after pairs and signatures, and share the report as a PDF. You can speak your notes instead of typing.</p></div>
+    <div class="feature"><h3>Clients, items, expenses and reports</h3><p>Save clients and items, or import a client from your contacts. Track expenses, photograph a receipt to read its total on your phone, and see invoiced, paid, unpaid and overdue totals, sales by month and profit and loss.</p></div>
+    <div class="feature"><h3>Backup, export and Drive sync</h3><p>Save everything to one backup file, export to Excel or CSV, or import clients and items. You can also keep your phone and tablet in step through your own Google Drive.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your business details, clients, items, invoices, estimates, receipts, signatures, job reports with their photos and videos, expenses and settings are stored in Cobrio&#x27;s private storage on your phone. Cobrio has no account and no server of ours, so we never receive your records, and the app has no analytics. Photos and videos come through Android&#x27;s photo picker, and a client&#x27;s details are read from your contacts only for the contact you choose. Reading a receipt photo runs on your phone; Google Play services downloads the text recognition model the first time it is needed, and the photo is not sent anywhere. The only things that leave the phone are an automatic crash report if the app crashes, handled by Firebase Crashlytics, and requests to Google Play. A crash report holds technical error details, the device model, Android version, app version and a random installation ID, never your clients or documents. If you turn on Google Drive sync, a copy of your records is kept in a folder in your own Google Drive, and Cobrio can see only the files it creates there. Android&#x27;s own device backup is turned off, so a backup file or Drive sync is how your records move to a new phone. Uninstalling removes everything Cobrio stored on the phone, but files already in your Drive stay there until you delete them.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Does Cobrio need an account?</summary><p>No. There is no sign-up and no sign-in. You set up your business details in the app and start making documents. Your records are stored on your phone, and we run no server that receives them.</p></details>
+  <details><summary>Can I make an invoice, an estimate and a receipt?</summary><p>Yes. Cobrio makes invoices, estimates (quotes) and receipts as PDFs. An accepted estimate converts to an invoice in one tap, and a receipt can be made from a paid invoice or started blank.</p></details>
+  <details><summary>Can customers pay through Cobrio?</summary><p>No. Cobrio does not collect money. An invoice can print a payment QR code for UPI, SEPA (GiroCode) or Pix, which the client scans with their own banking app. Other payment methods have no code, and you mark the invoice paid yourself.</p></details>
+  <details><summary>Does Cobrio give tax or legal advice?</summary><p>No. Cobrio helps you lay out clear documents. You choose the tax name and rates, and you are responsible for what they say. It does not check them against your local rules.</p></details>
+  <details><summary>What happens to my invoices if I lose or change my phone?</summary><p>Without a copy, they are gone, because they live only on your phone and Android&#x27;s own backup is turned off. Save a backup file or turn on Google Drive sync, then restore on the new phone.</p></details>
+  <details><summary>Can I export my data to Excel or CSV?</summary><p>Yes. You can export clients, invoices and expenses to Excel or CSV files and choose where the file goes. You can also import clients and items from such files.</p></details>
+  <details><summary>Does Cobrio send reminders to my clients?</summary><p>No. Cobrio can remind you on your phone when an invoice becomes overdue, and a recurring invoice makes a draft for you to review. Nothing is sent to your clients until you share it yourself.</p></details>
+  <details><summary>Does Cobrio work on tablets?</summary><p>Yes. On a wide tablet screen the document list sits on one side and the document on the other. Phones use portrait. Tablets and open foldables can rotate.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <h2>More from LogicGateGames</h2>
+  <div class="more">
+    <a class="mini" href="/fotolok/"><img src="/icons/fotolok.png" alt="" width="44" height="44" loading="lazy"><span><b>Fotolok</b><small>A photo vault that opens from behind a working calculator.</small></span></a>
+    <a class="mini" href="/quinotes/"><img src="/icons/quinotes.png" alt="" width="44" height="44" loading="lazy"><span><b>QuiNotes</b><small>Notes and checklists, with search that reads the text inside your images.</small></span></a>
+    <a class="mini" href="/theca/"><img src="/icons/theca.png" alt="" width="44" height="44" loading="lazy"><span><b>Theca</b><small>A file manager, a cleaner and an encrypted vault in one app.</small></span></a>
+    <a class="mini" href="/diurna/"><img src="/icons/diurna.png" alt="" width="44" height="44" loading="lazy"><span><b>Diurna</b><small>A planner and journal you can restyle to suit how you think.</small></span></a>
+    <a class="mini" href="/permitto/"><img src="/icons/permitto.png" alt="" width="44" height="44" loading="lazy"><span><b>Permitto</b><small>Practice for the US learner&#x27;s permit test, for all 50 states and DC, in English and Spanish.</small></span></a>
+    <a class="mini" href="/wakem/"><img src="/icons/wakem.png" alt="" width="44" height="44" loading="lazy"><span><b>WAKEM</b><small>An alarm that stays on until you finish the task you set it.</small></span></a>
+  </div>
+  <p class="all"><a href="/">See all 26 apps and games &rarr;</a></p>
+
+  <div class="contact">
+    <p><a href="/cobrio/privacy/">Privacy policy</a> &middot; <a href="/cobrio/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>

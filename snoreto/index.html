@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snoreto: Snore Recorder &mdash; See when you snored, how long and how loud. Recordings never leave your phone.</title>
+<meta name="description" content="Snoreto is a snore recorder for Android phones and tablets. Put your phone near the bed, tap Start recording and go to sleep. In the morning you open a report that shows when you snored, for how long and how loud. There is no account. Your recordings, clips and notes stay on your phone. Snoreto">
+<meta name="theme-color" content="#2E6B52">
+<link rel="canonical" href="https://logicgategames.github.io/snoreto/">
+<meta property="og:title" content="Snoreto: Snore Recorder">
+<meta property="og:description" content="See when you snored, how long and how loud. Recordings never leave your phone.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://logicgategames.github.io/snoreto/">
+<meta property="og:image" content="https://logicgategames.github.io/icons/snoreto.png">
+<link rel="icon" href="/icons/snoreto.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f8f7;--card:#fff;--ink:#1d2320;--muted:#5c6660;--line:#e4e8e5;--brand:#2E6B52;--brandink:#fff}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12150f;--card:#1a1e19;--ink:#e8ece9;--muted:#9aa49e;--line:#2b312c;--brand:#3d8a6a;--brandink:#fff}
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:var(--brand);color:var(--brandink);padding:44px 24px 40px}
+.wrap{max-width:860px;margin:0 auto}
+header h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+header p{font-size:.98rem;opacity:.9;margin-top:6px}
+.badge{display:inline-block;margin-top:18px;line-height:0}
+.badge img{width:180px;height:auto}
+main{max-width:860px;margin:0 auto;padding:30px 24px 56px}
+.intro{font-size:1rem;color:var(--muted);max-width:60ch}
+h2{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;
+   letter-spacing:.09em;margin:38px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
+      display:flex;gap:14px;align-items:flex-start}
+.card img{width:56px;height:56px;border-radius:13px;flex:none;background:var(--line)}
+.card h3{font-size:.98rem;font-weight:650;line-height:1.3}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:var(--brand);text-decoration:underline}
+.pic{flex:none;line-height:0}
+.card p{font-size:.88rem;color:var(--muted);margin:5px 0 9px}
+.body{min-width:0}
+.get{display:inline-block;font-size:.85rem;font-weight:600;color:var(--brand);text-decoration:none}
+.get:hover{text-decoration:underline}
+.legal{margin-top:7px;font-size:.76rem;color:var(--muted)}
+.legal a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.legal a:hover{color:var(--brand)}
+.contact{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+         font-size:.95rem;color:var(--muted)}
+.contact a{color:var(--brand)}
+footer{text-align:center;padding:26px 24px 44px;font-size:.78rem;color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+header .top{display:flex;gap:18px;align-items:center}
+header .top img{width:72px;height:72px;border-radius:16px;flex:none;background:#fff}
+.back{display:inline-block;margin-bottom:18px;font-size:.85rem;color:var(--brandink);opacity:.85;text-decoration:none}
+.back:hover{opacity:1;text-decoration:underline}
+main p{max-width:68ch}
+main p+p{margin-top:12px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.feature h3{font-size:.98rem;font-weight:650;line-height:1.3;margin-bottom:5px}
+.feature p{font-size:.9rem;color:var(--muted)}
+.data{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+      border-radius:10px;padding:16px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:650;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.req{color:var(--muted);font-size:.95rem}
+.req li{margin-left:20px}
+.more{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.mini{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);
+      border-radius:12px;padding:12px;color:inherit;text-decoration:none}
+.mini:hover{border-color:var(--brand)}
+.mini img{width:44px;height:44px;border-radius:10px;flex:none;background:var(--line)}
+.mini span{min-width:0}
+.mini b{display:block;font-size:.92rem;font-weight:650;line-height:1.3}
+.mini small{font-size:.8rem;color:var(--muted);line-height:1.4;display:-webkit-box;
+            -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.all{margin-top:12px;font-size:.9rem}
+.all a{color:var(--brand)}
+</style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Snoreto: Snore Recorder",
+  "description": "See when you snored, how long and how loud. Recordings never leave your phone.",
+  "url": "https://logicgategames.github.io/snoreto/",
+  "image": "https://logicgategames.github.io/icons/snoreto.png",
+  "operatingSystem": "Android 8.0 or later",
+  "applicationCategory": "LifestyleApplication",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.logicgategames.snoreto",
+  "featureList": [
+   "Morning report",
+   "Loudness timeline",
+   "Hear and share clips",
+   "Tags and night comparison",
+   "Trends over weeks",
+   "Soft noise for sleeping",
+   "Made for the night",
+   "Export and import your nights"
+  ],
+  "publisher": {
+   "@type": "Organization",
+   "name": "LogicGateGames LLC",
+   "url": "https://logicgategames.github.io"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "Does Snoreto diagnose sleep apnea or any medical condition?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Snoreto records sounds for your own information. It is not a medical device and does not diagnose snoring, sleep apnea or any other condition. If you are worried about your snoring or your sleep, talk to a doctor."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Do my snore recordings get uploaded?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. Recordings, clips and notes stay on your phone. There is no account and no server for them. The app uses the internet only for Google Play and for crash reports, and a crash report never contains your recordings."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "How does Snoreto tell snoring from other noise?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "It analyzes the sound on your phone with signal processing, not an AI model. It looks for a rhythmic run of snore-like sounds. Other sounds are marked apart from snoring. It can be wrong, so listen to the clips yourself."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Where should I put the phone, and will it last all night?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Put it near the bed, screen down, within reach of your pillow, and plug it in. Recording continues with the screen off. Battery saving settings on some phones can stop a long recording, and Snoreto shows what to change."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I use Snoreto while white noise plays?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes. Snoreto can play white, pink or brown noise. It does not count snores while the noise plays, and the timeline marks that stretch."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Can I see if something I tried reduced my snoring?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "You can tag nights, compare any two nights and see averages for nights with and without a tag. The numbers do not say what caused a difference. They only show what the app heard."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What happens if I get a new phone or uninstall the app?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Uninstalling removes all your nights, clips and notes. There is no cloud copy. Before you switch phones, use Export in Settings to save one file, then use Import on the new phone."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What if another app uses the microphone during the night?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Snoreto cannot hear anything while another app or a call has the microphone. The report notes the time range when nothing was heard, and Snoreto listens again when the microphone is available again."
+    }
+   }
+  ]
+ }
+]
+</script>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="back" href="/">&larr; All LogicGateGames apps</a>
+  <div class="top">
+    <img src="/icons/snoreto.png" alt="Snoreto: Snore Recorder icon" width="72" height="72">
+    <div><h1>Snoreto: Snore Recorder</h1><p>See when you snored, how long and how loud. Recordings never leave your phone.</p></div>
+  </div>
+  <a class="badge" href="https://play.google.com/store/apps/details?id=com.logicgategames.snoreto"><img src="/assets/google-play-badge.png"
+     alt="Get Snoreto: Snore Recorder on Google Play" width="180" height="70"></a>
+</div></header>
+<main>
+  <p>Snoreto is a snore recorder for Android phones and tablets. Put your phone near the bed, tap Start recording and go to sleep. In the morning you open a report that shows when you snored, for how long and how loud.</p>
+  <p>There is no account. Your recordings, clips and notes stay on your phone. Snoreto records sounds for your own information. It is not a medical device and does not diagnose anything.</p>
+
+  <h2>What it does</h2>
+  <div class="features">
+    <div class="feature"><h3>Morning report</h3><p>Snoring time, the share of the recording, the number of snores and the peak loudness, for each night. You can add a note to any night.</p></div>
+    <div class="feature"><h3>Loudness timeline</h3><p>A timeline of the whole night with every snore highlighted. A list of the sounds heard shows the time and length of each one. Other noises are marked apart from snoring.</p></div>
+    <div class="feature"><h3>Hear and share clips</h3><p>Play back any snore clip straight from the report. Share a clip with someone you trust, or with your doctor, using the Android share sheet.</p></div>
+    <div class="feature"><h3>Tags and night comparison</h3><p>Tag each night with what you tried, such as side sleeping, nasal strips, a raised pillow or a mouthguard, or with habits such as alcohol or a late meal. Put any two nights side by side.</p></div>
+    <div class="feature"><h3>Trends over weeks</h3><p>See snoring per night over weeks. For each tag you get plain averages for the nights with it and without it, so you can compare them yourself.</p></div>
+    <div class="feature"><h3>Soft noise for sleeping</h3><p>Play white, pink or brown noise made on your phone, with a volume control and a timer. Snoreto does not count snores while the noise plays, and the timeline shows that stretch.</p></div>
+    <div class="feature"><h3>Made for the night</h3><p>Start in one tap, or set a start delay so you can fall asleep first. Choose a time for the recording to stop on its own, and set a bedtime reminder. A dark theme is easy on the eyes.</p></div>
+    <div class="feature"><h3>Export and import your nights</h3><p>Export your nights, clips and settings to one file that you save where you choose, and import it on another phone. Old clips can be deleted automatically after a time you pick.</p></div>
+  </div>
+
+  <h2>Where your data lives</h2>
+  <p class="data">Your recordings, clips, notes and settings stay on your phone, in the app&#x27;s private storage. There is no account, no sign-in and no upload, and Snoreto runs no server for your recordings. The sound is analyzed on the phone by the app&#x27;s own signal processing, with no AI model and no cloud service. The microphone is used only while you record. The app saves short clips of the sounds it finds, a record of the loudness for each second of the night, and your tags and notes. If you turn it on, it also keeps the whole night as audio. You can delete any night, and everything is removed when you uninstall the app. The app uses the internet only to talk to Google Play and to send an automatic crash report from Firebase Crashlytics if it crashes. A crash report holds technical details of the crash and the device, never your recordings. Android&#x27;s automatic cloud backup is turned off for the app, so use Export and Import to move to a new phone. When you share a clip, the app you pick receives it and that app&#x27;s own privacy policy applies.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Does Snoreto diagnose sleep apnea or any medical condition?</summary><p>No. Snoreto records sounds for your own information. It is not a medical device and does not diagnose snoring, sleep apnea or any other condition. If you are worried about your snoring or your sleep, talk to a doctor.</p></details>
+  <details><summary>Do my snore recordings get uploaded?</summary><p>No. Recordings, clips and notes stay on your phone. There is no account and no server for them. The app uses the internet only for Google Play and for crash reports, and a crash report never contains your recordings.</p></details>
+  <details><summary>How does Snoreto tell snoring from other noise?</summary><p>It analyzes the sound on your phone with signal processing, not an AI model. It looks for a rhythmic run of snore-like sounds. Other sounds are marked apart from snoring. It can be wrong, so listen to the clips yourself.</p></details>
+  <details><summary>Where should I put the phone, and will it last all night?</summary><p>Put it near the bed, screen down, within reach of your pillow, and plug it in. Recording continues with the screen off. Battery saving settings on some phones can stop a long recording, and Snoreto shows what to change.</p></details>
+  <details><summary>Can I use Snoreto while white noise plays?</summary><p>Yes. Snoreto can play white, pink or brown noise. It does not count snores while the noise plays, and the timeline marks that stretch.</p></details>
+  <details><summary>Can I see if something I tried reduced my snoring?</summary><p>You can tag nights, compare any two nights and see averages for nights with and without a tag. The numbers do not say what caused a difference. They only show what the app heard.</p></details>
+  <details><summary>What happens if I get a new phone or uninstall the app?</summary><p>Uninstalling removes all your nights, clips and notes. There is no cloud copy. Before you switch phones, use Export in Settings to save one file, then use Import on the new phone.</p></details>
+  <details><summary>What if another app uses the microphone during the night?</summary><p>Snoreto cannot hear anything while another app or a call has the microphone. The report notes the time range when nothing was heard, and Snoreto listens again when the microphone is available again.</p></details>
+
+  <h2>Requirements</h2>
+  <ul class="req">
+    <li>Android 8.0 or later</li>
+    <li>Phones and tablets</li>
+  </ul>
+
+  <h2>More from LogicGateGames</h2>
+  <div class="more">
+    <a class="mini" href="/fotolok/"><img src="/icons/fotolok.png" alt="" width="44" height="44" loading="lazy"><span><b>Fotolok</b><small>A photo vault that opens from behind a working calculator.</small></span></a>
+    <a class="mini" href="/quinotes/"><img src="/icons/quinotes.png" alt="" width="44" height="44" loading="lazy"><span><b>QuiNotes</b><small>Notes and checklists, with search that reads the text inside your images.</small></span></a>
+    <a class="mini" href="/theca/"><img src="/icons/theca.png" alt="" width="44" height="44" loading="lazy"><span><b>Theca</b><small>A file manager, a cleaner and an encrypted vault in one app.</small></span></a>
+    <a class="mini" href="/diurna/"><img src="/icons/diurna.png" alt="" width="44" height="44" loading="lazy"><span><b>Diurna</b><small>A planner and journal you can restyle to suit how you think.</small></span></a>
+    <a class="mini" href="/permitto/"><img src="/icons/permitto.png" alt="" width="44" height="44" loading="lazy"><span><b>Permitto</b><small>Practice for the US learner&#x27;s permit test, for all 50 states and DC, in English and Spanish.</small></span></a>
+    <a class="mini" href="/wakem/"><img src="/icons/wakem.png" alt="" width="44" height="44" loading="lazy"><span><b>WAKEM</b><small>An alarm that stays on until you finish the task you set it.</small></span></a>
+  </div>
+  <p class="all"><a href="/">See all 26 apps and games &rarr;</a></p>
+
+  <div class="contact">
+    <p><a href="/snoreto/privacy/">Privacy policy</a> &middot; <a href="/snoreto/terms/">Terms</a>.
+       Questions, bugs and feature requests go to <a href="mailto:logicgategames@gmail.com">logicgategames@gmail.com</a> &mdash; it is
+       read by the person who wrote the app.</p>
+  </div>
+</main>
+<footer>&copy; 2026 LogicGateGames LLC</footer>
+</body>
+</html>
